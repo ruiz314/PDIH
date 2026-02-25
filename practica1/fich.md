@@ -12,4 +12,4 @@ Aquí enlazamos a la web [web de google](https://www.google.com/)
 
 Aquñi incluimos una imágen
 
-![imagen](https://github.com/ruiz314/PDIH/practica1/UGRlogo.png)
+![lodo de UGR](https://github.com/ruiz314/PDIH/blob/main/practica1/UGRlogo.png)

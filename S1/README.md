@@ -3,7 +3,7 @@ Ejercicios planteados en el seminario:
 
 ## 1. Instalar el software DOSBox y ejecutar aplicaciones de MS-DOS (p.ej. juegos clásicos). 
 
-![img](http://github.com/ruiz314/PDIH/S1_ejer1.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer1.png)
 
 ## 2. Configurar el inicio de DOSBox para que monte en la unidad C: el directorio donde se encuentra el entorno de programación Borland C (que incluye las herramientas para compilar no sólo lenguaje C, sino también ensamblador). Añadir a la variable “PATH” de inicio el directorio “bin” donde se encuentra el ejecutable BC.EXE 
 La ruta en mi ordenador del fichero a modificar es: `C:\Users\inesr\AppData\Local\DOSBox\dosbox-0.74-3.conf`
@@ -22,14 +22,14 @@ path c:\bc\bin
 ## 3. Crear el ejemplo “Hola mundo” en ensamblador, compilarlo y comprobar su funcionamiento. A continuación incluir un bucle para mostrar el mensaje 7 veces. 
 Ejemplo "Hola mundo":
 
-![img](http://github.com/ruiz314/PDIH/S1_ejer3_hola_mundo.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_hola_mundo.png)
 
 Uso el fichero C.BAT que viene en el guion:
 
-![img](http://github.com/ruiz314/PDIH/S1_ejer3_c_bat.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_c_bat.png)
 
 Al ejecutar se muestra el mensaje:
 
-![img](http://github.com/ruiz314/PDIH/S1_ejer3_ejecucion1.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_ejecucion1.png)
 
 Ejemplo con el bucle:

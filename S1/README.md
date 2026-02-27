@@ -51,7 +51,7 @@ END main
 ```
 ![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_hola_mundo.png)
 
-Uso el fichero C.BAT que viene en el guion:
+Uso el fichero [C.BAT](https://github.com/ruiz314/PDIH/blob/main/S1/C.BAT) que viene en el guion:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_c_bat.png)
 
@@ -59,7 +59,7 @@ Al ejecutar se muestra el mensaje:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_ejecucion1.png)
 
-Ejemplo con el bucle:
+Ejemplo con el bucle: [HOLA7.ASM](https://github.com/ruiz314/PDIH/blob/main/S1/HOLA7.ASM)
 ```
 pila segment stack 'stack'
 	dw 100h dup (?)
@@ -89,3 +89,7 @@ codigo ends
 
 END main
 ```
+
+Al ejecutar el código con el bucle se muestra el mensaje 7 veces:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_bucle.png)

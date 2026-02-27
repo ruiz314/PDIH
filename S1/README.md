@@ -65,7 +65,7 @@ pila segment stack 'stack'
 	dw 100h dup (?)
 pila ends
 datos segment 'data'
-	msg db 'hola mundo$'
+	msg db 'hola mundo $'
 datos ends
 codigo segment 'code'
 	assume cs:codigo, ds:datos, ss:pila
@@ -80,8 +80,8 @@ codigo segment 'code'
 			mov ah,9
 			int 21h
 
-			int cx
-			cmp c,5
+			inc cx ; incremento contador
+			cmp cx,7 ; número de iteraciones
 			jne bucle
 		
 	main ENDP

@@ -19,9 +19,36 @@ keyb sp
 path c:\bc\bin
 ```
 
+Enlace al fichero completo: [dosbox-0.74-3.conf](https://github.com/ruiz314/PDIH/blob/main/S1/dosbox-0.74-3.conf)
+
 ## 3. Crear el ejemplo “Hola mundo” en ensamblador, compilarlo y comprobar su funcionamiento. A continuación incluir un bucle para mostrar el mensaje 7 veces. 
 Ejemplo "Hola mundo":
 
+```
+pila segment stack 'stack'
+	dw 100h dup (?)
+pila ends
+datos segment 'data'
+	msg db 'hola mundo$'
+datos ends
+codigo segment 'code'
+	assume cs:codigo, ds:datos, ss:pila
+	main PROC
+		mov ax,datos
+		mov ds,ax
+
+		mov dx,OFFSET msg
+		mov ah,9
+		int 21h
+
+		mov ax,4C00h
+		int 21h
+	main ENDP
+codigo ends
+
+END main
+
+```
 ![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_hola_mundo.png)
 
 Uso el fichero C.BAT que viene en el guion:
@@ -33,3 +60,32 @@ Al ejecutar se muestra el mensaje:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S1/S1_ejer3_ejecucion1.png)
 
 Ejemplo con el bucle:
+```
+pila segment stack 'stack'
+	dw 100h dup (?)
+pila ends
+datos segment 'data'
+	msg db 'hola mundo$'
+datos ends
+codigo segment 'code'
+	assume cs:codigo, ds:datos, ss:pila
+	main PROC
+		mov ax,datos
+		mov ds,ax
+
+		mov cx,0 ;contador de bucle
+
+		bucle:
+			mov dx,OFFSET msg
+			mov ah,9
+			int 21h
+
+			int cx
+			cmp c,5
+			jne bucle
+		
+	main ENDP
+codigo ends
+
+END main
+```

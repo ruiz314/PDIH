@@ -1,6 +1,7 @@
 # Práctica 1. Entrada/Salida utilizando interrupciones con lenguaje C
 
 ## Requisitos mínimos
+
 Realizar las siguientes 10 funciones, que deben diseñarse e implementarse de forma que se puedan reutilizar fácilmente en otros programas. El programa debe utilizar de todas esas funciones para comprobar su correcto funcionamiento. 
 
 Hay una función genérica, dada por el profesor:
@@ -14,7 +15,14 @@ void mi_pausa(){
 }
 ```
 
-1. `gotoxy()`: coloca el cursor en una posición determinada
+Además, se usan las cabeceras:
+```c
+#include <stdio.h>
+#include <dos.h>
+```
+
+1. `gotoxy()`: coloca el cursor en una posición determinada.
+
 ```c
 void xy(int x, int y){
 	union REGS inregs, outregs;
@@ -54,6 +62,7 @@ Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/
 Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
 
 2. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
+
 Función proporcionada por el profesor:
 ```c
 void setcursortype(int tipo_cursor){
@@ -79,6 +88,7 @@ void setcursortype(int tipo_cursor){
 ```
 
 Se ha cambiado el _main_ para que el usuario pueda elegir el tipo de cursor por teclado:
+
 ```c
 int main(){
 	int tmp;
@@ -103,12 +113,11 @@ Ejecución para cursor grueso: ![img](https://github.com/ruiz314/PDIH/blob/main/
 
 Ejecución para cursor invisible: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor0.png)
 
-3. `setvideomode()`: fija el modo de video deseado
-Para implementar esta función hay que usar la interrupción $10h$ de la BIOS, específicamente la función $00h$ (que se carga en el registro AH).
-```c
-#include <stdio.h>
-#include <dos.h>
+3. `setvideomode()`: fija el modo de video deseado.
 
+Para implementar esta función hay que usar la interrupción $10h$ de la BIOS, específicamente la función $00h$ (que se carga en el registro AH).
+
+```c
 #define TEXTO 0x03
 #define GRAFICO 0x04 // O 0x13 para 320x200 256 colores
 
@@ -137,29 +146,13 @@ int main(){
 
 Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
 
-4. `getvideomode()`: obtiene el modo de video actual
+4. `getvideomode()`: obtiene el modo de video actual.
+
 Para implementar esta función getvideomode hay que consultar el estado actual del adaptador de vídeo. Según la documentación de la BIOS, esto se hace con la Interrupción $10h$, función $0Fh$.
 
 Además, se hace uso de la función anterior (`setvideomode`).
 ```c
-#include <stdio.h>
-#include <dos.h>
-
 #define GRAFICO 0x04 
-
-void mi_pausa(){
-   union REGS inregs, outregs;
-	 inregs.h.ah = 8;
-	 int86(0x21, &inregs, &outregs);
-}
-
-void setvideomode(unsigned char modo){
-	union REGS inregs, outregs; 
-	inregs.h.ah = 0x00; // Para cambiar el modo de pantalla
-	inregs.h.al = modo; // Indicar a qué modo específico cambiar
-	int86(0x10,&inregs,&outregs); 
-	return;
-}
 
 unsigned char getvideomode(){
 	union REGS inregs, outregs; 
@@ -174,7 +167,7 @@ int main(){
    printf("Modo: %c\n", modo_original);
 	
    printf("Cambiar a modo gráfico para dibujar");
-	setvideomode(GRAFICO);  // GRAFICO = 0x04
+   setvideomode(GRAFICO);  // GRAFICO = 0x04
    mi_pausa();
 
 	printf("Presiona una tecla para volver a modo original...");
@@ -188,11 +181,34 @@ int main(){
 
 Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
 
-5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
-6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres
-7. `clrscr()`: borra toda la pantalla
-8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente
-9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla
+5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres.
+
+Para escribir un carácter en pantalla se usa la interrupción _10h_, con el número de función _9 = AH_.
+
+No tiene salida. Como parámetros de entrada tenemos:
+- AH = 9  
+- AL = código ASCII del carácter  
+- BL = color
+	- el primer cuarteto fija el color de fondo
+ 	- el segundo cuarteto el color del carácter
+- BH = 0  
+- CX = número de repeticiones  
+
+
+Se necesita una variable que guarde el color actual para que todas las funciones de escritura lo sepan:
+
+```c
+unsigned char color_actual_texto = 7; // Gris claro
+```
+
+6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres.
+
+7. `clrscr()`: borra toda la pantalla.
+
+8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente.
+
+9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla.
+
 ```c
 void getche(){
 	union REGS inregs, outregs;
@@ -232,5 +248,7 @@ Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
 
 ## Requisitos ampliados  
 1. Implementar una función que permita dibujar un recuadro en la pantalla en modo texto. Recibirá como parámetros las coordenadas superior izquierda e inferior derecha del recuadro, el color de primer plano y el color de fondo.
+
 2. Implementar en lenguaje C un programa que establezca modo gráfico CGA (_modo=4_) para crear dibujos sencillos en pantalla.
+
 3. Implementar un programa sencillo que realice un dibujo sencillo de tipo “ascii art”. En el ANEXO al final de este guión se proponen algunos diseños. 

@@ -135,6 +135,8 @@ int main(){
 }
 ```
 
+Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
+
 4. `getvideomode()`: obtiene el modo de video actual
 Para implementar esta función getvideomode hay que consultar el estado actual del adaptador de vídeo. Según la documentación de la BIOS, esto se hace con la Interrupción $10h$, función $0Fh$.
 
@@ -183,6 +185,8 @@ int main(){
 	return 0;
 }
 ```
+
+Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
 
 5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
 6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres

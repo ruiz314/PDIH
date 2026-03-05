@@ -51,9 +51,10 @@ int main(){
 
 Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/GOTOXY_PARAM.C)
 
-Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
+Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
 
 2. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
+Función proporcionada por el profesor:
 ```c
 void setcursortype(int tipo_cursor){
 	union REGS inregs, outregs;
@@ -75,7 +76,10 @@ void setcursortype(int tipo_cursor){
 	}
 	int86(0x10, &inregs, &outregs);
 }
+```
 
+Se ha cambiado el _main_ para que el usuario pueda elegir el tipo de cursor por teclado:
+```c
 int main(){
 	int tmp;
 
@@ -91,14 +95,13 @@ int main(){
 	return 0;
 }
 ```
-
 Fichero: [CURSOR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/cursor.C)
 
-Ejecución para cursor invisible: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor0.png)
+Ejecución para cursor normal: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor1.png)
 
-Ejecución para cursor normal: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor1.png)
+Ejecución para cursor grueso: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor2.png)
 
-Ejecución para cursor grueso: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor2.png)
+Ejecución para cursor invisible: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor0.png)
 
 3. `setvideomode()`: fija el modo de video deseado
 4. `getvideomode()`: obtiene el modo de video actual
@@ -138,7 +141,7 @@ int main(){
 
 Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/GET_CHAR.C)
 
-Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
+Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
 
 10. `pixel()`: dibujar un pixel en modo gráfico (la función recibirá la coordinada _x,y_ y el color del punto). 
 

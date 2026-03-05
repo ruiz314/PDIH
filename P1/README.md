@@ -23,7 +23,11 @@ void xy(int x, int y){
 	int86(0x10,&inregs,&outregs);
 	return;
 }
+```
 
+Esta función es proporcionada por el profesor, pero para hacerla más dinámica en el main se solicita al usuario las coordenadas $x$ e $y$.
+
+```c
 int main(){
 	int pos_x, pos_y; //Guardar posición determinada
 
@@ -41,21 +45,64 @@ int main(){
 
 	return 0;
 }
-
 ```
-Esta función es proporcionada por el profesor, pero para hacerla más dinámica en el main se solicita al usuario las coordenadas $x$ e $y$.
 
 Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/GOTOXY_PARAM.C)
 
-3. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
-4. `setvideomode()`: fija el modo de video deseado
-5. `getvideomode()`: obtiene el modo de video actual
-6. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
-7. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres
-8. `clrscr()`: borra toda la pantalla
-9. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente
-10. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla
-11. `pixel()`: dibujar un pixel en modo gráfico (la función recibirá la coordinada _x,y_ y el color del punto). 
+Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
+
+2. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
+3. `setvideomode()`: fija el modo de video deseado
+4. `getvideomode()`: obtiene el modo de video actual
+5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
+6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres
+7. `clrscr()`: borra toda la pantalla
+8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente
+9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla
+```c
+#include <stdio.h>
+#include <dos.h>
+
+void mi_pausa(){
+   union REGS inregs, outregs;
+	 inregs.h.ah = 8;
+	 int86(0x21, &inregs, &outregs);
+}
+
+
+void getche(){
+	union REGS inregs, outregs;
+	int caracter;
+
+	// Solicitar
+	printf("\nPulsa una tecla...  ");
+	inregs.h.ah = 1;
+	int86(0x21, &inregs, &outregs);
+
+	caracter = outregs.h.al;
+
+	// Mostrar
+	printf("\nHas pulsado: ");
+	inregs.h.ah = 2;
+	inregs.h.dl = caracter;
+	int86(0x21, &inregs, &outregs);
+	
+}
+
+int main(){
+	// Lamada a la función
+	getche();
+   	mi_pausa();
+
+	return 0;
+}
+```
+
+Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/GET_CHAR.C)
+
+Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
+
+10. `pixel()`: dibujar un pixel en modo gráfico (la función recibirá la coordinada _x,y_ y el color del punto). 
 
 
 

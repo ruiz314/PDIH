@@ -104,7 +104,86 @@ Ejecución para cursor grueso: ![img](https://github.com/ruiz314/PDIH/blob/main/
 Ejecución para cursor invisible: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor0.png)
 
 3. `setvideomode()`: fija el modo de video deseado
+Para implementar esta función hay que usar la interrupción $10h$ de la BIOS, específicamente la función $00h$ (que se carga en el registro AH).
+```c
+#include <stdio.h>
+#include <dos.h>
+
+#define TEXTO 0x03
+#define GRAFICO 0x04 // O 0x13 para 320x200 256 colores
+
+void setvideomode(unsigned char modo){
+	union REGS inregs, outregs; 
+	inregs.h.ah = 0x00; 
+	inregs.h.al = modo; 
+	int86(0x10,&inregs,&outregs); 
+	return;
+}
+
+int main(){
+
+	printf("Modo gráfico para dibujar");
+	setvideomode(GRAFICO);  
+
+	printf("Presiona una tecla para volver a modo texto...");
+    mi_pausa();
+
+    // Volver a modo texto antes de salir
+    setvideomode(TEXTO);
+
+	return 0;
+}
+```
+
 4. `getvideomode()`: obtiene el modo de video actual
+Para implementar esta función getvideomode hay que consultar el estado actual del adaptador de vídeo. Según la documentación de la BIOS, esto se hace con la Interrupción $10h$, función $0Fh$.
+
+Además, se hace uso de la función anterior (`setvideomode`).
+```c
+#include <stdio.h>
+#include <dos.h>
+
+#define GRAFICO 0x04 
+
+void mi_pausa(){
+   union REGS inregs, outregs;
+	 inregs.h.ah = 8;
+	 int86(0x21, &inregs, &outregs);
+}
+
+void setvideomode(unsigned char modo){
+	union REGS inregs, outregs; 
+	inregs.h.ah = 0x00; // Para cambiar el modo de pantalla
+	inregs.h.al = modo; // Indicar a qué modo específico cambiar
+	int86(0x10,&inregs,&outregs); 
+	return;
+}
+
+unsigned char getvideomode(){
+	union REGS inregs, outregs; 
+   inregs.h.ah = 0x0F; // Obtener modo de video actual
+   int86(0x10,&inregs,&outregs); 
+   return outregs.h.al;
+}
+
+int main(){
+   unsigned char modo_original;
+   modo_original = getvideomode();
+   printf("Modo: %c\n", modo_original);
+	
+   printf("Cambiar a modo gráfico para dibujar");
+	setvideomode(GRAFICO);  // GRAFICO = 0x04
+   mi_pausa();
+
+	printf("Presiona una tecla para volver a modo original...");
+
+   // Volver al modo original, sea cual sea
+   setvideomode(modo_original);
+
+	return 0;
+}
+```
+
 5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
 6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres
 7. `clrscr()`: borra toda la pantalla

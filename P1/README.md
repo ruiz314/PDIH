@@ -3,17 +3,19 @@
 ## Requisitos mínimos
 Realizar las siguientes 10 funciones, que deben diseñarse e implementarse de forma que se puedan reutilizar fácilmente en otros programas. El programa debe utilizar de todas esas funciones para comprobar su correcto funcionamiento. 
 
-1. `gotoxy()`: coloca el cursor en una posición determinada
+Hay una función genérica, dada por el profesor:
 ```c
-#include <stdio.h>
-#include <dos.h>
+
 
 void mi_pausa(){
 	union REGS inregs, outregs;
 	inregs.h.ah = 8;
 	int86(0x21, &inregs, &outregs);
 }
+```
 
+1. `gotoxy()`: coloca el cursor en una posición determinada
+```c
 void xy(int x, int y){
 	union REGS inregs, outregs;
 	inregs.h.ah = 0x02;
@@ -47,11 +49,57 @@ int main(){
 }
 ```
 
-Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/GOTOXY_PARAM.C)
+Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/GOTOXY_PARAM.C)
 
 Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
 
 2. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
+```c
+void setcursortype(int tipo_cursor){
+	union REGS inregs, outregs;
+	inregs.h.ah = 0x01;
+	switch(tipo_cursor){
+		case 0: //invisible
+			inregs.h.ch = 010;
+			inregs.h.cl = 000;
+			break;
+		case 1: //normal
+			inregs.h.ch = 010;
+			inregs.h.cl = 010;
+			break;
+		case 2: //grueso
+			inregs.h.ch = 000;
+			inregs.h.cl = 010;
+			break;
+	
+	}
+	int86(0x10, &inregs, &outregs);
+}
+
+int main(){
+	int tmp;
+
+	printf("\nTipos de cursor. \n");
+	printf("\tTipo 0: invisible \tTipo 1: normal \tTipo 2: grueso \n\nIntroduce solo el numero: ");
+	scanf("%d", &tmp); // Leer de teclado
+
+	printf("\nHas elegido tipo: %d\n", tmp); //Mostrar elección
+
+   	setcursortype(tmp);
+   	mi_pausa();   	
+
+	return 0;
+}
+```
+
+Fichero: [CURSOR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/cursor.C)
+
+Ejecución para cursor invisible: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor0.png)
+
+Ejecución para cursor normal: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor1.png)
+
+Ejecución para cursor grueso: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/2cursor2.png)
+
 3. `setvideomode()`: fija el modo de video deseado
 4. `getvideomode()`: obtiene el modo de video actual
 5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres
@@ -60,16 +108,6 @@ Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
 8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente
 9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla
 ```c
-#include <stdio.h>
-#include <dos.h>
-
-void mi_pausa(){
-   union REGS inregs, outregs;
-	 inregs.h.ah = 8;
-	 int86(0x21, &inregs, &outregs);
-}
-
-
 void getche(){
 	union REGS inregs, outregs;
 	int caracter;
@@ -98,7 +136,7 @@ int main(){
 }
 ```
 
-Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/GET_CHAR.C)
+Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/GET_CHAR.C)
 
 Ejecución: [img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
 

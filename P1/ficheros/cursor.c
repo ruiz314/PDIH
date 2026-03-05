@@ -11,25 +11,6 @@ void mi_pausa(){
 	 int86(0x21, &inregs, &outregs);
 }
 
-/*int mi_getchar(){
-	 union REGS inregs, outregs;
-	 int caracter;
-
-	 inregs.h.ah = 1;
-	 int86(0x21, &inregs, &outregs);
-
-	 caracter = outregs.h.al;
-	 return caracter;
-}
-
-void mi_putchar(char c){
-	 union REGS inregs, outregs;
-
-	 inregs.h.ah = 2;
-	 inregs.h.dl = c;
-	 int86(0x21, &inregs, &outregs);
-}
-*/
 void setcursortype(int tipo_cursor){
 	union REGS inregs, outregs;
 	inregs.h.ah = 0x01;
@@ -65,3 +46,4 @@ int main(){
 
 	return 0;
 }
+

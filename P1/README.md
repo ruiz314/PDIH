@@ -354,11 +354,11 @@ int main(){
 }
 ```
 
-Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/colores.c)
+Fichero: [colores.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/colores.c)
 
 En la siguiente imagen podemos ver las dos soluciones propuestas, la del profesor con la palabra 'HOLA' y la segunda propuesta con la palabra 'PDIH'.
 
-![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/8color.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/8colores.png)
 
 9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla.
 

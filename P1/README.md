@@ -285,7 +285,84 @@ void textbackground(int nuevo_color) {
 
 8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente.
 
+Esta es la función que completa la funcionalidad de cambiar el color del texto y el color del fondo del texto que se solicita en los ejercicio 5 y 6.
+
+La propuesta de la función es la siguiente:
+```c
+unsigned char colorActualTexto = 4; // Rojo
+unsigned char colorActualFondo = 7; // Gris claro
+
+void cputchar(char c){
+    union REGS inregs, outregs;
+    inregs.h.ah = 0x09;	// Funcion 9: escribir caracter y atributo
+    inregs.h.al = c;    // Caracter a imprimir
+    inregs.h.bl = (colorActualFondo << 4) | colorActualTexto; // Fusion de color de texto y fondo
+    inregs.h.bh = 0x00; // Pagina de video
+    inregs.x.cx = 1;    // Numero de veces que se repite el caracter
+    int86(0x10, &inregs, &outregs);
+}
+```
+
+Entonces, combinando las funciones _textcolor()_ y _textbackground()_ se puede implementar el siguiente programa:
+
+```c
+#include <stdio.h>
+#include <dos.h>
+
+unsigned char colorActualTexto = 4; // Rojo
+unsigned char colorActualFondo = 7; // Gris claro
+
+// Funcion para cambiar el color del texto
+void textcolor(int nuevo_color) { colorActualTexto = nuevo_color;}
+
+// Funcion para cambiar el color de fondo
+void textbackground(int nuevo_color) { colorActualFondo = nuevo_color;}
+
+// Funcion para escribir el carácter
+void cputchar(char c){ 
+    union REGS inregs, outregs;
+    inregs.h.ah = 0x09;	// Función 9: escribir caracter y atributo
+    inregs.h.al = c;    // Caracter a imprimir
+    inregs.h.bl = (colorActualFondo << 4) | colorActualTexto; // Fusión
+    inregs.h.bh = 0x00; 
+    inregs.x.cx = 1;   
+    int86(0x10, &inregs, &outregs);
+}
+
+int main(){
+    printf("\nc.fondo=rojo, c.texto=azul => ");
+    colorActualTexto = 1; colorActualFondo = 4; // Texto Azul; Fondo Rojo
+    textbackground(colorActualFondo); textcolor(colorActualTexto);
+    cputchar('P'); 
+
+    printf("\nc.fondo=gris claro, c.texto=cian => ");
+    colorActualTexto = 3; colorActualFondo = 7; // Texto Cian; Fondo Gris claro
+    textbackground(colorActualFondo); textcolor(colorActualTexto);
+    cputchar('D'); 
+    
+    printf("\nc.fondo=magenta, c.texto=verde claro => ");
+    colorActualTexto = 10; colorActualFondo = 5; // Texto verde claro; Fondo Magenta
+    textbackground(colorActualFondo); textcolor(colorActualTexto);
+    cputchar('I'); 
+
+    printf("\nc.fondo=verde, c.texto=negro => ");
+    colorActualTexto = 0; colorActualFondo = 2; // Texto negro; Fondo Verde
+    textbackground(colorActualFondo); textcolor(colorActualTexto);
+    cputchar('H'); 
+
+    return 0;
+}
+```
+
+Fichero: [GET_CHAR.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/colores.c)
+
+En la siguiente imagen podemos ver las dos soluciones propuestas, la del profesor con la palabra 'HOLA' y la segunda propuesta con la palabra 'PDIH'.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/8color.png)
+
 9. `getche()`: obtiene un carácter de teclado y lo muestra en pantalla.
+
+Para gestionar el teclado se usa la interrupción de la BIOS $16h$. La subfunción 1 detectar la pulsación de una tecla. La entrada es $AH = 1$. La salida es $0$ si hay una tecla en el búfer,  y $1$ si el búfer está vacío.
 
 ```c
 void getche(){

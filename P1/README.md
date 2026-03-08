@@ -23,6 +23,11 @@ Además, se usan las cabeceras:
 
 1. `gotoxy()`: coloca el cursor en una posición determinada.
 
+Para colocar el cursor en una posición determinada se usa la entrada $AH=2$. Además, es necesario usar:
+- DH: número de la fila
+- DL: número de columna
+- BH = 0
+
 ```c
 void xy(int x, int y){
 	union REGS inregs, outregs;
@@ -35,7 +40,7 @@ void xy(int x, int y){
 }
 ```
 
-Esta función es proporcionada por el profesor, pero para hacerla más dinámica en el main se solicita al usuario las coordenadas $x$ e $y$.
+Esta función es proporcionada por el profesor, pero para hacerla más dinámica en el _main_ se solicita al usuario las coordenadas $x$ e $y$.
 
 ```c
 int main(){
@@ -59,7 +64,7 @@ int main(){
 
 Fichero: [GOTOXY_PARAM.C](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/GOTOXY_PARAM.C)
 
-Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
+Ejecución para $x=3$ e $y=3$: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/1gotoxy.png)
 
 2. `setcursortype()`: fijar el aspecto del cursor, debe admitir tres valores: _INVISIBLE_, _NORMAL_ y _GRUESO_.
 
@@ -132,17 +137,21 @@ void setvideomode(unsigned char modo){
 int main(){
 
 	printf("Modo gráfico para dibujar");
-	setvideomode(GRAFICO);  
+	setvideomode(GRAFICO);  //0x04
 
 	printf("Presiona una tecla para volver a modo texto...");
     mi_pausa();
 
     // Volver a modo texto antes de salir
-    setvideomode(TEXTO);
+    setvideomode(TEXTO); //0x03
 
 	return 0;
 }
 ```
+
+Se han definido dos variables globales para cambiar los modos:
+- _TEXTO_: Modo $AL = 03h$, con resolución $80x25$, 16 colores.
+- _GRAFICO_: Modo $AL = 04h$, con resolución $320x200$, 4 colores.
 
 Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
 
@@ -179,7 +188,7 @@ int main(){
 }
 ```
 
-Fichero: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
+Fichero completo: [modovideo.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/modovideo.c)
 
 5. `textcolor()`: modifica el color de primer plano con que se mostrarán los caracteres.
 
@@ -195,13 +204,82 @@ No tiene salida. Como parámetros de entrada tenemos:
 - CX = número de repeticiones  
 
 
-Se necesita una variable que guarde el color actual para que todas las funciones de escritura lo sepan:
+Se necesitan variables que guarden los colores deseados para que todas las funciones de escritura lo sepan, como por ejemplo:
 
 ```c
-unsigned char color_actual_texto = 7; // Gris claro
+unsigned char colorActualTexto = 7; // Gris claro
+```
+
+Luego hay que usar esas variables dentro de la función _cputchar()_ para imprimir el caracter.
+
+Para este ejercicio solo se muestra la implementación de la función que cambia el color del texto(_textcolor()_). Al final del ejercicio 6 se mostrará la implementación de un programa que cambie el color del caracter y lo muestre por pantalla.
+
+```c
+unsigned char colorActualTexto = 7; // Gris claro
+
+void textcolor(int nuevo_color) {
+    colorActualTexto = nuevo_color;
+}
 ```
 
 6. `textbackground()`: modifica el color de fondo con que se mostrarán los caracteres.
+
+Es importante mencionar que los **colores de fondo sólo pueden tomar valores entre el 0 y el 7**. Esto se menciona en el documento de la práctica proporcionado por el profesor.
+
+Una opción para usar las dos funciones anteriores (_textcolor()_ y _textbackground()_) en una sola sería la propuesta por el profesor:
+
+```c
+#include <stdio.h>
+#include <dos.h>
+
+unsigned char cfondo;
+unsigned char ctexto;
+
+void escribir_char_con_color(char c){
+	union REGS inregs, outregs;
+	inregs.h.ah = 0x09;	// Funcion escribir caracter
+	inregs.h.al = c;    //una funcion mas general debe recibir el caracter a imprimir
+	inregs.h.bl = cfondo << 4 | ctexto; // Fusion de color de texto y fondo en un solo byte
+	inregs.h.bh = 0x00;
+	inregs.x.cx = 1; // Numero de veces que se repite el caracter
+	int86(0x10,&inregs,&outregs);
+	return;
+}
+
+int main(){
+	printf("\nc.fondo=rojo, c.texto=azul => ");
+	cfondo=4; ctexto=1; // cfondo=4=rojo , ctexto=1=azul
+	escribir_char_con_color('H'); 
+
+	printf("\nc.fondo=verde, c.texto=negro => ");
+	cfondo=2; ctexto=0; // cfondo=2=verde , ctexto=0=negro
+	escribir_char_con_color('O'); 
+	
+	printf("\nc.fondo=gris claro, c.texto=cian => ");
+	cfondo=7; ctexto=3; // cfondo=7=gris claro , ctexto=13=cian
+	escribir_char_con_color('L'); 
+
+	printf("\nc.fondo=magenta, c.texto=verde claro => ");
+	cfondo=5; ctexto=10; // cfondo=5=magenta , ctexto=10=verde claro 
+	escribir_char_con_color('A'); 
+
+	return 0;
+}
+```
+
+Ejecución para ver la palabra 'HOLA' con distintos colores:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/6color.png)
+
+Otra opción sería definir una función para cambiar el color de fondo y combinarla con la función _textcolor()_ y con la función _cputchar()_ del ejercicio 8.
+
+```c
+unsigned char colorActualFondo = 7; // Gris claro
+
+void textbackground(int nuevo_color) {
+    colorActualFondo = nuevo_color;
+}
+```
 
 7. `clrscr()`: borra toda la pantalla.
 

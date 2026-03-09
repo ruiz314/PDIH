@@ -399,7 +399,62 @@ Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/9getche.png)
 
 10. `pixel()`: dibujar un pixel en modo gráfico (la función recibirá la coordinada _x,y_ y el color del punto). 
 
+Se debe trabajar en modo gráfico, por eso hay que usar la función _setvideomode()_ del ejercicio 3.
 
+La función \textit{pixel()} sería:
+
+```c
+void pixel(int x, int y, BYTE C){
+    union REGS inregs, outregs;
+    
+    inregs.x.cx = x;       // Columna (coordenada X)
+    inregs.x.dx = y;       // Fila (coordenada Y)
+    inregs.h.al = C;       // Color del pixel
+    inregs.h.ah = 0x0C;    // Función 0Ch: iluminar un pixel en modo gráfico
+    
+    int86(0x10, &inregs, &outregs); // Llamada a la interrupción BIOS para pantalla
+}
+```
+
+Para probar que funciona correctamente se usa el siguiente main:
+```c
+int main(){
+    // Cambiar a modo gráfico gráfico (320x200 con 4 colores)
+    setvideomode(4); 
+
+    // Pintar algunos píxeles (formando una línea diagonal)
+    pixel(01, 40, 7); // Color 7: gris claro
+    pixel(10, 50, 1); // Color 1: azul
+    pixel(15, 60, 2); // Color 2: verde
+    pixel(20, 70, 3); // Color 3: cyan
+    pixel(25, 80, 7); // Color 7
+    pixel(30, 90, 1); // Color 1
+    pixel(35, 100, 2); // Color 2
+    pixel(40, 110, 3); // Color 3
+
+    pixel(45, 100, 7); // Color 7
+    pixel(50, 90, 1); // Color 1
+    pixel(55, 80, 2); // Color 2
+    pixel(60, 70, 3); // Color 3
+    pixel(65, 60, 7); // Color 7
+    pixel(70, 50, 1); // Color 1
+    pixel(75, 40, 2); // Color 2
+    
+    // Hacer una pausa para ver el resultado
+    mi_pausa();
+    
+    // Restaurar el modo texto a color
+    setvideomode(3); 
+    
+    return 0;
+}
+```
+
+Los pixeles pintados forman una $V$, empezando por la coordenada $(1,40)$ con el color gris claro, con vértice color cyan en la coordenada $(40, 110)$, y teminando en la coordenada $(75, 40)$ con color verde.
+
+Programa completo para probar el correcto funcionamiento: [pixel.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/pixel.c)
+
+Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/10pixel.png)
 
 ## Requisitos ampliados  
 1. Implementar una función que permita dibujar un recuadro en la pantalla en modo texto. Recibirá como parámetros las coordenadas superior izquierda e inferior derecha del recuadro, el color de primer plano y el color de fondo.

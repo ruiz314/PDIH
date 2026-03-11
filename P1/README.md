@@ -283,6 +283,62 @@ void textbackground(int nuevo_color) {
 
 7. `clrscr()`: borra toda la pantalla.
 
+En clase se propusieron varias ideas:
+
+- Dar 25 retornos de carro con $printf("\n\n...\n");$. Al imprimir 25 saltos de línea se empuja el texto anterior hacia arriba hasta que desaparece de la ventana. La desventaja es que el cursor se quedaría en la parte de abajo de la pantalla, en vez de posicionarlo arriba como sería deseable. Si se usase este método se podría hacer uso de la función \textit{gotoxy(0,0)}\myref{fun:gotoxy} para poner el cursor arriba del todo (en la coordenada 0,0).
+- Llamar al modo de video usando la función _setvideomode(3)_ que provoca un parpadeo negro porque reinicia la tarjeta gráfica. La desventaja es que se pierde la configuración de colores que se hubiese establecido previamente.
+- Usar la interrupción $10h$ y función $06h$ que se explica en el guión de la práctica para hacer _scroll vertical_.
+
+
+La más acertada sería la tercera idea, usando la BIOS. Se borrará un recuadro que va desde la fila 0, columna 0, hasta la fila 24, columna 79 porque la pantalla en modo texto tiene 80 columnas y 25 filas.
+
+La función número 6 tiene de entrada:
+- AH = 6
+- AL = número de líneas a desplazar. Si AL = 0 entonces no se desplaza, sino que borra esa zona.
+- BH = color para los espacios en blanco
+- CH = línea de la esquina superior izquierda
+- CL = columna de la esquina superior izquierda
+- DH = línea de la esquina inferior derecha
+- DL = columna de la esquina inferior derecha
+
+Entonces la implementación de la función clrscr() podría ser:
+
+```c
+unsigned char cfondo=0; // Negro
+unsigned char ctexto=15; // Blanco
+
+void clrscr() {
+    union REGS inregs, outregs;
+    
+    inregs.h.ah = 0x06;      // Función 6: Desplazamiento hacia arriba (Scroll)
+    inregs.h.al = 0x00;      // AL = 0 indica borrar toda la zona seleccionada
+    
+    // El color con el que se rellena la pantalla vacía
+    inregs.h.bh = (cfondo << 4) | ctexto; 
+    
+    inregs.h.ch = 0;         // Fila de la esquina superior izquierda
+    inregs.h.cl = 0;         // Columna de la esquina superior izquierda
+    inregs.h.dh = 24;        // Fila de la esquina inferior derecha (25 filas en total)
+    inregs.h.dl = 79;        // Columna de la esquina inferior derecha (80 columnas en total)
+    
+    int86(0x10, &inregs, &outregs); // Interrupción de vídeo
+```
+
+El código completo para ver un ejemplo está en el fichero: [limpiar.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/limpiar.c)
+
+Ejemplo de compilación y ejecución de _clrscr()_:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/7limpiar1.png)
+
+Justo antes de borrar se cambia el color de fondo a azul. Así se ve claramente cómo la función de la BIOS pinta todo el recuadro de la pantalla (las 80 columnas y 25 filas) de ese color de una sola vez.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/7limpiar2.png)
+
+Al pulsar una tecla para salir se reestablece la pantalla con fondo negro:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/7limpiar3.png)
+
+
 8. `cputchar()`: escribe un carácter en pantalla con el color indicado actualmente.
 
 Esta es la función que completa la funcionalidad de cambiar el color del texto y el color del fondo del texto que se solicita en los ejercicio 5 y 6.

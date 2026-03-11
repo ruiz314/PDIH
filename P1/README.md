@@ -285,7 +285,7 @@ void textbackground(int nuevo_color) {
 
 En clase se propusieron varias ideas:
 
-- Dar 25 retornos de carro con $printf("\n\n...\n");$. Al imprimir 25 saltos de línea se empuja el texto anterior hacia arriba hasta que desaparece de la ventana. La desventaja es que el cursor se quedaría en la parte de abajo de la pantalla, en vez de posicionarlo arriba como sería deseable. Si se usase este método se podría hacer uso de la función \textit{gotoxy(0,0)}\myref{fun:gotoxy} para poner el cursor arriba del todo (en la coordenada 0,0).
+- Dar 25 retornos de carro con $printf("\n\n...\n");$. Al imprimir 25 saltos de línea se empuja el texto anterior hacia arriba hasta que desaparece de la ventana. La desventaja es que el cursor se quedaría en la parte de abajo de la pantalla, en vez de posicionarlo arriba como sería deseable. Si se usase este método se podría hacer uso de la función _gotoxy(0,0)_ para poner el cursor arriba del todo (en la coordenada 0,0).
 - Llamar al modo de video usando la función _setvideomode(3)_ que provoca un parpadeo negro porque reinicia la tarjeta gráfica. La desventaja es que se pierde la configuración de colores que se hubiese establecido previamente.
 - Usar la interrupción $10h$ y función $06h$ que se explica en el guión de la práctica para hacer _scroll vertical_.
 

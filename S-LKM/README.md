@@ -85,3 +85,104 @@ Para eliminar el módulo  se usa el comando `sudo rmmod hello.ko` y como no hay 
 Nos hacemos superusuario para ver la salida de la función printk() en el registro de log del kernel:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/11registro_log.png)
+
+### Modificación fichero hello.c
+Vamos a editar el código para personalizarlo. En concreto los cambios se pueden ver en el fichero [hello2.c](https://github.com/ruiz314/PDIH/blob/main/S-LKM/hello2.c):
+
+```c
+/**
+ * @file    hello.c
+ * @author  Derek Molloy
+ * @date    4 April 2015
+ * @version 0.1
+ * @brief  An introductory "Hello World!" loadable kernel module (LKM) that can display a message
+ * in the /var/log/kern.log file when the module is loaded and removed. The module can accept an
+ * argument when it is loaded -- the name, which appears in the kernel log files.
+ * @see http://www.derekmolloy.ie/ for a full description and follow-up descriptions.
+*/
+
+
+#include <linux/init.h>             // Macros used to mark up functions e.g., __init __exit
+#include <linux/module.h>           // Core header for loading LKMs into the kernel
+#include <linux/kernel.h>           // Contains types, macros, functions for the kernel
+
+
+MODULE_LICENSE("GPL");              ///< The license type -- this affects runtime behavior
+MODULE_AUTHOR("Derek Molloy");      ///< The author -- visible when you use modinfo
+MODULE_DESCRIPTION("A simple Linux driver for the BBB.");  ///< The description -- see modinfo
+MODULE_VERSION("0.1");              ///< The version of the module
+
+
+static char *name = "PDIH";        ///< An example LKM argument -- default value is "world" -- modified value is PDIH
+module_param(name, charp, S_IRUGO); ///< Param desc. charp = char ptr, S_IRUGO can be read/not changed
+MODULE_PARM_DESC(name, "The name to display in /var/log/kern.log");  ///< parameter description
+
+
+/** @brief The LKM initialization function
+ *  The static keyword restricts the visibility of the function to within this C file. The __init
+ *  macro means that for a built-in driver (not a LKM) the function is only used at initialization
+ *  time and that it can be discarded and its memory freed up after that point.
+ *  @return returns 0 if successful
+ */
+static int __init helloBBB_init(void){
+   printk(KERN_INFO "EBB: Hola %s desde el LKM BBB!\n", name);
+   return 0;
+}
+
+
+/** @brief The LKM cleanup function
+ *  Similar to the initialization function, it is static. The __exit macro notifies that if this
+ *  code is used for a built-in driver (not a LKM) that this function is not required.
+ */
+static void __exit helloBBB_exit(void){
+   printk(KERN_INFO "EBB: Adios %s desde el LKM BBB!\n", name);
+}
+
+
+/** @brief A module must use the module_init() module_exit() macros from linux/init.h, which
+ *  identify the initialization function at insertion time and the cleanup function (as
+ *  listed above)
+ */
+module_init(helloBBB_init);
+module_exit(helloBBB_exit);
+```
+
+También modifico el fichero Makefile:
+
+```bash
+obj-m+=hello2.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build/ M=$(PWD) modules
+clean:
+	make -C /lib/modules/$(shell uname -r)/build/ M=$(PWD) clean
+```
+
+Listamos lo que hay en la carpeta de trabajo y se observa que están los ficheros antiguos para `hello.c`. Es por eso que se usa `make clean` y luego make de nuevo para compilar el nuevo fichero.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/12compilacion2.png)
+
+Ahora están los ficheros actualizados. Y podemos cargar el módulo con el comando `sudo insmod hello2.ko`:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/13instalacion_modulo_nuevo.png)
+
+De nuevo podemos observar que $Used = 0$.
+
+Para solicitar información del módulo usamos el comando `modinfo`:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/14info_mod2.png)
+
+Borramos el módulo con `rmmmod`:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/15eliminar_mod2.png)
+
+Accedemos a `/var/log` para comprobar que los cambios que hemos hecho con respecto a `hello.c` se haya llevado a cabo:
+ ```bash
+sudo su -
+cd /var/log
+tail -f kern.log
+```
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/16registro_log2.png)
+
+Podemos observar en la imagen que En vez de decir `hello`, ahora dice PDIH. Esto es así porque hemos cambiado el valor de la variable `world`. Además, el mensaje está en español porque hemos traducido los mensajes de `printk`.

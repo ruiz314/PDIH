@@ -11,3 +11,14 @@ Como resultado se mostrará al profesor el funcionamiento correcto del LKM desar
 **En el documento a entregar se describirá cómo se ha creado y cargado el módulo, y se incluirán varias capturas de pantalla mostrando el proceso y el resultado.**
 
 ## Resolución
+### Preparación del sistema para construir LKMs
+Uso una máquina virtual con Ubuntu 22.
+
+$sudo apt-get update$
+![img](1update.png)
+
+$sudo apt-cache search linux-headers-$(uname -r)$
+
+$sudo apt-get install linux-headers-$(uname -r)$
+
+![img](2uname_r.png)

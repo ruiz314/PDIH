@@ -62,3 +62,26 @@ make
 Con la orden `ls -l` listo los ficheros que se han generado:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/7listar_ficheros.png)
+
+### Probando el módulo LKM
+Insertar el nuevo móulo en el kernel con los comandos:
+```bash
+sudo insmod hello.ko
+lsmod
+```
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/8insertar_modulo.png)
+
+Se observa que `hello` está el primero een la lista y que nada lo usa (`Used = 0`).
+
+Solicitar información sobre el módulo con el comando `modinfo hello.ko`
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/9info_mod.png)
+
+Para eliminar el módulo  se usa el comando `sudo rmmod hello.ko` y como no hay ningún fallo al realizar la operación no se muestra nada por pantalla.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/10eliminar_mod.png)
+
+Nos hacemos superusuario para ver la salida de la función printk() en el registro de log del kernel:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/11registro_log.png)

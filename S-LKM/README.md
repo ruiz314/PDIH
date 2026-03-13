@@ -87,7 +87,7 @@ Nos hacemos superusuario para ver la salida de la función printk() en el regist
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/11registro_log.png)
 
 ### Modificación fichero hello.c
-Vamos a editar el código para personalizarlo. En concreto los cambios se pueden ver en el fichero [hello2.c](https://github.com/ruiz314/PDIH/blob/main/S-LKM/hello2.c):
+Vamos a editar el código para personalizarlo. En concreto los cambios se pueden ver en el fichero [hello2.c](https://github.com/ruiz314/PDIH/blob/main/S-LKM/module/hello2.c):
 
 ```c
 /**
@@ -185,4 +185,4 @@ tail -f kern.log
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/16registro_log2.png)
 
-Podemos observar en la imagen que En vez de decir `hello`, ahora dice PDIH. Esto es así porque hemos cambiado el valor de la variable `world`. Además, el mensaje está en español porque hemos traducido los mensajes de `printk`.
+Podemos observar en la imagen que en vez de decir `world`, ahora dice PDIH. Esto es así porque hemos cambiado el valor de la variable `name`. Además, el mensaje está en español porque hemos traducido los mensajes de `printk`.

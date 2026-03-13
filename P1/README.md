@@ -515,6 +515,108 @@ Ejecución: ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/10pixel.png)
 ## Requisitos ampliados  
 1. Implementar una función que permita dibujar un recuadro en la pantalla en modo texto. Recibirá como parámetros las coordenadas superior izquierda e inferior derecha del recuadro, el color de primer plano y el color de fondo.
 
+Para ello hay que usar la interrupción de la BIOS para servicios de vídeo: $0x10$. 
+- Para posicionar el puntero y empezar a pintar el recuadro se usa $AH=02h$, donde $DH$ indica la fila (coordenada Y) y $DL$ indica la columna (coordenada x).
+- Para escribir el carácter se usa $AH=09h$ indicando cuantas veces se repite con $CX$, especificando el carácter con $AL$ y para dar color (fondo y texto) $BL$.
+
+La función sería:
+
+```c
+void dibujar_recuadro(int sup_x, int sup_y, int inf_x, int inf_y, char color, char fondo){
+    union REGS inregs, outregs;
+    int i;
+
+    // Guardar los colores 
+    unsigned char atributo;
+    atributo = (fondo << 4) | (color & 0x0F);
+  
+    // Dibujar las lineas horizontales
+    for(i = sup_x; i <= inf_x; i++){
+        // Borde superior
+        inregs.h.ah = 0x02; // Posicionar cursor
+        inregs.h.dh = sup_y; // Fila
+        inregs.h.dl = i; // Columna
+        inregs.h.bh = 0; 
+        int86(0x10, &inregs, &outregs);
+        
+        inregs.h.ah = 0x09; // Escribir caracter con color
+        inregs.h.al = 205; // Caracter guion ─
+        inregs.h.bl = atributo; // Color
+        inregs.x.cx = 1; int86(0x10, &inregs, &outregs); 
+
+        // Borde inferior
+        inregs.h.ah = 0x02; inregs.h.dh = inf_y; inregs.h.dl = i; 
+        int86(0x10, &inregs, &outregs);
+        
+        inregs.h.ah = 0x09; inregs.h.al = 205; 
+        int86(0x10, &inregs, &outregs);
+    }
+  
+    // Dibujar las lineas verticales
+    for(i = sup_y; i <= inf_y; i++){
+        // Borde izquierdo
+        inregs.h.ah = 0x02; inregs.h.dh = i; inregs.h.dl = sup_x; 
+        int86(0x10, &inregs, &outregs);
+        
+        inregs.h.ah = 0x09;  // Escribir caracter con color
+        inregs.h.al = 186;  // Caracter barra vertical │
+        inregs.h.bl = atributo; // Color
+        int86(0x10, &inregs, &outregs);
+
+        // Borde derecho
+        inregs.h.ah = 0x02; inregs.h.dh = i; inregs.h.dl = inf_x; 
+        int86(0x10, &inregs, &outregs);
+        
+        inregs.h.ah = 0x09; inregs.h.al = 186; 
+        int86(0x10, &inregs, &outregs);
+    }
+
+    // Dibujar las esquinas
+    // Esquina superior izquierda
+    inregs.h.ah = 0x02; inregs.h.dh = sup_y; inregs.h.dl = sup_x; // Posicionar cursor
+    int86(0x10, &inregs, &outregs);
+    inregs.h.ah = 0x09; inregs.h.al = 201; // Escribir caracter con color
+    int86(0x10, &inregs, &outregs);
+
+    // Esquina superior derecha
+    inregs.h.ah = 0x02; inregs.h.dh = sup_y; inregs.h.dl = inf_x; 
+    int86(0x10, &inregs, &outregs);
+    inregs.h.ah = 0x09; inregs.h.al = 187; 
+    int86(0x10, &inregs, &outregs);
+
+    // Esquina inferior izquierda 
+    inregs.h.ah = 0x02; inregs.h.dh = inf_y; inregs.h.dl = sup_x; 
+    int86(0x10, &inregs, &outregs);
+    inregs.h.ah = 0x09; inregs.h.al = 200; 
+    int86(0x10, &inregs, &outregs);
+
+    // Esquina inferior derecha
+    inregs.h.ah = 0x02; inregs.h.dh = inf_y; inregs.h.dl = inf_x; 
+    int86(0x10, &inregs, &outregs);
+    inregs.h.ah = 0x09; inregs.h.al = 188; 
+    int86(0x10, &inregs, &outregs);
+}
+```
+
+Fichero: [ejer11.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/ejer11.c)
+
+En el ejemplo se usan dos variables globales para fijar el color de fondo a negro, y el color de texto a azul claro. 
+
+```c
+    unsigned char cfondo=0; // Negro
+    unsigned char ctexto=9; // Azul claro
+    ...
+    int main(){
+        ...
+        dibujar_recuadro(20, 5, 60, 15, 14, 2);
+        ...
+    }
+```
+
+Cuando se llama a la función se especifican otros colores: texto amarillo y fondo verde. El resultado es el siguiente:
+
+ ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/11recuadro.png)
+
 2. Implementar en lenguaje C un programa que establezca modo gráfico CGA (_modo=4_) para crear dibujos sencillos en pantalla.
 
 3. Implementar un programa sencillo que realice un dibujo sencillo de tipo “ascii art”. En el ANEXO al final de este guión se proponen algunos diseños. 

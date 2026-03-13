@@ -17,8 +17,7 @@ Uso una máquina virtual con Ubuntu 22.
 ```bash
 sudo apt-get update
 ```
-
-![img]((https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/1update.png))
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/1update.png)
 
 ```bash
 sudo apt-cache search linux-headers-$(uname -r)
@@ -40,7 +39,7 @@ Para este seminario usaremos como código de ejemplo el facilitado por “derekm
 
 **Compilación**:
 
-![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/4error_compilacion.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/S-LKM/images/4error_compilador.png)
 
 Para solucionar el **error** he instalado el compilador con las siguientes ordenes:
 

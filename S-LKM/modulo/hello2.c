@@ -1,15 +1,3 @@
-/**
- * @file    hello.c
- * @author  Derek Molloy
- * @date    4 April 2015
- * @version 0.1
- * @brief  An introductory "Hello World!" loadable kernel module (LKM) that can display a message
- * in the /var/log/kern.log file when the module is loaded and removed. The module can accept an
- * argument when it is loaded -- the name, which appears in the kernel log files.
- * @see http://www.derekmolloy.ie/ for a full description and follow-up descriptions.
-*/
-
-
 #include <linux/init.h>             // Macros used to mark up functions e.g., __init __exit
 #include <linux/module.h>           // Core header for loading LKMs into the kernel
 #include <linux/kernel.h>           // Contains types, macros, functions for the kernel

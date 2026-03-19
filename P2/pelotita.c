@@ -10,15 +10,15 @@ int main(int argc, char *argv[]) {
  int direction = 1;
 
  initscr();
- noecho();
- curs_set(FALSE);
+ noecho(); // Para no mostrar por pantalla las teclas que se pulsan
+ curs_set(FALSE); // Ocultar el cursor
 
  while(1) {
  	clear();
  	mvprintw(y, x, "o");
  	refresh();
 
- 	usleep(DELAY);
+ 	usleep(DELAY); // Pausa para que nos de tiempo a ver la pelota
 
  	next_x = x + direction;
 

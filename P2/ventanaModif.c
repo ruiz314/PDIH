@@ -23,10 +23,12 @@ int main(void) {
     clear();
 
     refresh();
-    getmaxyx(stdscr, rows, cols); 
+    //getmaxyx(stdscr, rows, cols); 
+    rows=10;
+    cols=40;
 
-    WINDOW *window = newwin(rows,cols,2,2); //Modificación
-    wbkgd(window, COLOR_PAIR(1)); // Cambio de colores: caracteres amarillos y fondo verde
+    WINDOW *window = newwin(rows,cols,5,10); // Modificación del tamaño
+    wbkgd(window, COLOR_PAIR(1)); // Cambio de colores: amarillo y verde
     box(window, '*', '*'); // Modificación de marco
 
     mvwprintw(window, 10, 10, "una cadena");

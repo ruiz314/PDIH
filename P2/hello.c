@@ -3,11 +3,11 @@
 #include <ncurses.h>
 #include <stdio.h>
 int main() {
-initscr();
-printw("Hello World!");
-refresh();
-getch();
-endwin();
-return 0;
+	initscr(); // Reserva memoria para la ventana principal
+	printw("Hello World!"); // Lo escribe en la memoria
+	refresh(); // Pasa lo que hay en memoria a la pantalla para que se vea
+	getch();
+	endwin(); // Ciera el modo ncurses
+	return 0;
 }
 

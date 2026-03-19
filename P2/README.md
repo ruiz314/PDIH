@@ -55,7 +55,22 @@ gcc ventana.c -o ventana -lncurses
 ![3ventana2.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/3ventana2.png)
 
 Ejecución:
+
 ![3ventana3.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/3ventana3.png)
+
+Una modificación de ese ejemplo sería: [ventanaModif.c](https://github.com/ruiz314/PDIH/blob/main/P2/ventanaModif.c)
+
+```c
+//
+```
+
+![4ventanaM.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/4ventanaM.png)
+
+![4ventanaM2.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/4ventanaM2.png)
+
+Se pueden observar los cambios:
+- color verde para el fondo y amarillo para los caracteres
+- caracteres para el marco: `*`
 
 ## ej3
 

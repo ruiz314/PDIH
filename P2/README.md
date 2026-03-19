@@ -41,7 +41,7 @@ int main() {
 	printw("Hello World!"); // Lo escribe en la memoria
 	refresh(); // Pasa lo que hay en memoria a la pantalla para que se vea
 	getch();
-	endwin(); // Ciera el modo ncurses
+	endwin(); // Cierra el modo ncurses
 	return 0;
 }
 ```
@@ -51,8 +51,6 @@ Orden para compilar:
 ```bash
 gcc hello.c -o hello -lncurses 
 ```
-
-![2hello.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/2hello.png)
 
 El fichero completo: [hello.c](https://github.com/ruiz314/PDIH/blob/main/P2/hello.c)
 
@@ -119,9 +117,13 @@ Una modificación de ese ejemplo sería: [ventanaModif.c](https://github.com/rui
 Las líneas que se han cambiado con respecto al fichero inicial son:
 
 ```c
-WINDOW *window = newwin(rows,cols,2,2); //Modificación de tamaño
-wbkgd(window, COLOR_PAIR(1)); // Cambio de colores: caracteres amarillos y fondo verde
-box(window, '*', '*'); // Modificación de marco
+	//getmaxyx(stdscr, rows, cols); 
+    rows=10;
+    cols=40;
+
+    WINDOW *window = newwin(rows,cols,5,10); // Modificación del tamaño
+    wbkgd(window, COLOR_PAIR(1)); // Cambio de colores: amarillo y verde
+    box(window, '*', '*'); // Modificación de marco
 ```
 
 Ejecución:
@@ -131,7 +133,7 @@ Ejecución:
 Se pueden observar los cambios:
 - con la función `box` se cambian los caracteres para el marco: `*`
 - con la función `wbkgd` se cambia el color de la ventana: verde para el fondo y amarillo para los caracteres
-- con la función `newwin` se modifica el tamaño de la ventana
+- con la función `newwin` se modifica el tamaño de la ventana indicando alto, anchoh, inicio de y, inicio de x
 
 ## ej3 - Pelota
 

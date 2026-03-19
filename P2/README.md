@@ -60,11 +60,17 @@ Ejecución:
 
 Una modificación de ese ejemplo sería: [ventanaModif.c](https://github.com/ruiz314/PDIH/blob/main/P2/ventanaModif.c)
 
+Las lñineas que se han cambiado con respecto al fichero inicial son:
+
 ```c
-//
+WINDOW *window = newwin(rows,cols,2,2); //Modificación
+wbkgd(window, COLOR_PAIR(1)); // Cambio de colores: caracteres amarillos y fondo verde
+box(window, '*', '*'); // Modificación de marco
 ```
 
 ![4ventanaM.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/4ventanaM.png)
+
+Ejecución:
 
 ![4ventanaM2.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/4ventanaM2.png)
 

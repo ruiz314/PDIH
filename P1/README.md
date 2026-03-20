@@ -619,4 +619,60 @@ Cuando se llama a la función se especifican otros colores: texto amarillo y fon
 
 2. Implementar en lenguaje C un programa que establezca modo gráfico CGA (_modo=4_) para crear dibujos sencillos en pantalla.
 
+Utilizo las funciones `mi_pausa`, `setvideomode` y `pixel` implementadas anteriormente, y en el main hago la lógica de dibujar una casa sencilla: un cuadrado azul representando la fachada, un triángulo rosa para el tejado y un rectángulo blanco para la puerta.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/12casa.png)
+
+- El **techo** va desde la columna X= 100 hasta X=200, manteniendo Y=100 para que sea una linea horizontal.
+- El **suelo** va desde la columna X= 100 hasta X=200, manteniendo Y=180 para que sea una linea horizontal por debajo de la línea del techo.
+- La **pared izquierda** abarca desde la fila Y=100 hasta Y=180, con X=100 para que sea una línea vertical. Para la **pared derecha** se mantiene X=200.
+- El **tejado** se dibuja con dos rectas que se unen en el punto X=150:
+	- Lado izquierdo desde la esquina (100,100) hacia el pico (150,50)
+	- Lado derecho desde el pico (150,50) hasta la esquina (200,100)
+
+```c
+int main(){
+    int i;
+
+    // Pasar a modo gráfico CGA
+    setvideomode(4); // 320x200, 4 colores
+
+    // Hacer dibujo: casa
+    // Techo y suelo
+    for(i = 100; i <= 200; i++) {
+        pixel(i, 100, 1); // Techo del cuadrado (Y se mantiene en 100)
+        pixel(i, 180, 1); // Suelo de la casa (Y se mantiene en 180)
+    }
+
+    // Paredes
+    for(i = 100; i <= 180; i++) {
+        pixel(100, i, 1); // Pared izquierda (X se mantiene en 100)
+        pixel(200, i, 1); // Pared derecha (X se mantiene en 200)
+    }
+
+    // Tejado (triángulo)
+    for(i = 0; i <= 50; i++){
+        pixel(100 + i, 100 -i, 2); // Lado izquierdo
+        pixel(150 +i, 50 +i, 2); // Lado derecho
+    }
+
+    // Puerta
+    for(i = 150; i <= 180; i++){
+        pixel(140, i, 3); // Lado izquierdo de la puerta (X se mantiene en 140)
+        pixel(160, i, 3); // Lado derecho de la puerta (X se mantiene en 160)
+    }
+    for(i = 140; i <= 160; i++){
+        pixel(i, 150, 3); // Parte superior de la puerta (Y se mantiene en 150)
+    }
+
+
+    printf("Pulsa una tecla para salir...");  
+    mi_pausa();
+
+    // Restaurar modo texto
+    setvideomode(3); // Modo texto 80x25
+    
+    return 0;
+}
+```
 3. Implementar un programa sencillo que realice un dibujo sencillo de tipo “ascii art”. En el ANEXO al final de este guión se proponen algunos diseños. 

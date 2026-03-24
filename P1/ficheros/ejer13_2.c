@@ -47,26 +47,36 @@ int main() {
     // Limpiar la pantalla
     clrscr();
 
-    // Posicionar el cursor en la pantalla (columna 25, fila 10)
-    // y dibujar los patitos línea a línea.
+    // Posicionar el cursor en el centro (columna 35, fila 10)
+    // y dibujar línea a línea del primer conejo.
     
-    // Parte superior de las cabezas
-    gotoxy(25, 10);
-    printf("   _      _      _  \n");
+    // Orejas
+    gotoxy(35, 10);
+    printf("   (\\(\\ \n");
 
-    // Cabezas y picos
-    gotoxy(25, 11);
-    printf("__(.)< __(.)> __(.)=\n");
+    // Cara
+    gotoxy(35, 11);
+    printf("   (-.-)\n");
 
-    // Cuerpos
-    gotoxy(25, 12);
-    printf("\\___)  \\___)  \\___)\n");
+    // Patas
+    gotoxy(35, 12);
+    printf(" o_(\")(\")\n");
 
-    // Mensaje final y pausa
-    gotoxy(20, 16);
-    printf("Familia de patitos dibujada con exito");
+    //Posicionar el cursor en (columna 45, fila 10)
+    // y dibujar el segundo conejo, que es igual pero invertido (mirando hacia abajo)
+    gotoxy(47, 10);
+    printf("  /)/) \n");
+    gotoxy(47, 11);
+    printf(" (-.-) \n");
+    gotoxy(47, 12);
+    printf("(\")(\")_o\n");
+
+    // Mensaje final
+    gotoxy(25, 15);
+    printf("Conejo dibujado con exito");
     
-    gotoxy(20, 18);
+    // Pausa para ver el resultado
+    gotoxy(25, 17);
     printf("Pulsa una tecla para salir...");
     mi_pausa();
 

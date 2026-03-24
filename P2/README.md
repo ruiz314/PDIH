@@ -1,4 +1,5 @@
 # Práctica 2. Uso de bibliotecas de programación de interfaces de usuario en modo texto
+
 ## Cuestiones a resolver 
 El objetivo principal es conocer cómo utilizar la librería ncurses para realizar entrada/salida en terminales de texto bajo Linux. 
 
@@ -133,7 +134,7 @@ Ejecución:
 Se pueden observar los cambios:
 - con la función `box` se cambian los caracteres para el marco: `*`
 - con la función `wbkgd` se cambia el color de la ventana: verde para el fondo y amarillo para los caracteres
-- con la función `newwin` se modifica el tamaño de la ventana indicando alto, anchoh, inicio de y, inicio de x
+- con la función `newwin` se modifica el tamaño de la ventana indicando alto, ancho, inicio de y, inicio de x
 
 ## ej3 - Pelota
 
@@ -187,3 +188,10 @@ Ejecución:
 
 
 ## Juego sencillo tipo “pong”
+
+## Pantalla de inicio
+
+## Pantalla resumen
+
+## Memoria en LATEX
+Link a la memoria que se incluye en este repositorio: [memoria](https://www.overleaf.com/read/tmtzspkbsdxt#9ac420)

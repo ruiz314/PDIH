@@ -776,3 +776,7 @@ Ejemplo de dos conejos dibujados con ASCII Art:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/13conejo2.png)
 
 Para ver el ejemplo completo con la implementación de las funciones: [ejer13_2.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/ejer13_2.c)
+
+
+## Memoria LATEX
+Link a la memoria de esta práctica en LATEX: [memoria](https://www.overleaf.com/read/rqxqcxwkmdsp#0b2621)

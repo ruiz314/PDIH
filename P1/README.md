@@ -6,8 +6,6 @@ Realizar las siguientes 10 funciones, que deben diseñarse e implementarse de fo
 
 Hay una función genérica, dada por el profesor:
 ```c
-
-
 void mi_pausa(){
 	union REGS inregs, outregs;
 	inregs.h.ah = 8;
@@ -322,6 +320,7 @@ void clrscr() {
     inregs.h.dl = 79;        // Columna de la esquina inferior derecha (80 columnas en total)
     
     int86(0x10, &inregs, &outregs); // Interrupción de vídeo
+}
 ```
 
 El código completo para ver un ejemplo está en el fichero: [limpiar.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/limpiar.c)
@@ -615,7 +614,7 @@ En el ejemplo se usan dos variables globales para fijar el color de fondo a negr
 
 Cuando se llama a la función se especifican otros colores: texto amarillo y fondo verde. El resultado es el siguiente:
 
- ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/11recuadro.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/11recuadro.png)
 
 2. Implementar en lenguaje C un programa que establezca modo gráfico CGA (_modo=4_) para crear dibujos sencillos en pantalla.
 
@@ -623,6 +622,7 @@ Utilizo las funciones `mi_pausa`, `setvideomode` y `pixel` implementadas anterio
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/12casa.png)
 
+Las coordenadas usadas para dibujar la casa son las siguientes:
 - El **techo** va desde la columna X= 100 hasta X=200, manteniendo Y=100 para que sea una linea horizontal.
 - El **suelo** va desde la columna X= 100 hasta X=200, manteniendo Y=180 para que sea una linea horizontal por debajo de la línea del techo.
 - La **pared izquierda** abarca desde la fila Y=100 hasta Y=180, con X=100 para que sea una línea vertical. Para la **pared derecha** se mantiene X=200.
@@ -665,7 +665,6 @@ int main(){
         pixel(i, 150, 3); // Parte superior de la puerta (Y se mantiene en 150)
     }
 
-
     printf("Pulsa una tecla para salir...");  
     mi_pausa();
 
@@ -675,4 +674,105 @@ int main(){
     return 0;
 }
 ```
-3. Implementar un programa sencillo que realice un dibujo sencillo de tipo “ascii art”. En el ANEXO al final de este guión se proponen algunos diseños. 
+
+Para ver el ejemplo completo con la implementación de las funciones: [ejer12.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/ejer12.c)
+
+3. Implementar un programa sencillo que realice un dibujo sencillo de tipo “ascii art”. En el ANEXO del guión se proponen algunos diseños. 
+
+Para realizar el programa escojo el diseño de conejo que se incluye en la guía de la práctica 1:
+```
+ (\(\
+ (-.-)
+ o_(")(")
+```
+
+Para dibujarlo solo hace falta usar las funciones _gotoxy_, _clrscr_ y _mi\_pausa_ anteriormente definidas. Para pintar el conejo debemos hacer las siguientes llamadas a esas funciones:
+```c
+int main() {
+    // Limpiar la pantalla
+    clrscr();
+
+    // Posicionar el cursor en el centro (columna 35, fila 10)
+    // y dibujar línea a línea.
+    
+    // Orejas: usar \\ para imprimir una sola barra
+    gotoxy(35, 10);
+    printf("   (\\(\\ \n");
+
+    // Cara
+    gotoxy(35, 11);
+    printf("   (-.-)\n");
+
+    // Patas: usar \" para imprimir unas "
+    gotoxy(35, 12);
+    printf(" o_(\")(\")\n");
+
+    // Mensaje final
+    gotoxy(25, 15);
+    printf("Conejo dibujado con exito");
+    
+    // Pausa para ver el resultado
+    gotoxy(25, 17);
+    printf("Pulsa una tecla para salir...");
+    mi_pausa();
+
+    
+    return 0;
+}
+```
+
+Ejemplo de un conejo dibujado con ASCII Art:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/13conejo.png)
+
+Para ver el ejemplo completo con la implementación de las funciones: [ejer13.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/ejer13.c)
+
+
+Para dibujar dos conejos, en espejo, basta con mover el puntero unas pocas columnas a la derecha:
+```c
+int main() {
+    // Limpiar la pantalla
+    clrscr();
+
+    // Posicionar el cursor en el centro (columna 35, fila 10)
+    // y dibujar línea a línea del primer conejo.
+    
+    // Orejas
+    gotoxy(35, 10);
+    printf("   (\\(\\ \n");
+
+    // Cara
+    gotoxy(35, 11);
+    printf("   (-.-)\n");
+
+    // Patas
+    gotoxy(35, 12);
+    printf(" o_(\")(\")\n");
+
+    //Posicionar el cursor en (columna 45, fila 10)
+    // y dibujar el segundo conejo, que es igual pero invertido (mirando hacia abajo)
+    gotoxy(47, 10);
+    printf("  /)/) \n");
+    gotoxy(47, 11);
+    printf(" (-.-) \n");
+    gotoxy(47, 12);
+    printf("(\")(\")_o\n");
+
+    // Mensaje final
+    gotoxy(25, 15);
+    printf("Conejo dibujado con exito");
+    
+    // Pausa para ver el resultado
+    gotoxy(25, 17);
+    printf("Pulsa una tecla para salir...");
+    mi_pausa();
+
+    return 0;
+}
+```
+
+Ejemplo de dos conejos dibujados con ASCII Art:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P1/img/13conejo2.png)
+
+Para ver el ejemplo completo con la implementación de las funciones: [ejer13_2.c](https://github.com/ruiz314/PDIH/blob/main/P1/ficheros/ejer13_2.c)

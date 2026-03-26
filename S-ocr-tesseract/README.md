@@ -1,7 +1,7 @@
 # Seminario Tesseract
 
 ## Instalación
-Este seminario lo realizo en la terminal de WSL.
+Este seminario lo realizo en la terminal de WSL de mi ordenador.
 
 Primero actualizo la lista de paquetes ejecutando: `sudo apt update`
 
@@ -27,6 +27,8 @@ tesseract img.png stdout -l spa
 
 ![img4](https://github.com/ruiz314/PDIH/blob/main/S-ocr-tesseract/img/4noticia1.png)
 
+Se puede observar que cuando no indicamos que el idioma es `español`, la tilde en _óptica_ no la escribe. El resto del mensaje es idéntico.
+
 ### Ejemplo2
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-ocr-tesseract/img-T8.png)
@@ -37,6 +39,8 @@ tesseract img-T8.png stdout -l spa
 ```
 
 ![img5](https://github.com/ruiz314/PDIH/blob/main/S-ocr-tesseract/img/5noticia2.png)
+
+De nuevo con una de las palabras con tilde tiene problema al no indicar que el idioma es el español. En este caso sí escribe la tilde pero cambia la vocal (`e` en vez de `o`).
 
 ## Pruebas con matriculas de coche
 ### Ejemplo 1

@@ -1,0 +1,19 @@
+
+
+tesseract img.png stdout -l spa
+
+tesseract img.png stdout -l spa+eng
+
+
+
+Si queremos guardar el resultado en un archivo de texto, utilizamos:
+
+tesseract img.png zresultado
+tesseract img.png zresultadoesp -l spa
+
+
+Si la imagen contiene números usamos la opción digits:
+
+tesseract textocondigitos.png stdout digits
+
+

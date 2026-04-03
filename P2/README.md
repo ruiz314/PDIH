@@ -190,11 +190,52 @@ Ejecución:
 ## Juego sencillo tipo “pong”
 Para crear el juego partimos del fichero [pelotita.c](https://github.com/ruiz314/PDIH/blob/main/P2/pong.c), pero hay que añadirle las palas y la lógica de la puntuación. Los cambios han sido:
 - Añadir movimiento en el Eje Y para la pelota.
+```c
+  int pelota_x = max_x /2;
+  int pelota_y = max_y /2;
+  int dir_x = 1;
+  int dir_y = 1;
+  ...
+  pelota_x += dir_x ;
+  pelota_y += dir_y ;
+```
+
 - Añadir las dos palas, solo con movimiento en Eje Y.
+```c
+        int pala_izq_y = ( max_y /2) - ( LONGITUD_PALA /2) ;
+        int pala_der_y = ( max_x /2) - ( LONGITUD_PALA /2) ;
+```
+
 - Capturar las teclas de juego con la función `getch()`
-	- El _jugador 1_ usa las teclas `W` y `S` para mover su pala.
-	- El _jugador 2_ usa las teclas con flechas para mover su pala.
+```c
+        int tecla = getch();
+        if (tecla == 'w' || tecla == 'W')
+            if (pala_izq_y > 0) pala_izq_y--; 
+        if (tecla == 's' || tecla == 'S') 
+            if(pala_izq_y < max_y - LONGITUD_PALA) pala_izq_y++;
+        if (tecla == KEY_UP)
+            if (pala_der_y > 0) pala_der_y--; 
+        if (tecla == KEY_DOWN)
+            if (pala_der_y < max_y - LONGITUD_PALA) pala_der_y++; 
+```
+
+El _jugador1_ (pala izquierda) usa las teclas `W` y `S` para mover su pala. El _jugador2_ (pala derecha) usa las teclas con flechas para mover su pala.
+
  - Marcador de puntos
+```c
+        int puntos_j1 = 0;
+        int puntos_j2 = 0;
+        ...
+        if ( pelota_x <= 0) { // Punto para el jugador 2
+            puntos_j2 ++;
+            pelota_x = max_x / 2; pelota_y = max_y / 2;
+            dir_x = 1;
+        } else if ( pelota_x >= max_x - 1) { // Punto para el jugador 1
+            puntos_j1 ++;
+            pelota_x = max_x / 2; pelota_y = max_y / 2;
+            dir_x = -1;
+        }
+```
 
 Fichero: [pong.c](https://github.com/ruiz314/PDIH/blob/main/P2/pong.c)
 

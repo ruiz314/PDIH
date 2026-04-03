@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
         mvprintw(1, max_x/2 + 2, " Jugador 2: %d ", puntos_j2);
         attroff(COLOR_PAIR(3));
 
-        // 3Palas
+        // Palas
         attron(COLOR_PAIR(2));
         for(int i = 0; i < LONGITUD_PALA; i++) {
             mvprintw(pala_izq_y + i, 2, "#");         // Pala izquierda

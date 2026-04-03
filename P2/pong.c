@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
  start_color(); // Activar soporte de color
  cbreak();
  noecho(); // Para no mostrar por pantalla las teclas que se pulsan
- kpad(stdscr, TRUE);
+ keypad(stdscr, TRUE);
  curs_set(FALSE); // Ocultar el cursor
  nodelay(stdscr, TRUE);
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
  // Posicion de las palas
  int pala_izq_y = (max_y /2) - (LONGITUD_PALA /2);
- int pala_der_y = (max_x /2) - (LONGITUD_PALA /2);
+ int pala_der_y = (max_y /2) - (LONGITUD_PALA /2);
 
  // Puntuacion
  int puntos_j1 = 0;
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 
     // Jugador 2
     if(tecla == KEY_UP){
-        if(pala_derq_y > 1){
+        if(pala_der_y > 1){
             pala_der_y--;
         }
     }

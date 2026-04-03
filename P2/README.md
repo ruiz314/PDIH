@@ -188,7 +188,16 @@ Ejecución:
 
 
 ## Juego sencillo tipo “pong”
-Fichero: [pelotita.c](https://github.com/ruiz314/PDIH/blob/main/P2/pong.c)
+Para crear el juego partimos del fichero [pelotita.c](https://github.com/ruiz314/PDIH/blob/main/P2/pong.c), pero hay que añadirle las palas y la lógica de la puntuación. Los cambios han sido:
+- Añadir movimiento en el Eje Y para la pelota.
+- Añadir las dos palas, solo con movimiento en Eje Y.
+- Capturar las teclas de juego con la función `getch()`
+	- El _jugador 1_ usa las teclas `W` y `S` para mover su pala.
+	- El _jugador 2_ usa las teclas con flechas para mover su pala.
+ - Marcador de puntos
+
+Fichero: [pong.c](https://github.com/ruiz314/PDIH/blob/main/P2/pong.c)
+
 ```c
 #include <ncurses.h>
 #include <unistd.h>
@@ -219,18 +228,15 @@ int main(int argc, char *argv[]) {
  getmaxyx(stdscr, max_y, max_x); // Obtiene dimensiones dinamicamente
 
  // Variables del juego
- int pelota_x = max_x /2;
- int pelota_y = max_y /2;
- int dir_x = 1;
- int dir_y = 1;
+ int pelota_x = max_x /2; int pelota_y = max_y /2;
+ int dir_x = 1; int dir_y = 1;
 
  // Posicion de las palas
  int pala_izq_y = (max_y /2) - (LONGITUD_PALA /2);
  int pala_der_y = (max_x /2) - (LONGITUD_PALA /2);
 
  // Puntuacion
- int puntos_j1 = 0;
- int puntos_j2 = 0;
+ int puntos_j1 = 0; int puntos_j2 = 0;
  
  while(1) {
     // Leer entrada de teclado
@@ -238,32 +244,22 @@ int main(int argc, char *argv[]) {
 
     // Jugador 1
     if(tecla == 'w' || tecla == 'W'){
-        if(pala_izq_y > 1){
-            pala_izq_y--;
-        }
+        if(pala_izq_y > 1) pala_izq_y--;
     }
     if(tecla == 's' || tecla == 'S'){
-        if(pala_izq_y < max_y - LONGITUD_PALA -1){
-            pala_izq_y++;
-        }
+        if(pala_izq_y < max_y - LONGITUD_PALA -1) pala_izq_y++;
     }
 
     // Jugador 2
     if(tecla == KEY_UP){
-        if(pala_derq_y > 1){
-            pala_der_y--;
-        }
+        if(pala_derq_y > 1) pala_der_y--;
     }
     if(tecla == KEY_DOWN){
-        if(pala_der_y < max_y - LONGITUD_PALA -1){
-            pala_der_y++;
-        }
+        if(pala_der_y < max_y - LONGITUD_PALA -1) pala_der_y++;
     }
 
     // Salir del juego
-    if(tecla == 'q' || tecla == 'Q'){
-        break;
-    }
+    if(tecla == 'q' || tecla == 'Q') break;
 
     // Actualizar posicion de la pelota
     pelota_x += dir_x;
@@ -271,19 +267,13 @@ int main(int argc, char *argv[]) {
 
     // Colisiones
     // Rebote en techo y suelo
-    if(pelota_y <=1 || pelota_y >= max_y -2){
-        dir_y *= -1;
-    }
+    if(pelota_y <=1 || pelota_y >= max_y -2) dir_y *= -1;
     
  	// Rebote en la pala izquierda
-    if (pelota_x == 3 && pelota_y >= pala_izq_y && pelota_y < pala_izq_y + LONGITUD_PALA) {
-        dir_x *= -1;
-    }
+    if (pelota_x == 3 && pelota_y >= pala_izq_y && pelota_y < pala_izq_y + LONGITUD_PALA) dir_x *= -1;
     
     // Rebote en la pala derecha
-    else if (pelota_x == max_x - 4 && pelota_y >= pala_der_y && pelota_y < pala_der_y + LONGITUD_PALA) {
-        dir_x *= -1;
-    }
+    else if (pelota_x == max_x - 4 && pelota_y >= pala_der_y && pelota_y < pala_der_y + LONGITUD_PALA) dir_x *= -1;
 
     // Puntuación
     if (pelota_x <= 0) { // Punto para el jugador 2
@@ -333,9 +323,7 @@ int main(int argc, char *argv[]) {
         mvprintw(pelota_y, pelota_x, "o");
         attroff(COLOR_PAIR(1));
  	refresh();
-
  	usleep(DELAY); // Pausa para que nos de tiempo a ver la pelota
-
  }
 
  // Finalizar
@@ -343,6 +331,16 @@ int main(int argc, char *argv[]) {
  return 0;
 }
 ```
+
+Para compilar y ejecutar hay que usar las ordenes: 
+
+```bash
+gcc pong.c -o pong -lncurses
+./pong
+```
+
+![6pong.png](https://github.com/ruiz314/PDIH/blob/main/P2/img/6pong.png)
+
 ## Pantalla de inicio
 
 ## Pantalla resumen

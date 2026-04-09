@@ -3,9 +3,50 @@ En esta práctica se propone crear y verificar el funcionamiento de diversos sis
 
 ## Requisitos mínimos
 ### Ejercicio 1
-Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 
-segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
+Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
 A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento de la práctica). 
+
+La implementación en Tinkercad:
+```c
+const int ledPinR = 11; // LED Rojo
+const int ledPinA = 12; // LED Amarillo
+const int ledPinV = 13; // LED Verde
+
+void setup() {
+ pinMode(ledPinR, OUTPUT); 
+ pinMode(ledPinA, OUTPUT); 
+ pinMode(ledPinV, OUTPUT);
+
+}
+
+void loop() {
+  // Encender
+  digitalWrite(ledPinR, HIGH); // LED Rojo
+  delay(1000);
+  digitalWrite(ledPinA, HIGH); // LED Amarillo
+  delay(1000);
+  digitalWrite(ledPinV, HIGH); // LED Verde
+  delay(1000);
+  
+  // Apagar
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  delay(1000);
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  delay(1000);
+  digitalWrite(ledPinV, LOW); // LED Verde
+  delay(1000);
+}
+```
+
+Este código hace que primero se encienda el led rojo, espera 1 segundo y enciende el amarillo, espera otro segundo y enciende el verde. Cuando están todos encendidos espera un segundo y apaga el rojo. De nuevo espera un segundo y apaga el amatillo, y por último espera un segundo y apaga el LED verde.
+
+Las resistencias que se han usado tiene un valor de $1k$ Ohmios.
+
+![img](https://github.com/ruiz314/PDIH/P3/img/1ejer1.png)
+
+Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/P3/ejercicio1.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
 
 ### Ejercicio 2
 Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y 

@@ -44,9 +44,50 @@ Las resistencias que se han usado tiene un valor de $1k$ Ohmios.
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
-Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/lejercicio1.ino)
+Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejercicio1.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
+
+
+Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto:
+
+```c
+const int ledPinR = 11; // LED Rojo
+const int ledPinA = 12; // LED Amarillo
+const int ledPinV = 13; // LED Verde
+
+void setup() {
+ pinMode(ledPinR, OUTPUT); 
+ pinMode(ledPinA, OUTPUT); 
+ pinMode(ledPinV, OUTPUT);
+
+}
+
+void loop() {
+  // Encender Rojo, resto apagado
+  digitalWrite(ledPinR, HIGH); // LED Rojo
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  digitalWrite(ledPinV, LOW); // LED Verde
+  delay(1500);
+  
+  // Encender Amarillo, resto apagado
+  digitalWrite(ledPinA, HIGH); // LED Amarillo
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  digitalWrite(ledPinV, LOW); // LED Verde
+  delay(1500);
+  
+  
+  // Encender Verde, resto apagado
+  digitalWrite(ledPinV, HIGH); // LED Verde
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  delay(1500);
+}
+
+```
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1modif.png)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
 
 ### Ejercicio 2
 Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y 

@@ -65,6 +65,8 @@ void loop() {
 }
 ```
 
+La resistencia tiene un valor de $1K$ Ohmios.
+
 ![img3](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink3.png)
 
 Se enciende primero el LED rojo y se apaga a los 1500ms. A continuación se enciende el LED verde, y a los 1500 ms se apaga.
@@ -76,7 +78,40 @@ Fichero fuente: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/S-ard
 ## Ejercicio 2
 Implementar en los simuladores el programa de parpadeo de LED, ampliándolo con las modificaciones necesarias para que se encienda el LED solo cuando se pulse un interruptor conectado a la entrada digital 7. 
 
+ ```c
+const int botonPin = 7;
+const int ledPin = 13;
+int estadoBoton =0;
+
+void setup() {
+ pinMode(ledPin, OUTPUT);
+ pinMode(botonPin, INPUT);
+
+}
+
+void loop() {
+  // Leer estado del botón
+  estadoBoton = digitalRead(botonPin);
+  
+  // Comprobar si está pulsado
+  if(estadoBoton == HIGH){ // Botón pulsado
+  	// Encender luz
+    digitalWrite(ledPin, HIGH);
+  }else{
+  	// Apagar luz
+  	digitalWrite(ledPin, LOW);
+  }
+}
+```
+
+Como materiales se han necesitado:
+- Un LED
+- La resistencia para el LED que tiene un valor de $1K$ Ohmios.
+- Un pulsador
+- La resistencia para el pulsador que tiene un valor de $10K$ Ohmios.
 
 ![img4](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blinkBotton.png)
 
 Fichero fuente: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/S-arduino/ficheros/ejercicio2.ino)
+
+[Enlace a proyecto en Tinkercad](https://www.tinkercad.com/things/a8zt3u8po12/editel?sharecode=4tUz8HQn-KhaU5P56x2gA4uD_Hjkt6Bez4vvT93D2ig)

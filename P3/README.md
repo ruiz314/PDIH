@@ -42,9 +42,9 @@ Este código hace que primero se encienda el led rojo, espera 1 segundo y encien
 
 Las resistencias que se han usado tiene un valor de $1k$ Ohmios.
 
-![img](https://github.com/ruiz314/PDIH/P3/img/1ejer1.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
-Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/P3/ejercicio1.ino)
+Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/lejercicio1.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
 

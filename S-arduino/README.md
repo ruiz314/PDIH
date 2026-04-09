@@ -1,9 +1,28 @@
 # Seminario. Introducción al uso de Arduino 
 ## Ejemplo Blink
+El	“Hola	Mundo”	de	Arduino:	hacer	parpadear	un	LED.
+
 En el ejemplo de Tinkercad viene por defecto el programa que nos da el profesor, pero en vez de indicar el número del pin se usa la constante `LED_BUILTIN`.
-![img](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink1.png)
+
+```c
+void setup()
+{
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+}
+```
+
+![img1](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink1.png)
 
 Ahora probando el código dado por el profesor:
+
 ```c
 // Función de configuración
 void setup() {
@@ -18,10 +37,37 @@ void loop() {
   delay(1000);
 }
 ```
-![img](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink2.png)
+
+![img2](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink2.png)
 
 ## Ejercicio 1
 Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente dos LED (uno rojo y otro verde), conectados a las salidas digitales 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Crear el esquema con Fritzing y cargar el programa en Arduino para comprobar que funciona correctamente. 
+
+```c
+void setup() {
+ pinMode(13, OUTPUT); // LED Rojo
+ pinMode(12, OUTPUT); // LED Verde
+
+}
+
+void loop() {
+  // LED Rojo
+  digitalWrite(13, HIGH);
+  delay(1500);
+  digitalWrite(13, LOW);
+  delay(1500);
+  
+  // LED Verde
+  digitalWrite(12, HIGH);
+  delay(1500);
+  digitalWrite(12, LOW);
+  delay(1500);
+}
+```
+
+![img3](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blink3.png)
+
+Se enciende primero el LED rojo y se apaga a los 1500ms. A continuación se enciende el LED verde, y a los 1500 ms se apaga.
 
 ## Ejercicio 2
 Implementar en los simuladores el programa de parpadeo de LED, ampliándolo con las modificaciones necesarias para que se encienda el LED solo cuando se pulse un interruptor conectado a la entrada digital 7. 

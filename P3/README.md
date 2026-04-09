@@ -87,6 +87,8 @@ void loop() {
 ```
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1modif.png)
 
+Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
+
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
 
 ### Ejercicio 2

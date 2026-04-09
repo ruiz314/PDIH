@@ -69,5 +69,14 @@ void loop() {
 
 Se enciende primero el LED rojo y se apaga a los 1500ms. A continuación se enciende el LED verde, y a los 1500 ms se apaga.
 
+Fichero fuente: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/S-arduino/ficheros/ejercicio1.ino)
+
+[Enlace a proyecto en Tinkercad](https://www.tinkercad.com/things/hgxeAdCIdFW-blink3/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=SMlAqG8CpycQzrsdykNOQvvY96TQ8KJW3OgVsEJz77w)
+
 ## Ejercicio 2
 Implementar en los simuladores el programa de parpadeo de LED, ampliándolo con las modificaciones necesarias para que se encienda el LED solo cuando se pulse un interruptor conectado a la entrada digital 7. 
+
+
+![img4](https://github.com/ruiz314/PDIH/blob/main/S-arduino/img/S_blinkBotton.png)
+
+Fichero fuente: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/S-arduino/ficheros/ejercicio2.ino)

@@ -208,7 +208,7 @@ Imágen del circuito:
 
 Video de la simulación:
 
-[![Watch the video](https://raw.githubusercontent.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)](https://raw.githubusercontent.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)
 
 <video width="320" height="240" controls>
 <source src="[ruta/al/video.mp4](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)" type="video/mp4">

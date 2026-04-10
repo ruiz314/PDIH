@@ -115,4 +115,4 @@ Como materiales se han necesitado:
 
 Fichero fuente: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/S-arduino/ficheros/ejercicio2.ino)
 
-[Enlace a proyecto en Tinkercad](https://www.tinkercad.com/things/a8zt3u8po12/editel?sharecode=4tUz8HQn-KhaU5P56x2gA4uD_Hjkt6Bez4vvT93D2ig)
+[Enlace a proyecto en Tinkercad](https://www.tinkercad.com/things/1IVDQKk12L9-bottontoblink/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=xKXGPKaCEOjsYK8XpiCgtLzw55L3yv9NjRQPejdMqr0)

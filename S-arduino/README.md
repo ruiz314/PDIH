@@ -101,12 +101,13 @@ void loop() {
   	// Apagar luz
   	digitalWrite(ledPin, LOW);
   }
+  delay(10);
 }
 ```
 
 Como materiales se han necesitado:
 - Un LED
-- La resistencia para el LED que tiene un valor de $1K$ Ohmios.
+- La resistencia para el LED que tiene un valor de $220$ Ohmios.
 - Un pulsador
 - La resistencia para el pulsador que tiene un valor de $10K$ Ohmios.
 

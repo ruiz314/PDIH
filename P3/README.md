@@ -151,6 +151,74 @@ Fichero: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 ### Ejercicio 1
 Secuencia de LEDs, encendiendo y apagando 4 LEDs secuencialmente, de forma similar a las lucecitas de "El coche fantástico".
 
+Como en los dos primeros ejercicios, empiezo declarando las constantes para los pines de los LEDs y establezco los modos:
+
+```c
+const int ledPinB = 10; // LED Blanco
+const int ledPinR = 11; // LED Rojo
+const int ledPinA = 12; // LED Amarillo
+const int ledPinV = 13; // LED Verde
+
+void setup() {
+ pinMode(ledPinB, OUTPUT); 
+ pinMode(ledPinR, OUTPUT); 
+ pinMode(ledPinA, OUTPUT); 
+ pinMode(ledPinV, OUTPUT);
+}
+```
+
+La lógica del encendido y apagado es la siguiente:
+```c
+void loop() {
+  // Encender Rojo, resto apagado
+  digitalWrite(ledPinR, HIGH); // LED Rojo
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  digitalWrite(ledPinV, LOW); // LED Verde
+  digitalWrite(ledPinB, LOW); // LED Blanco
+  delay(500);
+  
+  // Encender Amarillo, resto apagado
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  digitalWrite(ledPinA, HIGH); // LED Amarillo
+  digitalWrite(ledPinV, LOW); // LED Verde
+  digitalWrite(ledPinB, LOW); // LED Blanco
+  delay(500);
+  
+  // Encender Verde, resto apagado
+  digitalWrite(ledPinV, HIGH); // LED Verde
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  digitalWrite(ledPinB, LOW); // LED Blanco
+  delay(500);
+  
+  // Encender Blanco, resto apagado
+  digitalWrite(ledPinB, HIGH); // LED Blanco
+  digitalWrite(ledPinV, LOW); // LED Verde
+  digitalWrite(ledPinR, LOW); // LED Rojo
+  digitalWrite(ledPinA, LOW); // LED Amarillo
+  delay(500);
+}
+```
+
+Esta vez el tiempo de espera es de medio segundo, para conseguir un efecto más realista al del coche fantástico.
+
+Imágen del circuito:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)
+
+Video de la simulación:
+
+[![Watch the video](https://raw.githubusercontent.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)](https://raw.githubusercontent.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)
+
+<video width="320" height="240" controls>
+<source src="[ruta/al/video.mp4](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)" type="video/mp4">
+Tu navegador no soporta la etiqueta de video.
+</video>
+
+Fichero: [ejercicio3.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer3.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/7IiRztn3ZZV/editel?sharecode=9raEkBkbUV031nzYe7hsnvjDtU9ZpSUxcQ8BiVlgLQ0)
+
 ### Ejercicio 2
 Detector de la distancia a un objeto (usar el buzzer para hacer sonar un pitido en función de la distancia detectada por el sensor de ultrasonidos). 
 

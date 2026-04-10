@@ -6,14 +6,14 @@ En esta práctica se propone crear y verificar el funcionamiento de diversos sis
 Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
 A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento de la práctica). 
 
-Primero hay que asignar los pines a los LED:
+Primero hay que asignar los pines digitales a los LED:
 ```c
 const int ledPinR = 11; // LED Rojo
 const int ledPinA = 12; // LED Amarillo
 const int ledPinV = 13; // LED Verde
 ```
 
-Una vez asignados los pines hay que establecer su modo en la función `setup`:
+Una vez asignados los pines hay que configurarlos como salidas con la función `pinMode(ledPin, OUTPUT)`:
 
 ```c
 void setup() {
@@ -47,6 +47,8 @@ void loop() {
 Este código hace que primero se encienda el led rojo, espera 1 segundo y enciende el amarillo, espera otro segundo y enciende el verde. Cuando están todos encendidos espera un segundo y apaga el rojo. De nuevo espera un segundo y apaga el amarillo, y por último espera un segundo y apaga el LED verde.
 
 Las resistencias que se han usado tienen un valor de $1k$ Ohmios.
+
+A continuación se muestra una imagen del circuito en Tinkercad:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
@@ -111,6 +113,9 @@ void setup() {
  pinMode(botonPin, INPUT);
 }
 ```
+
+En este caso todos los pines de los LEDs están configurados como salidas digitales, excepto el pin para el botón (debe escuchar las señales externas).
+
 
 Por último se aplica la lógica necesaria para que el botón encienda la luz roja y apague el resto:
 ```c
@@ -200,7 +205,7 @@ void loop() {
 }
 ```
 
-Esta vez el tiempo de espera es de medio segundo, para conseguir un efecto más realista al del coche fantástico.
+El bucle está dividido en cuatro bloques, uno por cada LED. En cada bloque se envía una señal _HIGH_ a un solo LED, mientras que al resto se le envía una señal _LOW_ para que estén apagados. Al cambiar los estados de los pines de los LEDs se llama a la función `delay(500)` para detener el microcontrolador durante medio segundo y así crear el efecto de que la luz "salta" de un LED a otro.
 
 Imágen del circuito:
 

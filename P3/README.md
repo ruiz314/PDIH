@@ -6,19 +6,25 @@ En esta práctica se propone crear y verificar el funcionamiento de diversos sis
 Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
 A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento de la práctica). 
 
-La implementación en Tinkercad:
+Primero hay que asignar los pines a los LED:
 ```c
 const int ledPinR = 11; // LED Rojo
 const int ledPinA = 12; // LED Amarillo
 const int ledPinV = 13; // LED Verde
+```
 
+Una vez asignados los pines hay que establecer su modo en la función `setup`:
+
+```c
 void setup() {
  pinMode(ledPinR, OUTPUT); 
  pinMode(ledPinA, OUTPUT); 
  pinMode(ledPinV, OUTPUT);
-
 }
+```
 
+Por último, se hace la lógica de encendido y apagado en la función `loop`:
+```c
 void loop() {
   // Encender
   digitalWrite(ledPinR, HIGH); // LED Rojo
@@ -38,9 +44,9 @@ void loop() {
 }
 ```
 
-Este código hace que primero se encienda el led rojo, espera 1 segundo y enciende el amarillo, espera otro segundo y enciende el verde. Cuando están todos encendidos espera un segundo y apaga el rojo. De nuevo espera un segundo y apaga el amatillo, y por último espera un segundo y apaga el LED verde.
+Este código hace que primero se encienda el led rojo, espera 1 segundo y enciende el amarillo, espera otro segundo y enciende el verde. Cuando están todos encendidos espera un segundo y apaga el rojo. De nuevo espera un segundo y apaga el amarillo, y por último espera un segundo y apaga el LED verde.
 
-Las resistencias que se han usado tiene un valor de $1k$ Ohmios.
+Las resistencias que se han usado tienen un valor de $1k$ Ohmios.
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
@@ -49,20 +55,9 @@ Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
 
 
-Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto:
+Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto. Para eso solo hace falta cambiar la función `loop` anterior:
 
 ```c
-const int ledPinR = 11; // LED Rojo
-const int ledPinA = 12; // LED Amarillo
-const int ledPinV = 13; // LED Verde
-
-void setup() {
- pinMode(ledPinR, OUTPUT); 
- pinMode(ledPinA, OUTPUT); 
- pinMode(ledPinV, OUTPUT);
-
-}
-
 void loop() {
   // Encender Rojo, resto apagado
   digitalWrite(ledPinR, HIGH); // LED Rojo
@@ -83,18 +78,74 @@ void loop() {
   digitalWrite(ledPinA, LOW); // LED Amarillo
   delay(1500);
 }
-
 ```
+
+Esta función solo permite que haya un LED encendido, mientras los otros dos estarán apagados.
+
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1modif.png)
 
-Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
+Fichero: [ejercicio1modificado.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
 
 ### Ejercicio 2
-Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y 
-sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento 
+Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento 
 de la práctica).
+
+Primero se asignan el número del pin a los elementos usados en el circuito:
+```c
+const int ledPinR = 11; // LED Rojo
+const int ledPinA = 12; // LED Amarillo
+const int ledPinV = 13; // LED Verde
+const int botonPin = 7; // Pulsador
+int estadoBoton =0;
+```
+Además, uso una variable para saber si el botón está pulsado o no.
+
+Segundo, se establecen los estados de los LED y el botón:
+```c
+void setup() {
+ pinMode(ledPinR, OUTPUT);  
+ pinMode(ledPinA, OUTPUT); 
+ pinMode(ledPinV, OUTPUT);  
+ pinMode(botonPin, INPUT);
+}
+```
+
+Por último se aplica la lógica necesaria para que el botón encienda la luz roja y apague el resto:
+```c
+void loop() {
+  // Leer estado del boton
+  estadoBoton = digitalRead(botonPin);
+  
+  // Comprobar si esta pulsado
+  if(estadoBoton == HIGH){ // Boton pulsado
+  	// Encender Rojo, resto apagado
+  	digitalWrite(ledPinR, HIGH); // LED Rojo
+  	digitalWrite(ledPinA, LOW); // LED Amarillo
+  	digitalWrite(ledPinV, LOW); // LED Verde
+  	delay(1500);
+  }else{
+  	// Encender Amarillo, resto apagado
+  	digitalWrite(ledPinA, HIGH);
+  	digitalWrite(ledPinR, LOW); 
+    digitalWrite(ledPinV, LOW); 
+  	delay(1500);
+  
+  	// Encender Verde, resto apagado
+  	digitalWrite(ledPinV, HIGH);
+  	digitalWrite(ledPinR, LOW); 
+    digitalWrite(ledPinA, LOW); 
+  	delay(1500);
+  }
+}
+```
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_ejer2.png)
+
+Fichero: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer2.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/0rUjCbYO3RQ-p3ejer2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=0m4p8z0yxeT1PuAEVyzAVbusQKUiD8RQ8YmMp3ujcz4)
 
 ## Requisitos ampliados
 ### Ejercicio 1

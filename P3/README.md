@@ -215,17 +215,86 @@ Video de la simulación:
 
 [![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)
 
-<video width="320" height="240" controls>
-<source src="[ruta/al/video.mp4](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)" type="video/mp4">
-Tu navegador no soporta la etiqueta de video.
-</video>
-
 Fichero: [ejercicio3.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer3.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/7IiRztn3ZZV/editel?sharecode=9raEkBkbUV031nzYe7hsnvjDtU9ZpSUxcQ8BiVlgLQ0)
 
 ### Ejercicio 2
 Detector de la distancia a un objeto (usar el buzzer para hacer sonar un pitido en función de la distancia detectada por el sensor de ultrasonidos). 
+
+Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes señales:
+- VCC conectado a la alimentación de 5 voltios de la placa Arduino
+- GND conectado a la Tierra de la placa
+- TRIG (Señal de disparo) al pin $12$ de Arduino
+- ECHO (Señal de eco) al pin $11$ de Arduino
+
+Además, para emitir el pitido se usa un \textit{buzzer} que conecto al pin $10$.
+```c
+const int trigPin = 12;
+const int echoPin = 11;
+const int buzzPin = 10;
+
+void setup()
+{
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(buzzPin, OUTPUT);
+  Serial.begin(9600); // Para monitor serie
+}
+```
+
+La función `Serial.begin(speed)` pertenecen a la biblioteca estándar de comunicación. Inicializa el puerto serie a $9600$ baudios para monitorizar.
+
+En la función `loop` se genera el pulso, se calcula la distancia y se controla el zumbador. Se usa la función `pulseIn(pin, value)` que mide el tiempo (en microsegundos) que un pin permanece en un estado específico (en este caso, HIGH). Sirve para cronometrar cuánto tiempo tarda el eco del sonido en regresar al Arduino.
+
+```c
+  // Disparo ultrasonico
+  digitalWrite(trigPin, LOW);
+  delay(2); // Wait for 2 milliseconds
+  digitalWrite(trigPin, HIGH);
+  delay(2);
+  digitalWrite(trigPin, LOW);
+  
+  // Leer duracion
+  duracion = pulseIn(echoPin, HIGH);
+  
+  //Calcular distancia
+  distancia = duracion * 0.034 / 2;
+
+  Serial.print("Distancia: ");
+  Serial.println(distancia);
+```
+
+La fórmula matemática $distancia = duracion * 0.034 / 2$ se basa en la constante física de la velocidad del sonido en el aire, que es de aproximadamente $0.034$ centímetros por microsegundo, dividiéndose entre dos porque el cronómetro mide el tiempo que el sonido tarda en viajar hasta el objeto y regresar.
+
+Las funciones `Serial.print()` y `Serial.println()` permiten enviar cadenas de texto e imprimir variables numéricas en el Monitor Serie.
+
+Por último, con la función `tone(pin, frequency, duration)` se emiten sonidos a través del zumbador. El tercer parámetro (duration) es opcional pero así no es necesario usar `delay()`.
+```c
+//Control de buzzer segun la distancia
+  if (distancia <= 60){
+  	tone(buzzPin, 1400, 600); 
+  }else if(distancia >60 && distancia <= 150){
+  	tone(buzzPin, 900, 400);
+  }else{ // Silencio si no hay objeto cerca
+  	noTone(buzzPin);
+  }
+  delay(100);
+```
+
+La función `noTone(pin)` detiene inmediatamente la generación de sonido en un pin. Se utiliza para asegurar un silencio total cuando el objeto está lejos.
+
+Imágen del circuito:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)
+
+Video de la simulación:
+
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.mp4)
+
+Fichero: [ejercicio4.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer4.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/9mgfdPeUUIt-p3ejer4/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=GHlIEY_WpEDHnj7l7oeITgtpOTbkQp_1Wjgztlc24RY)
 
 ### Ejercicio 3
 Detector de la cantidad de luz que haya en ese momento (usar un LED que se ilumine más o menos en función de la cantidad de luz detectada con el fotosensor). 

@@ -228,7 +228,7 @@ Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes s
 - TRIG (Señal de disparo) al pin $12$ de Arduino
 - ECHO (Señal de eco) al pin $11$ de Arduino
 
-Además, para emitir el pitido se usa un \textit{buzzer} que conecto al pin $10$.
+Además, para emitir el pitido se usa un _buzzer_ que conecto al pin $10$.
 ```c
 const int trigPin = 12;
 const int echoPin = 11;
@@ -290,7 +290,7 @@ Imágen del circuito:
 
 Video de la simulación:
 
-[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.mp4)
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.mp4)
 
 Fichero: [ejercicio4.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer4.ino)
 

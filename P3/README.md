@@ -56,6 +56,12 @@ Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
 
+Al montar el circuito en la placa Arduino queda así:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)
+
+Video de la simulación:
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentes.mp4)
 
 Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto. Para eso solo hace falta cambiar la función `loop` anterior:
 

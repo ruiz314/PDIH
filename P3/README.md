@@ -61,7 +61,7 @@ Al montar el circuito en la placa Arduino queda así:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)
 
 Video de la simulación:
-[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentes.mp4)
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentesVID.mp4)
 
 Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto. Para eso solo hace falta cambiar la función `loop` anterior:
 
@@ -95,6 +95,9 @@ Esta función solo permite que haya un LED encendido, mientras los otros dos est
 Fichero: [ejercicio1modificado.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
+
+Video de la simulación:
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentesV2VID.mp4)
 
 ### Ejercicio 2
 Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento 

@@ -161,6 +161,15 @@ Fichero: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/0rUjCbYO3RQ-p3ejer2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=0m4p8z0yxeT1PuAEVyzAVbusQKUiD8RQ8YmMp3ujcz4)
 
+
+Al montar el circuito en la placa Arduino queda así:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_boton.jpg)
+
+Video de la simulación:
+
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_boton.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_botonVID.mp4)
+
 ## Requisitos ampliados
 ### Ejercicio 1
 Secuencia de LEDs, encendiendo y apagando 4 LEDs secuencialmente, de forma similar a las lucecitas de "El coche fantástico".

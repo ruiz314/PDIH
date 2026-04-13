@@ -2,11 +2,16 @@
 En esta práctica se propone crear y verificar el funcionamiento de diversos sistemas de control basados en Arduino.
 
 ## Requisitos mínimos
-### Ejercicio 1
+### Ejercicio 1 - Parpadeo de LEDs
+#### Versión 1 
 Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
 A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento de la práctica). 
 
 Primero hay que asignar los pines digitales a los LED:
+- pin 11 -> LED rojo
+- pin 12 -> LED amarillo
+- pin 13 -> LED verde
+  
 ```c
 const int ledPinR = 11; // LED Rojo
 const int ledPinA = 12; // LED Amarillo
@@ -48,21 +53,37 @@ Este código hace que primero se encienda el led rojo, espera 1 segundo y encien
 
 Las resistencias que se han usado tienen un valor de $1k$ Ohmios.
 
-A continuación se muestra una imagen del circuito en Tinkercad:
+A continuación se muestra una imagen de las **conexiones eléctricas** en Tinkercad:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
-Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejercicio1.ino)
-
-[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
+Como se puede observar, los componentes eléctricos utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- Tres resistencias de 1k Ohmios cada una. Es por eso que los colores son café, negro y rojo.
+- Tres LEDs (de distintos colores)
+- _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
 Al montar el circuito en la placa Arduino queda así:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)
 
+Para probar el programa uso el IDE de Arduino para cargar el código en la placa. Primero verifico que el código esté correcto:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_compilacion.png)
+
+Una vez que se ha verificado el código, lo cargo en la tarjeta Arduino pulsando la flecha de la esquina superior izquierda:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_cargar.png)
+
 Video de la simulación:
 [![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentesVID.mp4)
 
+Fichero: [ejercicio1.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejercicio1.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8cUpHRQn0iU/editel?sharecode=hjc5ENfjtw7kgeIf3-wHUPApSd_4_OOuukVCIAQ3KEU)
+
+#### Versión 2
 Si queremos que solo se encienda un LED a la vez, entonces el orden de encendido y apagado debe ser distinto. Para eso solo hace falta cambiar la función `loop` anterior:
 
 ```c
@@ -92,14 +113,17 @@ Esta función solo permite que haya un LED encendido, mientras los otros dos est
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1modif.png)
 
-Fichero: [ejercicio1modificado.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
-
-[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
+En este caso el circuito físico no cambia, queda igual que para la primera versión. Para probar el código hay
+que verificarlo desde el IDE y cargar el código en el Arduino como se ha hecho para la primera versión.
 
 Video de la simulación:
 [![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_intermitentes.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/1intermitentesV2VID.mp4)
 
-### Ejercicio 2
+Fichero: [ejercicio1modificado.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer1_modif.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/gaBwdn6BxZt/editel?sharecode=IK2mjVQ69bJlynbLdLMnaqxHddvf1faAzySnm4B8esI)
+
+### Ejercicio 2 - Parpadeo de LEDs con interruptor
 Partir del programa de parpadeo de LEDs anterior y ampliarlo con las modificaciones necesarias para que se encienda el LED rojo solo cuando se pulse un interruptor conectado a la entrada digital 7, y en ese momento se apaguen los LEDs amarillo y verde. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento 
 de la práctica).
 
@@ -143,24 +167,29 @@ void loop() {
   	// Encender Amarillo, resto apagado
   	digitalWrite(ledPinA, HIGH);
   	digitalWrite(ledPinR, LOW); 
-    digitalWrite(ledPinV, LOW); 
+   digitalWrite(ledPinV, LOW); 
   	delay(1500);
   
   	// Encender Verde, resto apagado
   	digitalWrite(ledPinV, HIGH);
   	digitalWrite(ledPinR, LOW); 
-    digitalWrite(ledPinA, LOW); 
+   digitalWrite(ledPinA, LOW); 
   	delay(1500);
   }
 }
 ```
 
+Esquema de **conexiones eléctricas** en Tinkercad:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_ejer2.png)
 
-Fichero: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer2.ino)
-
-[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/0rUjCbYO3RQ-p3ejer2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=0m4p8z0yxeT1PuAEVyzAVbusQKUiD8RQ8YmMp3ujcz4)
-
+Como se puede observar de la imagen de Tinkercad, los componentes eléctricos utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- Pulsador (interruptor).
+- Una resistencia de 10k Ohmios para el pulsador. Sus colores son: café, negro y naranja.
+- Tres resistencias de 220 Ohmios cada una para los LEDs. Es por eso que los colores son rojo, rojo y café.
+- Tres LEDs (de distintos colores)
+- _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
 Al montar el circuito en la placa Arduino queda así:
 
@@ -170,8 +199,12 @@ Video de la simulación:
 
 [![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_boton.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_botonVID.mp4)
 
+Fichero: [ejercicio2.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer2.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/0rUjCbYO3RQ-p3ejer2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=0m4p8z0yxeT1PuAEVyzAVbusQKUiD8RQ8YmMp3ujcz4)
+
 ## Requisitos ampliados
-### Ejercicio 1
+### Ejercicio 1 - Secuencia de cuatro LEDs
 Secuencia de LEDs, encendiendo y apagando 4 LEDs secuencialmente, de forma similar a las lucecitas de "El coche fantástico".
 
 Como en los dos primeros ejercicios, empiezo declarando las constantes para los pines de los LEDs y establezco los modos:
@@ -225,9 +258,16 @@ void loop() {
 
 El bucle está dividido en cuatro bloques, uno por cada LED. En cada bloque se envía una señal _HIGH_ a un solo LED, mientras que al resto se le envía una señal _LOW_ para que estén apagados. Al cambiar los estados de los pines de los LEDs se llama a la función `delay(500)` para detener el microcontrolador durante medio segundo y así crear el efecto de que la luz "salta" de un LED a otro.
 
-Imágen del circuito:
+A continuación se muestra una imagen de las conexiónes electricas para este ejercicio:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)
+
+Como se puede observar de la imagen de Tinkercad, los componentes eléctricos utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- Cuatro resistencias de 1k Ohmios cada una. Sus colores son: café, negro y rojo.
+- Cuatro LEDs (de distintos colores)
+- Jumper wires (cables) para la unión de los componentes entre sí.
 
 Video de la simulación:
 
@@ -237,7 +277,7 @@ Fichero: [ejercicio3.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/7IiRztn3ZZV/editel?sharecode=9raEkBkbUV031nzYe7hsnvjDtU9ZpSUxcQ8BiVlgLQ0)
 
-### Ejercicio 2
+### Ejercicio 2 - Detector de distancia
 Detector de la distancia a un objeto (usar el buzzer para hacer sonar un pitido en función de la distancia detectada por el sensor de ultrasonidos). 
 
 Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes señales:
@@ -246,7 +286,7 @@ Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes s
 - TRIG (Señal de disparo) al pin $12$ de Arduino
 - ECHO (Señal de eco) al pin $11$ de Arduino
 
-Además, para emitir el pitido se usa un _buzzer_ que conecto al pin $10$.
+Además, para emitir el pitido se usa un _buzzer_ que conecto al pin $10$ de Arduino, y el otro pin a tierra.
 ```c
 const int trigPin = 12;
 const int echoPin = 11;
@@ -302,9 +342,16 @@ Por último, con la función `tone(pin, frequency, duration)` se emiten sonidos 
 
 La función `noTone(pin)` detiene inmediatamente la generación de sonido en un pin. Se utiliza para asegurar un silencio total cuando el objeto está lejos.
 
-Imágen del circuito:
+Imágen de las conexiones eléctricas del circuito:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)
+
+En la imagen se observa qye los componentes eléctricos utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- _Ultrasonic Distance Sensor_ (4-pin) (Sensor de ultra sonido con 4 pines).
+- _Piezo_ (zumbador) para emitir sonido.
+- _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
 Video de la simulación:
 

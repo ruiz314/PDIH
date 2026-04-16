@@ -288,8 +288,8 @@ Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes s
 
 Además, para emitir el pitido se usa un _buzzer_ que conecto al pin $10$ de Arduino, y el otro pin a tierra.
 ```c
-const int trigPin = 12;
-const int echoPin = 11;
+const int echoPin = 12;
+const int trigPin = 11;
 const int buzzPin = 10;
 
 void setup()
@@ -342,7 +342,7 @@ Por último, con la función `tone(pin, frequency, duration)` se emiten sonidos 
 
 La función `noTone(pin)` detiene inmediatamente la generación de sonido en un pin. Se utiliza para asegurar un silencio total cuando el objeto está lejos.
 
-Imágen de las conexiones eléctricas del circuito:
+Imágen de las **conexiones eléctricas** del circuito:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)
 
@@ -353,9 +353,9 @@ En la imagen se observa qye los componentes eléctricos utilizados son:
 - _Piezo_ (zumbador) para emitir sonido.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
-Video de la simulación:
+Video del circuito físico:
 
-[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.mp4)
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.mp4)
 
 Fichero: [ejercicio4.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer4.ino)
 

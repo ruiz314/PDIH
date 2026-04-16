@@ -1,5 +1,5 @@
-const int trigPin = 12;
-const int echoPin = 11;
+const int echoPin = 12;
+const int trigPin = 11;
 const int buzzPin = 10;
 
 void setup()
@@ -33,7 +33,7 @@ void loop()
   
   //Control de buzzer según la distancia
   if (distancia <= 60){
-  	tone(buzzPin, 1400, 600); 
+  	tone(buzzPin, 1400, 600);
   }else if(distancia >60 && distancia <= 150){
   	tone(buzzPin, 900, 400);
   }else{ // Silencio si no hay objeto cerca

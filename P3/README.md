@@ -364,5 +364,14 @@ Fichero: [ejercicio4.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 ### Ejercicio 3
 Detector de la cantidad de luz que haya en ese momento (usar un LED que se ilumine más o menos en función de la cantidad de luz detectada con el fotosensor). 
 
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5circuito.png)
+
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)
+
+Fichero: [ejercicio5.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer5.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/8Y2OIWiWnKP-p3ejer5/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fcollections%2Ff93vEWIxIhX%2Fall&sharecode=yDFOFjNgw1Dakdx7i2RQen3KdP0OUzZfTqOxnnYpmYQ)
+
 ### Ejercicio 4 
 Implementar un proyecto en el que se active un motor (DC Motor o Servo motor) cuando se pulse un pulsador. 

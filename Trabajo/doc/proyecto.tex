@@ -1,0 +1,136 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%% CREATE DOCUMENT STRUCTURE %%%%%%%%
+%% Language and font encodings
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{subfig}
+
+\usepackage{listings} % Para incluir código
+\usepackage{xcolor}   % Colores para el código
+
+% Configuración de estilo
+\lstset{
+    basicstyle=\ttfamily\small, % Fuente monoespaciada
+    numbers=left,               % Números de línea a la izquierda
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!50!black},
+    stringstyle=\color{red!70!black},
+    breaklines=true,            % Saltar líneas largas
+    frame=single,               % Marco alrededor del código
+    tabsize=4
+}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{sectsty}
+
+\usepackage{float}
+\usepackage{titling} 
+
+%% Referencias/Bibliografía
+%\usepackage[backend=biber, style=apa]{biblatex}
+%\addbibresource{ref.bib} % Nombre del archivo con las referencias
+
+
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xcolor}
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+
+
+%Links de referencias
+\usepackage[hidelinks]{hyperref} % Hace que las referencias sean clicables
+\newcommand{\myref}[1]{\textsuperscript{\textbf{\ref{#1}}}} % Define un estilo propio
+
+%%%%%%%% DOCUMENT %%%%%%%%
+\begin{document}
+
+%%%% Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 							% horizontal line and its thickness
+\center 
+ 
+% University
+\textsc{\LARGE Universidad de Granada}\\[1cm]
+
+% Document info
+\textsc{\Large Periféricos y Dispositivos de Interfaz Humana}\\[0.2cm]
+\textsc{\large Curso 2025/2026}\\[1cm] 										% Course Code
+\HRule \\[0.8cm]
+{ \huge \bfseries Proyecto. Código Morse usando Arduino}\\[0.7cm]								% Assignment
+\HRule \\[2cm]
+\large
+\emph{Autora:}\\
+Inés Ruiz Sánchez\\[1.5cm]													% Author info
+{\large \today}\\[5cm]
+\includegraphics[width=0.3\textwidth]{images/UGRlogo.png}\\[1cm] 	% University logo
+\vfill 
+\end{titlepage}
+
+%%\begin{abstract}
+%%Your abstract.
+%%\end{abstract}
+
+% Generar índice de contenidos y figuras
+\tableofcontents
+%\newpage
+\listoffigures
+\newpage
+
+%%%% SECTIONS
+\section{Introducción}\label{sec:1_intro}
+\input{secciones/01_intoduccion}
+
+%----------------------------------------------------------------
+\section{Hardware utilizado}\label{sec:2_hw}
+\input{secciones/02_hardware}
+
+%----------------------------------------------------------------
+\section{Desarrollo del Software (Código)}\label{sec:3_sw}
+%----------------------------------------------------------------
+\section{Problemas encontrados y soluciones}
+%----------------------------------------------------------------
+\section{Conclusiones y Posibles Mejoras}
+
+
+Anexo \ref{anexo:an1}
+
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+
+\section{Anexo}
+
+Nota: Las tildes en los trozos de código no se reconocen en LATEX por lo que el carácter no se escribe. Es por eso por lo que o bien no aparece un caracter o bien el caracter no tiene tilde, pareciendo una falta ortográfica.\\
+\subsection{Anexo 1} \label{anexo:an1} 
+%\lstinputlisting[language=C]{src/ejer1.c}
+\href{https://www.tinkercad.com/things/cJ7XJBloj7o/editel?returnTo=%2Fdashboard%2Fcollections%2F45N1xWNxGAp%2Fall&sharecode=4sl_ZT-0OL1J4BYZHna3SUFVUEHoGAx84j9y6vthwKQ}{Circuito en Tinkercad}
+
+\subsection{Anexo 2} \label{anexo:an2} 
+%\lstinputlisting[language=C]{src/ejer2.c}
+
+\newpage
+%Bibliografía
+\begin{thebibliography}{9}
+    \bibitem{schernich} 
+    E. Schernich y P. Martínez. 
+    \textit{Arduino para principiantes: aprendizaje mediante programación por bloques para docentes y toda la familia}. 
+    2a ed. Barcelona: Marcombo, 2019.
+    
+    \bibitem{monk} 
+    S. Monk y J. Pompa. 
+    \textit{30 proyectos con Arduino}. 
+    Madrid: Estribor, 2012.
+\end{thebibliography}
+\end{document}

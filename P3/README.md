@@ -283,8 +283,8 @@ Detector de la distancia a un objeto (usar el buzzer para hacer sonar un pitido 
 Para medir las distancias se usa un ultrasonido $HC - SR04$ con las siguientes señales:
 - VCC conectado a la alimentación de 5 voltios de la placa Arduino
 - GND conectado a la Tierra de la placa
-- TRIG (Señal de disparo) al pin $12$ de Arduino
-- ECHO (Señal de eco) al pin $11$ de Arduino
+- TRIG (Señal de disparo) al pin $11$ de Arduino
+- ECHO (Señal de eco) al pin $12$ de Arduino
 
 Además, para emitir el pitido se usa un _buzzer_ que conecto al pin $10$ de Arduino, y el otro pin a tierra.
 ```c
@@ -344,7 +344,7 @@ La función `noTone(pin)` detiene inmediatamente la generación de sonido en un 
 
 Imágen de las **conexiones eléctricas** del circuito:
 
-![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.png)
 
 En la imagen se observa qye los componentes eléctricos utilizados son:
 - Placa Arduino UNO.

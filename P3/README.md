@@ -3,7 +3,6 @@ En esta práctica se propone crear y verificar el funcionamiento de diversos sis
 
 ## Requisitos mínimos
 ### Ejercicio 1 - Parpadeo de LEDs
-#### Versión 1 
 Implementar el programa de parpadeo de LED, ampliándolo para que encienda y apague alternativamente tres LEDs (uno rojo, otro amarillo y otro verde), conectados a las salidas digitales 11, 12 y 13 del Arduino, a un intervalo de 1.5 segundos. Simular primero el prototipo en Tinkercad y sacar captura de pantalla del prototipo (esquema) para incluirla en el documento de la práctica. 
 A continuación, cargar el programa en el Arduino físico para comprobar que funciona correctamente (incluir foto en el documento de la práctica). 
 
@@ -28,7 +27,9 @@ void setup() {
 }
 ```
 
-Por último, se hace la lógica de encendido y apagado en la función `loop`:
+Por último, se hace la lógica de encendido y apagado en la función `loop`.
+
+#### Versión 1 
 ```c
 void loop() {
   // Encender
@@ -363,6 +364,46 @@ Fichero: [ejercicio4.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 
 ### Ejercicio 3
 Detector de la cantidad de luz que haya en ese momento (usar un LED que se ilumine más o menos en función de la cantidad de luz detectada con el fotosensor). 
+
+Para detectar distintos niveles de luz se necesita un **fotosensor** que vaya conectado a un pin analógico: $A0$ en este caso. Además, la otra patilla irá conectada a tierra y a una resistencia de $10 kΩ$. El LED debe estar conectado en un pin que tenga el símbolo `~`, es decir, que soporte PWM (Modulación por Ancho de Pulsos) para poder regular el nivel de brillo.
+```c
+const int luzPin = A0;  // Sensor de luz
+const int ledPin = 9;   // LED
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(luzPin, INPUT); 
+  
+  // Inicializar el monitor serie
+  Serial.begin(9600);
+}
+```
+
+Una vez inicializadas las variables que indican los pines, programamos la lógica del problema:
+```c
+void loop() {
+  // Lectura del sensor
+  int nivelLuz = analogRead(luzPin);
+
+  // Conversión de escalas
+  int brilloLED = map(nivelLuz, 0, 1023, 0, 255);
+
+  // Ajuste de brillo de brillo
+  analogWrite(ledPin, brilloLED);
+
+  // Mostrar en monitor serie
+  Serial.print("Luz detectada: ");
+  Serial.print(nivelLuz);
+  Serial.print(" | Nivel de brillo (PWM): ");
+  Serial.println(brilloLED);
+
+  // Pequeña pausa para estabilizar las lecturas
+  delay(1000);
+}
+```
+- _analogRead(luzPin)_: lee el voltaje que deja pasar el fotosensor y lo transforma en un valor comprendido entre 0 (oscuridad total) y 1023 (luz máxima).
+- _map(valor, fromLow, fromHigh, toLow, toHigh)_: traduce proporcionalmente el rango del sensor al rango del LED. El sensor da un valor hasta 1023, pero el LED solo admite niveles de brillo hasta 255.
+- _analogWrite(ledPin, valor)_: enciende y apaga el pin de forma que parezca que el LED tiene varias intensidades de brillo.
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5circuito.png)
 

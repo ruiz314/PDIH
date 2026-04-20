@@ -355,7 +355,7 @@ Imágen de las **conexiones eléctricas** del circuito:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.png)
 
-En la imagen se observa qye los **componentes eléctricos** utilizados son:
+En la imagen se observa que los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - _Ultrasonic Distance Sensor_ (4-pin) (Sensor de ultra sonido con 4 pines).
@@ -419,7 +419,7 @@ void loop() {
 Imágen de las **conexiones eléctricas** del circuito:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5circuito.png)
 
-En la imagen se observa qye los **componentes eléctricos** utilizados son:
+En la imagen se observa que los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - LED (verde)
@@ -490,7 +490,7 @@ La función `write(grados)` gira el motor exactamente hasta ese ángulo indicado
 Imágen de las **conexiones eléctricas** del circuito en Tinkercad:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6.png)
 
-En la imagen se observa qye los **componentes eléctricos** utilizados son:
+En la imagen se observa que los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - Pulsador (interruptor)

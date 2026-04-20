@@ -488,7 +488,7 @@ void loop()
 La función `write(grados)` gira el motor exactamente hasta ese ángulo indicado en _grados_.
 
 Imágen de las **conexiones eléctricas** del circuito en Tinkercad:
-![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer6.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6.png)
 
 En la imagen se observa qye los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
@@ -497,7 +497,13 @@ En la imagen se observa qye los **componentes eléctricos** utilizados son:
 - Servomotor
 - Una resistencia de 10kΩ para el pulsador. Sus colores son: café, negro y naranja.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
-  
+
+Imagen del circuito físico:
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6_circuito.jpg)
+
+Video del circuito físico:
+
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6_circuito.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6motor.mp4)
 Fichero: [ejercicio6.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer6.ino)
 
 [Link a proyecto en Tinkercad](https://www.tinkercad.com/things/6opNGlCy2VE-p3ejer6/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=yZj4DiLdb2XZNTpwrQ5lG4Q49mgYi61C-GD97jd8Ncs)

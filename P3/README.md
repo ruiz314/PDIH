@@ -432,7 +432,7 @@ Imagen del circuito físico:
 
 Video del circuito físico:
 
-[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5.mp4)
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5sensor.mp4)
 
 Fichero: [ejercicio5.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer5.ino)
 

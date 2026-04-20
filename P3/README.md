@@ -270,13 +270,17 @@ Como se puede observar de la imagen de Tinkercad, los **componentes eléctricos*
 - Cuatro LEDs (de distintos colores)
 - Jumper wires (cables) para la unión de los componentes entre sí.
 
-El diseño del circuito físico queda así:
-
-![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)
-
 Video de la simulación:
 
 [![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3.mp4)
+
+El diseño del circuito físico queda así:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3circuito.jpg)
+
+Video:
+
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3_secuencia.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3_secuenciaLED.mp4)
 
 Fichero: [ejercicio3.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer3.ino)
 

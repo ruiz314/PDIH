@@ -58,7 +58,7 @@ A continuación se muestra una imagen de las **conexiones eléctricas** en Tinke
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
-Como se puede observar, los componentes eléctricos utilizados son:
+Como se puede observar, los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - Tres resistencias de 1k Ohmios cada una. Es por eso que los colores son café, negro y rojo.
@@ -183,7 +183,7 @@ void loop() {
 Esquema de **conexiones eléctricas** en Tinkercad:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_ejer2.png)
 
-Como se puede observar de la imagen de Tinkercad, los componentes eléctricos utilizados son:
+Como se puede observar de la imagen de Tinkercad, los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - Pulsador (interruptor).
@@ -259,16 +259,20 @@ void loop() {
 
 El bucle está dividido en cuatro bloques, uno por cada LED. En cada bloque se envía una señal _HIGH_ a un solo LED, mientras que al resto se le envía una señal _LOW_ para que estén apagados. Al cambiar los estados de los pines de los LEDs se llama a la función `delay(500)` para detener el microcontrolador durante medio segundo y así crear el efecto de que la luz "salta" de un LED a otro.
 
-A continuación se muestra una imagen de las conexiónes electricas para este ejercicio:
+A continuación se muestra una imagen de las **conexiones eléctricas** para este ejercicio:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)
 
-Como se puede observar de la imagen de Tinkercad, los componentes eléctricos utilizados son:
+Como se puede observar de la imagen de Tinkercad, los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - Cuatro resistencias de 1k Ohmios cada una. Sus colores son: café, negro y rojo.
 - Cuatro LEDs (de distintos colores)
 - Jumper wires (cables) para la unión de los componentes entre sí.
+
+El diseño del circuito físico queda así:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/3_ejer3luces.png)
 
 Video de la simulación:
 
@@ -347,12 +351,15 @@ Imágen de las **conexiones eléctricas** del circuito:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4.png)
 
-En la imagen se observa qye los componentes eléctricos utilizados son:
+En la imagen se observa qye los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
 - _Ultrasonic Distance Sensor_ (4-pin) (Sensor de ultra sonido con 4 pines).
 - _Piezo_ (zumbador) para emitir sonido.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
+
+Imagen del circuito físico:
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.jpg)
 
 Video del circuito físico:
 
@@ -405,10 +412,23 @@ void loop() {
 - _map(valor, fromLow, fromHigh, toLow, toHigh)_: traduce proporcionalmente el rango del sensor al rango del LED. El sensor da un valor hasta 1023, pero el LED solo admite niveles de brillo hasta 255.
 - _analogWrite(ledPin, valor)_: enciende y apaga el pin de forma que parezca que el LED tiene varias intensidades de brillo.
 
+Imágen de las **conexiones eléctricas** del circuito:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5circuito.png)
 
-
+En la imagen se observa qye los **componentes eléctricos** utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- LED (verde)
+- Fotosensor
+- Una resistencia de 220Ω para el LED y otra de 10kΩ para el fotosensor.
+- _Jumper wires_ (cables) para la unión de los componentes entre sí.
+  
+Imagen del circuito físico:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)
+
+Video del circuito físico:
+
+[![Watch the video](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5.mp4)
 
 Fichero: [ejercicio5.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer5.ino)
 
@@ -416,3 +436,64 @@ Fichero: [ejercicio5.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/
 
 ### Ejercicio 4 
 Implementar un proyecto en el que se active un motor (DC Motor o Servo motor) cuando se pulse un pulsador. 
+
+Para conectar el pulsador lo haremos igual que en el _ejercicio 2_ de los requisitos mínimos: un terminal del botón va a $5V$, y el otro terminal se conecta simultáneamente al pin digital $7$ y a tierra (GND) mediante una resistencia de $10k$ Ohmios.
+
+El servomotor tiene tres cables: El cable rojo (alimentación) se conecta a los 5V del Arduino, el cable negro (tierra) se conecta a GND, y el tercer cable (naranja) es el de control de señal que va conectado al pin digital 9.
+
+```c
+// Libreria para trabajar con servomotores
+#include <Servo.h> 
+
+// Declaracion de pines
+const int servoPin = 9; // Senal del servomotor
+const int botonPin = 7; // Pulsador
+
+int estadoBoton =0;
+Servo miServo;
+
+void setup()
+{
+  pinMode(botonPin, INPUT); //  Pin del boton como entrada
+  miServo.attach(servoPin); // Vincular servo al pin fisico
+  miServo.write(0); //Posicion a 0 grados
+}
+```
+
+La función `attach(pin)` se usa para inicializar la instancia de nuestro motor físico. Indica el pin físico al que enviar la corriente para mover el motor.
+
+Por último se implementa la lógica de giro tras pulsar el interruptor. Primero se lee el estado del botón, y en función de si está pulsado o no se mueve el motor o no se mueve.
+```c
+void loop()
+{
+  // Leer estado del botón
+  estadoBoton = digitalRead(botonPin);
+  
+  // Control del motor
+  if(estadoBoton == HIGH){ //Si el botón esta pulsado
+    miServo.write(180); // Girar el motor 90 grados
+  }else{ // Si el botón no esta pulsado
+  	miServo.write(0); // No girar
+  }
+  
+  // Pausa
+  delay(15);
+}
+```
+
+La función `write(grados)` gira el motor exactamente hasta ese ángulo indicado en _grados_.
+
+Imágen de las **conexiones eléctricas** del circuito en Tinkercad:
+![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer6.png)
+
+En la imagen se observa qye los **componentes eléctricos** utilizados son:
+- Placa Arduino UNO.
+- _Breadboard_ (placa de pruebas).
+- Pulsador (interruptor)
+- Servomotor
+- Una resistencia de 10kΩ para el pulsador. Sus colores son: café, negro y naranja.
+- _Jumper wires_ (cables) para la unión de los componentes entre sí.
+  
+Fichero: [ejercicio6.ino](https://github.com/ruiz314/PDIH/blob/main/P3/ficheros/ejer6.ino)
+
+[Link a proyecto en Tinkercad](https://www.tinkercad.com/things/6opNGlCy2VE-p3ejer6/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=yZj4DiLdb2XZNTpwrQ5lG4Q49mgYi61C-GD97jd8Ncs)

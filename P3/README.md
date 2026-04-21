@@ -58,6 +58,8 @@ A continuación se muestra una imagen de las **conexiones eléctricas** en Tinke
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/1_ejer1.png)
 
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer1.pdf)
+
 Como se puede observar, los **componentes eléctricos** utilizados son:
 - Placa Arduino UNO.
 - _Breadboard_ (placa de pruebas).
@@ -100,7 +102,6 @@ void loop() {
   digitalWrite(ledPinR, LOW); // LED Rojo
   digitalWrite(ledPinV, LOW); // LED Verde
   delay(1500);
-  
   
   // Encender Verde, resto apagado
   digitalWrite(ledPinV, HIGH); // LED Verde
@@ -192,6 +193,8 @@ Como se puede observar de la imagen de Tinkercad, los **componentes eléctricos*
 - Tres LEDs (de distintos colores)
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer2.pdf)
+
 Al montar el circuito en la placa Arduino queda así:
 
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/2_boton.jpg)
@@ -269,6 +272,8 @@ Como se puede observar de la imagen de Tinkercad, los **componentes eléctricos*
 - Cuatro resistencias de 1k Ohmios cada una. Sus colores son: café, negro y rojo.
 - Cuatro LEDs (de distintos colores)
 - Jumper wires (cables) para la unión de los componentes entre sí.
+
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer3.pdf)
 
 Video de la simulación:
 
@@ -362,6 +367,8 @@ En la imagen se observa que los **componentes eléctricos** utilizados son:
 - _Piezo_ (zumbador) para emitir sonido.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
 
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer4.pdf)
+
 Imagen del circuito físico:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/4_ejer4buzz.jpg)
 
@@ -427,6 +434,8 @@ En la imagen se observa que los **componentes eléctricos** utilizados son:
 - Una resistencia de 220Ω para el LED y otra de 10kΩ para el fotosensor.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
   
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer5.pdf)
+
 Imagen del circuito físico:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/5_ejer5fotosensor.jpg)
 
@@ -497,6 +506,8 @@ En la imagen se observa que los **componentes eléctricos** utilizados son:
 - Servomotor
 - Una resistencia de 10kΩ para el pulsador. Sus colores son: café, negro y naranja.
 - _Jumper wires_ (cables) para la unión de los componentes entre sí.
+
+[Vista esquemática generada por Tinkercad](https://github.com/ruiz314/PDIH/blob/main/P3/Vista_esquematica/vista_ejer6.pdf)
 
 Imagen del circuito físico:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P3/img/6_ejer6_circuito.jpg)

@@ -68,7 +68,7 @@ void mostrarSecuencia(char* secuencia)
   // Recorre la cadena hasta encontrar el carácter nulo de fin de cadena (NULL)
   while(secuencia[i] != NULL)
   {
-    encenderLED(secuencia[i]); // Emite punto o raya
+    encenderSignal(secuencia[i]); // Emite punto o raya
     i++;
   }
   delay(espera *3); // Espacio entre letras

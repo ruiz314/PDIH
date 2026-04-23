@@ -1,0 +1,35 @@
+%!
+%% Draws a square box at (x,y)=(10,200) from bottom-left
+
+newpath			% Start a new path
+
+50 200 moveto
+90  0 rlineto
+0 90 rlineto
+-90  0 rlineto
+
+closepath
+
+5 setlinewidth
+
+stroke
+
+
+% triangulo azul
+
+newpath 
+
+300 400 moveto
+150  0 rlineto
+0 150 rlineto
+closepath
+
+0 0 1 setrgbcolor
+5 setlinewidth
+
+stroke
+
+
+
+showpage		% We're done... eject the page
+

@@ -1,0 +1,14 @@
+%!
+% ejemplo de mostrar texto
+
+/Times-Roman findfont	% seleccionar el tipo de fuente
+20 scalefont			% seleccionar el tamaño de fuente (20 puntos)
+setfont					% establecer este tipo de letra como el actual
+
+newpath					% comenzar un nuevo elemento de página
+300 400 moveto			% colocar el curso en el punto (72, 72)
+(centro) show    	% escribir el texto "hola mundo"
+stroke
+
+
+showpage

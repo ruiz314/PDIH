@@ -1,0 +1,62 @@
+%!
+% Ejercicio 1. Página en la que se muestre el dibujo de unos árboles.
+
+% Suelo
+newpath
+    0 0 moveto % Extremo izquierdo
+    790 0 rlineto % Extremo derecho
+    10 setlinewidth
+    0 1 0 setrgbcolor  % Color verde
+stroke
+
+% ÁRBOL 1: copa circular
+% Tronco 1: la parte de abajo es más ancha que la de arriba
+newpath
+    150 5 moveto   % Esquina inferior izquierda del tronco
+    30 0 rlineto   % Línea hacia la derecha
+    0 350 rlineto   % Línea hacia arriba
+    -20 0 rlineto   % Línea hacia la izquierda
+    closepath        % Cierra el rectángulo
+    0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
+    fill             % Rellena el tronco con ese color
+stroke
+
+% Copa del árbol 1
+newpath $ Abajo izq
+    0.25 0.8 0 setrgbcolor  % Color verde
+    140 350 50 0 360 arc % Pintar circulo
+    %fill
+stroke
+
+newpath % Abajo dcha
+    0.25 0.8 0 setrgbcolor  % Color verde
+    180 360 50 0 360 arc % Pintar circulo
+stroke
+
+newpath
+    0.23 0.9 0 setrgbcolor  % Color verde
+    180 360 5440 0 360 arc % Pintar circulo
+stroke
+
+newpath % Punta del árbol
+    0.2 1 0 setrgbcolor  % Color verde
+    160 400 35 0 360 arc % Pintar circulo
+stroke
+
+% ÁRBOL 2: pino de Navidad
+% Tronco 2
+newpath
+    400 5 moveto   % Esquina inferior izquierda del tronco
+    15 0 rlineto   % Línea hacia la derecha
+    0 250 rlineto   % Línea hacia arriba
+    -15 0 rlineto   % Línea hacia la izquierda
+    closepath        % Cierra el rectángulo
+    0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
+    fill             % Rellena el tronco con ese color
+stroke
+
+% PELOTA
+
+% SOL
+showpage
+%EOF

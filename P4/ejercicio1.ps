@@ -14,7 +14,7 @@ stroke
 newpath
     150 5 moveto   % Esquina inferior izquierda del tronco
     30 0 rlineto   % Línea hacia la derecha
-    0 350 rlineto   % Línea hacia arriba
+    -5 350 rlineto   % Línea hacia arriba
     -20 0 rlineto   % Línea hacia la izquierda
     closepath        % Cierra el rectángulo
     0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
@@ -22,41 +22,41 @@ newpath
 stroke
 
 % Copa del árbol 1
-newpath $ Abajo izq
+newpath % Abajo izq
     0.25 0.8 0 setrgbcolor  % Color verde
-    140 350 50 0 360 arc % Pintar circulo
-    %fill
+    135 350 55 0 360 arc % Pintar círculo
+    fill
+stroke
+
+newpath % Abajo en medio
+    0.25 0.8 0 setrgbcolor  % Color verde
+    178 324 35 0 360 arc % Pintar círculo
+    fill
 stroke
 
 newpath % Abajo dcha
     0.25 0.8 0 setrgbcolor  % Color verde
-    180 360 50 0 360 arc % Pintar circulo
+    195 360 55 0 360 arc % Pintar círculo
+    fill
 stroke
 
-newpath
+newpath % Medio izq
     0.23 0.9 0 setrgbcolor  % Color verde
-    180 360 5440 0 360 arc % Pintar circulo
+    140 400 45 0 360 arc % Pintar círculo
+    fill
+stroke
+
+newpath % Medio dcha
+    0.23 0.9 0 setrgbcolor  % Color verde
+    190 400 45 0 360 arc % Pintar círculo
+    fill
 stroke
 
 newpath % Punta del árbol
     0.2 1 0 setrgbcolor  % Color verde
-    160 400 35 0 360 arc % Pintar circulo
+    160 445 40 0 360 arc % Pintar círculo
+    fill
 stroke
 
-% ÁRBOL 2: pino de Navidad
-% Tronco 2
-newpath
-    400 5 moveto   % Esquina inferior izquierda del tronco
-    15 0 rlineto   % Línea hacia la derecha
-    0 250 rlineto   % Línea hacia arriba
-    -15 0 rlineto   % Línea hacia la izquierda
-    closepath        % Cierra el rectángulo
-    0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
-    fill             % Rellena el tronco con ese color
-stroke
-
-% PELOTA
-
-% SOL
 showpage
 %EOF

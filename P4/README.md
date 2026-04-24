@@ -4,8 +4,10 @@ El objetivo principal es conocer cómo utilizar el lenguaje Postscript a nivel b
 ## Requisitos mínimos
 
 1. Página en la que se muestre el dibujo de unos árboles.
-2. Página en la que se muestre el diseño de una tarjeta de visita.
-3. Página en la que se muestre el dibujo de un corazón y una poesía.
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer1_arbol_izq.png)
+
+3. Página en la que se muestre el diseño de una tarjeta de visita.
+4. Página en la que se muestre el dibujo de un corazón y una poesía.
 
 ## Requisitos ampliados
 

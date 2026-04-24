@@ -24,7 +24,7 @@ stroke
 % Copa del árbol 1
 newpath % Abajo izq
     0.25 0.8 0 setrgbcolor  % Color verde
-    135 350 55 0 360 arc % Pintar círculo
+    135 350 60 0 360 arc % Pintar círculo
     fill
 stroke
 
@@ -36,13 +36,19 @@ stroke
 
 newpath % Abajo dcha
     0.25 0.8 0 setrgbcolor  % Color verde
-    195 360 55 0 360 arc % Pintar círculo
+    195 350 60 0 360 arc % Pintar círculo
     fill
 stroke
 
 newpath % Medio izq
     0.23 0.9 0 setrgbcolor  % Color verde
     140 400 45 0 360 arc % Pintar círculo
+    fill
+stroke
+
+newpath % Medio medio
+    0.23 0.9 0 setrgbcolor  % Color verde
+    190 400 40 0 360 arc % Pintar círculo
     fill
 stroke
 
@@ -56,6 +62,58 @@ newpath % Punta del árbol
     0.2 1 0 setrgbcolor  % Color verde
     160 445 40 0 360 arc % Pintar círculo
     fill
+stroke
+
+% ÁRBOL 2: pino de Navidad
+% Tronco 2
+newpath
+    400 5 moveto   % Esquina inferior izquierda del tronco
+    15 0 rlineto   % Línea hacia la derecha
+    0 250 rlineto   % Línea hacia arriba
+    -15 0 rlineto   % Línea hacia la izquierda
+    closepath        % Cierra el rectángulo
+    0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
+    fill             % Rellena el tronco con ese color
+stroke
+
+% Hojas de abajo
+newpath
+    0.3 0.7 0 setrgbcolor  % Color verde
+    300 150 moveto         
+    200 0 rlineto
+    -100 250 rlineto
+    closepath
+    fill
+stroke
+
+% Hojas del medio
+newpath
+    0.3 0.7 0 setrgbcolor  % Color verde
+    315 210 moveto         
+    170 0 rlineto
+    -85 190 rlineto
+    closepath
+    fill
+stroke
+
+% Hojas de arriba
+newpath
+    0.3 0.7 0 setrgbcolor  % Color verde
+    330 270 moveto         
+    140 0 rlineto
+    -70 130 rlineto
+    closepath
+    fill
+stroke
+
+% PELOTA
+% Por hacer
+
+% SOL
+newpath
+    1 0.83 0 setrgbcolor  % Color amarillo-naranja
+    600 750 40 0 360 arc % Pintar círculo
+    % Faltan los rayos de luz
 stroke
 
 showpage

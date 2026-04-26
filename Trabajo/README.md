@@ -68,6 +68,11 @@ Versión 2 - Señal luminosa y acústica.
 
 El terminal positivo del **buzzer** está conectado al **pin 11** del Arduino.
 
+Circuito del módulo **Receptor**:
+
+Versión 1 - Sin display.
+![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor_v1.png)
+El pulsador está conectado al **pin 7** del Arduino.
 
 ## Desarrollo Software
 
@@ -77,3 +82,9 @@ Permite escribir una frase en nuestro ordenador y hacer que la placa Arduino lo 
 Versión 1: [transmisor_v1.ino](https://github.com/ruiz314/PDIH/blob/main/Trabajo/ficheros/transmisor_v1.ino)
 
 Versión 2: [transmisor_v2.ino](https://github.com/ruiz314/PDIH/blob/main/Trabajo/ficheros/transmisor_v2.ino)
+
+
+### Módulo Receptor (Morse a Texto)
+La placa Arduino mide la duración de la señal digital enviada con el interruptor para interpretarla según las reglas del código Morse.
+
+Versión 1: [receptor_v1.ino](https://github.com/ruiz314/PDIH/blob/main/Trabajo/ficheros/receptor_v1.ino)

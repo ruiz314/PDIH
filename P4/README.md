@@ -19,7 +19,11 @@ Como ampliación para los árboles se podrían dibujar las ramas que sujetan las
 [Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio1.pdf)
 
 2. Página en la que se muestre el diseño de una **tarjeta de visita**.
-3. Página en la que se muestre el dibujo de un **corazón y una poesía**.
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer2.jpg)
+
+[Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio2.ps)
+
+4. Página en la que se muestre el dibujo de un **corazón y una poesía**.
 
 ## Requisitos ampliados
 

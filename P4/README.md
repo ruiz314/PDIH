@@ -4,7 +4,7 @@ El objetivo principal es conocer cómo utilizar el lenguaje Postscript a nivel b
 ## Requisitos mínimos
 
 1. Página en la que se muestre el dibujo de unos **árboles**.
-![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer1.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer1_completo.jpg)
 
 En este primer ejercicio se ha creado una escena que incluye dos tipos de árboles (un árbol de copa redonda y un pino), una pelota, el suelo y un sol. 
 
@@ -13,6 +13,10 @@ Para no tener problemas con la _superposición_ en los árboles primero se dibuj
 También se han usado distintos colores paras las hojas del árbol de copa redonda para dar sensación de luz, sombras y hojas nuevas.
 
 Como ampliación para los árboles se podrían dibujar las ramas que sujetan las hojas en el de copa redonda. O dibujar algún fruto como unas manzanas (círculos rojos). Para el pino se podría haber decorado como un pino de Navidad.
+
+[Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio1.ps)
+
+[Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio1.pdf)
 
 2. Página en la que se muestre el diseño de una **tarjeta de visita**.
 3. Página en la que se muestre el dibujo de un **corazón y una poesía**.

@@ -1,0 +1,56 @@
+%!
+% Ejercicio 2. Página en la que se muestre el diseño de una tarjeta de visita.
+
+% ----------------------- 
+% Apaisar la página
+% ----------------------- 
+<< /PageSize [842 595] >> setpagedevice 
+
+% ----------------------- 
+% Declarar tipo de fuente
+% ----------------------- 
+/Times-Roman findfont % Fuente
+20 scalefont % Escala
+setfont % Establecer como la fuente actual
+
+% ----------------------- 
+% Dibujo a la izquierda
+% ----------------------- 
+newpath % Círculo
+    0.7 setgray % color gris claro
+    3 setlinewidth
+    200 300 80 0 360 arc   
+    fill
+stroke
+
+newpath % Circunferencia
+    0.3 setgray % color gris oscuro
+    3 setlinewidth
+    200 300 80 0 360 arc  
+stroke
+
+% ----------------------- 
+% Información a la derecha
+% ----------------------- 
+newpath % Título en negro
+    0 setgray % Negro
+    450 300 moveto
+    (Ines Ruiz) show
+stroke
+
+newpath % Subtítulo
+    0.3 setgray % color gris oscuro
+    450 280 moveto
+    (Ingeniera Informatica) show
+stroke
+
+newpath % Dirección
+    450 260 moveto
+    (Calle del Periodista Daniel Saucedo Aranda) show
+    
+    450 240 moveto
+    (18014 Granada) show
+stroke
+
+showpage
+%EOF

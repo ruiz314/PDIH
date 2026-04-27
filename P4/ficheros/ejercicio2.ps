@@ -10,7 +10,7 @@
 % Declarar tipo de fuente
 % ----------------------- 
 /Times-Roman findfont % Fuente
-20 scalefont % Escala
+25 scalefont % Escala
 setfont % Establecer como la fuente actual
 
 % ----------------------- 
@@ -29,6 +29,12 @@ newpath % Circunferencia
     200 300 80 0 360 arc  
 stroke
 
+newpath % Letras dentro del círculo
+    170 290 moveto
+    1 1 1 setrgbcolor
+    (PDIH) show
+stroke
+
 % ----------------------- 
 % Información a la derecha
 % ----------------------- 
@@ -38,12 +44,14 @@ newpath % Título en negro
     (Ines Ruiz) show
 stroke
 
+/Times-Italic findfont 14 scalefont setfont
 newpath % Subtítulo
     0.3 setgray % color gris oscuro
     450 280 moveto
     (Ingeniera Informatica) show
 stroke
 
+/Times-Roman findfont 20 scalefont setfont
 newpath % Dirección
     450 260 moveto
     (Calle del Periodista Daniel Saucedo Aranda) show
@@ -52,5 +60,10 @@ newpath % Dirección
     (18014 Granada) show
 stroke
 
+newpath % Teléfono
+    0.23 0.9 0 setrgbcolor  % Color verde
+    450 220 moveto
+    (Tlf. 958 24 28 02) show
+stroke
 showpage
 %EOF

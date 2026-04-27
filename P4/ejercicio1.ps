@@ -1,22 +1,26 @@
 %!
 % Ejercicio 1. Página en la que se muestre el dibujo de unos árboles.
 
+% -----------------------
 % Suelo
+% -----------------------
 newpath
-    0 0 moveto % Extremo izquierdo
-    790 0 rlineto % Extremo derecho
-    10 setlinewidth
-    0 1 0 setrgbcolor  % Color verde
+    0 0 moveto % Mueve el "lápiz" a la coordenada (0,0), la esquina inferior izquierda
+    790 0 rlineto % Dibuja una línea horizontal hacia la derecha
+    10 setlinewidth % Establece el grosor de línea
+    0 1 0 setrgbcolor  % Establece color: verde (R=0, G=1, B=0)
 stroke
 
+% -----------------------
 % ÁRBOL 1: copa circular
+% -----------------------
 % Tronco 1: la parte de abajo es más ancha que la de arriba
 newpath
     150 5 moveto   % Esquina inferior izquierda del tronco
     30 0 rlineto   % Línea hacia la derecha
-    -5 350 rlineto   % Línea hacia arriba
+    -5 350 rlineto   % Línea hacia arriba y un poco hacia la izquierda
     -20 0 rlineto   % Línea hacia la izquierda
-    closepath        % Cierra el rectángulo
+    closepath        % Cierra el rectángulo uniendo el últimmo punto con el primero
     0.5 0.25 0 setrgbcolor  % Color marrón (mezcla de Rojo y Verde)
     fill             % Rellena el tronco con ese color
 stroke
@@ -24,13 +28,13 @@ stroke
 % Copa del árbol 1
 newpath % Abajo izq
     0.25 0.8 0 setrgbcolor  % Color verde
-    135 350 60 0 360 arc % Pintar círculo
+    135 350 60 0 360 arc % Pintar círculo completo
     fill
 stroke
 
 newpath % Abajo en medio
     0.25 0.8 0 setrgbcolor  % Color verde
-    178 324 35 0 360 arc % Pintar círculo
+    175 324 35 0 360 arc % Pintar círculo
     fill
 stroke
 
@@ -64,7 +68,9 @@ newpath % Punta del árbol
     fill
 stroke
 
+% -----------------------
 % ÁRBOL 2: pino de Navidad
+% -----------------------
 % Tronco 2
 newpath
     400 5 moveto   % Esquina inferior izquierda del tronco
@@ -79,6 +85,16 @@ stroke
 % Hojas de abajo
 newpath
     0.3 0.7 0 setrgbcolor  % Color verde
+    285 90 moveto         
+    230 0 rlineto
+    -115 310 rlineto
+    closepath
+    fill
+stroke
+
+% Hojas de medio-bajo
+newpath
+    0.3 0.7 0 setrgbcolor  % Color verde
     300 150 moveto         
     200 0 rlineto
     -100 250 rlineto
@@ -86,7 +102,7 @@ newpath
     fill
 stroke
 
-% Hojas del medio
+% Hojas del medio-alto
 newpath
     0.3 0.7 0 setrgbcolor  % Color verde
     315 210 moveto         
@@ -106,15 +122,49 @@ newpath
     fill
 stroke
 
+% -----------------------
 % PELOTA
-% Por hacer
-
-% SOL
+% -----------------------
+% Interior de la pelota
 newpath
-    1 0.83 0 setrgbcolor  % Color amarillo-naranja
-    600 750 40 0 360 arc % Pintar círculo
-    % Faltan los rayos de luz
+    0.73 1 0.3 setrgbcolor  % Color 
+    300 30 20 0 360 arc % Pintar círculo
+    fill
 stroke
 
-showpage
+% Filo de la PELOTA
+newpath
+    0.9 0 0 setrgbcolor  % Color 
+    300 30 20 0 360 arc % Pintar círculo
+    5 setlinewidth % Determinar grosor de borde
+stroke
+
+% -----------------------
+% SOL
+% -----------------------
+newpath
+    1 0.83 0 setrgbcolor  % Color amarillo-naranja
+    600 750 40 0 360 arc % Pintar círculo cerca de la esquina superior derecha
+stroke
+
+% Rayos del SOL
+newpath % Rayo horizontal
+    1 0.83 0 setrgbcolor  % Color amarillo-naranja
+    550 750 moveto
+    -80 0 rlineto
+stroke
+
+newpath % Rayo oblicuo arriba
+    1 0.83 0 setrgbcolor  % Color amarillo-naranja
+    550 780 moveto
+    -80 25 rlineto
+stroke
+
+newpath % Rayo oblicuo abajo
+    1 0.83 0 setrgbcolor  % Color amarillo-naranja
+    550 720 moveto
+    -80 -25 rlineto
+stroke
+
+showpage % Imprime el resultado final
 %EOF

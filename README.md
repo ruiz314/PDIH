@@ -14,4 +14,4 @@ Asignatura Periféricos y Dispositivos de Interfaz Humana
 - [P4](https://github.com/ruiz314/PDIH/tree/main/P4). El lenguaje Postscript 
 
 ## Trabajo
-Trabajo de teoría sobre el [código Morse en Arduino](https://github.com/ruiz314/PDIH/tree/main/trabajo)
+Trabajo de teoría sobre el [código Morse en Arduino](https://github.com/ruiz314/PDIH/tree/main/Trabajo).

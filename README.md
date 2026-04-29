@@ -11,3 +11,7 @@ Asignatura Periféricos y Dispositivos de Interfaz Humana
 - [P1](https://github.com/ruiz314/PDIH/tree/main/P1). Entrada/Salida utilizando interrupciones con lenguaje C
 - [P2](https://github.com/ruiz314/PDIH/tree/main/P2). Uso de bibliotecas de programación de interfaces de usuario en modo texto
 - [P3](https://github.com/ruiz314/PDIH/tree/main/P3). Experimentación con Arduino
+- [P4](https://github.com/ruiz314/PDIH/tree/main/P4). El lenguaje Postscript 
+
+## Trabajo
+Trabajo de teoría sobre el [código Morse en Arduino](https://github.com/ruiz314/PDIH/tree/main/trabajo)

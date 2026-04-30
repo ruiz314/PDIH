@@ -23,7 +23,7 @@ La codificación empleada para la traducción es la siguiente:
 |   B   | $-...$ |   O   | $---$  |    2   | $..---$|
 |   C   | $-.-.$ |   P   | $.--.$ |    3   | $...--$|
 |   D   |  $-..$ |   Q   | $--.-$ |    4   | $....-$|
-|   E   |   $.$  |   R   | $.-.$} |    5   | $.....$|
+|   E   |   $.$  |   R   | $.-.$  |    5   | $.....$|
 |   F   | $..-.$ |   S   | $...$  |    6   | $-....$|
 |   G   | $--.$  |   T   |  $-$   |    7   | $--...$|
 |   H   | $....$ |   U   | $..-$  |    8   | $---..$|
@@ -54,6 +54,10 @@ Los **componentes eléctricos** utilizados para el **receptor** de código Morse
 - Placa de pruebas (_protoboard_)
 - Cables para conectar los componentes
 - Cable USB para conectar placa Arduino con el ordenador
+- Display a elegir
+  - Display de 7 segmentos
+  - Matriz LED 8x8
+  - Pantalla LCD
 
 ### Esquema de conexión
 Circuito del módulo **Transmisor**:
@@ -73,6 +77,16 @@ Circuito del módulo **Receptor**:
 Versión 1 - Sin display.
 ![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor_v1.png)
 El pulsador está conectado al **pin 7** del Arduino.
+
+Versión 2 - Display de 7 segmentos
+Esta versión solo la he simulado en Tinkercad, no disponía del display físico.
+[Enlace a Tinkercad](https://www.tinkercad.com/things/khiE0ialxRh-receptor2/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=02IYQ_Bf-XRoRL0ghmL85n7E9Ht5Yal9NNcyyh3Zwx0)
+
+Versión 3 - Matriz LED 8x8
+Este componente no está en Tinkercad por lo que no he podido simularlo antes de montar el circuito físico.
+
+Versión 4 - Pantalla LCD
+Si me da tiempo consideraré esta versión, sino se quedará como trabajo a futuro.
 
 ## Desarrollo Software
 

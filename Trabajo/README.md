@@ -1,5 +1,6 @@
 # Código Morse usando Arduino
 Memoria del proyecto: [doc/memoria.pdf](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/memoria_proyecto.pdf)
+Presentación: [enlace a Canva](https://canva.link/apihdbxe9odjvdp)
 
 ## Introducción
 
@@ -17,26 +18,22 @@ Se establecen unas reglas:
 
 La codificación empleada para la traducción es la siguiente:
 
-| Letra | Código | Letra | Código | Número | Código |
-|-------|--------|-------|--------|--------|--------|
-|   A   |  $.-$  |   N   |  $-.$  |    1   | $.----$|
-|   B   | $-...$ |   O   | $---$  |    2   | $..---$|
-|   C   | $-.-.$ |   P   | $.--.$ |    3   | $...--$|
-|   D   |  $-..$ |   Q   | $--.-$ |    4   | $....-$|
-|   E   |   $.$  |   R   | $.-.$  |    5   | $.....$|
-|   F   | $..-.$ |   S   | $...$  |    6   | $-....$|
-|   G   | $--.$  |   T   |  $-$   |    7   | $--...$|
-|   H   | $....$ |   U   | $..-$  |    8   | $---..$|
-|   I   | $..$   |   V   | $...-$ |    9   | $----.$|
-|   J   | $.---$ |   W   | $.--$  |    0   | $-----$|
-|   K   | $-.-$  |   X   | $-..-$ | 
-|   L   | $.-..$ |   Y   | $-.--$ |
-|   M   | $--$   |   Z   | $--..$ |
+| Caracter | Código | Caracter | Código | Caracter | Código | Caracter | Código |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **A** | $.-$ | **J** | $.---$ | **S** | $...$ | **1** | $.----$ |
+| **B** | $-...$ | **K** | $-.-$ | **T** | $-$ | **2** | $..---$ |
+| **C** | $-.-.$ | **L** | $.-..$ | **U** | $..-$ | **3** | $...--$ |
+| **D** | $-..$ | **M** | $--$ | **V** | $...-$ | **4** | $....-$ |
+| **E** | $.$ | **N** | $-.$ | **W** | $.--$ | **5** | $.....$ |
+| **F** | $..-.$ | **O** | $---$ | **X** | $-..-$ | **6** | $-....$ |
+| **G** | $--.$ | **P** | $.--.$ | **Y** | $-.--$ | **7** | $--...$ |
+| **H** | $....$ | **Q** | $--.-$ | **Z** | $--..$ | **8** | $---..$ |
+| **I** | $..$ | **R** | $.-.$ | **0** | $-----$ | **9** | $----.$ |
 
 ### Objetivo del proyecto
 Este proyecto se centra en cómo un microcontrolador puede actuar como un traductor, convirtiendo texto digital en señales físicas y viceversa.
-- **Codificador** - **Modo transmisor**. Programar el Arduino para que, dada una cadena de texto (enviada desde el ordenador por el puerto serie), el Arduino la traduzca y la emita haciendo parpadear un LED y sonando un zumbador (buzzer) con los tiempos exactos del código Morse (punto corto, raya larga).
-- **Decodificador** - **Modo Receptor**. Conectar un pulsador (botón) al Arduino. El usuario hará pulsaciones cortas y largas. El programa deberá medir el tiempo que el botón está pulsado para distinguir entre "puntos" y "rayas", agruparlos, y mostrar por el monitor serie (y/o en una pequeña pantalla LCD) la letra o palabra que se está tecleando.
+- **Codificador** - **Modo Transmisor**. Programar el Arduino para que, dada una cadena de texto (enviada desde el ordenador por el puerto serie), el Arduino la traduzca y la emita haciendo parpadear un LED y sonando un zumbador (buzzer) con los tiempos exactos del código Morse (punto corto, raya larga).
+- **Decodificador** - **Modo Receptor**. Conectar un pulsador (botón) al Arduino. El usuario hará pulsaciones cortas y largas. El programa deberá medir el tiempo que el botón está pulsado para distinguir entre "puntos" y "rayas", agruparlos, y mostrar por el monitor serie (y/o en una pequeña pantalla) la letra o palabra que se está tecleando.
 
 ## Diseño Hardware
 ### Listado de componentes
@@ -60,32 +57,39 @@ Los **componentes eléctricos** utilizados para el **receptor** de código Morse
   - Pantalla LCD
 
 ### Esquema de conexión
-Circuito del módulo **Transmisor**:
+#### Circuito del módulo **Transmisor**:
 
-Versión 1 - Señal luminosa.
+**Versión 1** - Señal luminosa.
 ![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/transmisor_v1.png)
 
 Se puede observar que el **LED** está conectado al **pin 12** del Arduino. 
 
-Versión 2 - Señal luminosa y acústica.
+**Versión 2** - Señal luminosa y acústica.
 ![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/transmisor_v2.png)
 
 El terminal positivo del **buzzer** está conectado al **pin 11** del Arduino.
 
-Circuito del módulo **Receptor**:
+#### Circuito del módulo **Receptor**:
 
-Versión 1 - Sin display.
+**Versión 1** - Sin display.
 ![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor_v1.png)
+
 El pulsador está conectado al **pin 7** del Arduino.
 
-Versión 2 - Display de 7 segmentos
+**Versión 2** - Display de 7 segmentos
+
+![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor7_ej1.png)
+
 Esta versión solo la he simulado en Tinkercad, no disponía del display físico.
+
 [Enlace a Tinkercad](https://www.tinkercad.com/things/khiE0ialxRh-receptor2/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=02IYQ_Bf-XRoRL0ghmL85n7E9Ht5Yal9NNcyyh3Zwx0)
 
-Versión 3 - Matriz LED 8x8
+**Versión 3** - Matriz LED 8x8
+
 Este componente no está en Tinkercad por lo que no he podido simularlo antes de montar el circuito físico.
 
-Versión 4 - Pantalla LCD
+**Versión 4** - Pantalla LCD
+
 Si me da tiempo consideraré esta versión, sino se quedará como trabajo a futuro.
 
 ## Desarrollo Software

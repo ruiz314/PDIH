@@ -87,6 +87,7 @@ Esta versión solo la he simulado en Tinkercad, no disponía del display físico
 **Versión 3** - Matriz LED 8x8
 
 Este componente no está en Tinkercad por lo que no he podido simularlo antes de montar el circuito físico.
+[Enlace a Wokwi](https://wokwi.com/projects/462899145574781953)
 
 **Versión 4** - Pantalla LCD
 

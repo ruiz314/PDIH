@@ -1,5 +1,6 @@
 # Código Morse usando Arduino
 Memoria del proyecto: [doc/memoria.pdf](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/memoria_proyecto.pdf)
+Carpeta con videos: [enlace a Drive](https://drive.google.com/drive/folders/1-nxhgiJg5rF9BGvR2GCVBDPSpM-96K7R?usp=sharing)
 Presentación: [enlace a Canva](https://canva.link/apihdbxe9odjvdp)
 
 ## Introducción
@@ -55,6 +56,8 @@ Los **componentes eléctricos** utilizados para el **receptor** de código Morse
   - Display de 7 segmentos
   - Matriz LED 8x8
   - Pantalla LCD
+  - Pulsador
+  - Resistencia 10k Ohmios
 
 ### Esquema de conexión
 #### Circuito del módulo **Transmisor**:
@@ -82,16 +85,11 @@ El pulsador está conectado al **pin 7** del Arduino.
 
 Esta versión solo la he simulado en Tinkercad, no disponía del display físico.
 
-[Enlace a Tinkercad](https://www.tinkercad.com/things/khiE0ialxRh-receptor2/editel?returnTo=%2Fdashboard%2Fdesigns%2Fall&sharecode=02IYQ_Bf-XRoRL0ghmL85n7E9Ht5Yal9NNcyyh3Zwx0)
-
 **Versión 3** - Matriz LED 8x8
 
+![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor_v3.png)
+
 Este componente no está en Tinkercad por lo que no he podido simularlo antes de montar el circuito físico.
-[Enlace a Wokwi](https://wokwi.com/projects/462899145574781953)
-
-**Versión 4** - Pantalla LCD
-
-Si me da tiempo consideraré esta versión, sino se quedará como trabajo a futuro.
 
 ## Desarrollo Software
 
@@ -107,3 +105,5 @@ Versión 2: [transmisor_v2.ino](https://github.com/ruiz314/PDIH/blob/main/Trabaj
 La placa Arduino mide la duración de la señal digital enviada con el interruptor para interpretarla según las reglas del código Morse.
 
 Versión 1: [receptor_v1.ino](https://github.com/ruiz314/PDIH/blob/main/Trabajo/ficheros/receptor_v1.ino)
+
+Versión 3: [receptor_v3.ino](https://github.com/ruiz314/PDIH/blob/main/Trabajo/ficheros/receptor_v3.ino)

@@ -1,6 +1,8 @@
 # Código Morse usando Arduino
 Memoria del proyecto: [doc/memoria.pdf](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/memoria_proyecto.pdf)
+
 Carpeta con videos: [enlace a Drive](https://drive.google.com/drive/folders/1-nxhgiJg5rF9BGvR2GCVBDPSpM-96K7R?usp=sharing)
+
 Presentación: [enlace a Canva](https://canva.link/apihdbxe9odjvdp)
 
 ## Introducción
@@ -87,7 +89,7 @@ Esta versión solo la he simulado en Tinkercad, no disponía del display físico
 
 **Versión 3** - Matriz LED 8x8
 
-![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/receptor_v3.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/Trabajo/doc/images/4_receptor_circuito_v3.jpg)
 
 Este componente no está en Tinkercad por lo que no he podido simularlo antes de montar el circuito físico.
 

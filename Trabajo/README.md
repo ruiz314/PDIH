@@ -58,8 +58,8 @@ Los **componentes eléctricos** utilizados para el **receptor** de código Morse
   - Display de 7 segmentos
   - Matriz LED 8x8
   - Pantalla LCD
-  - Pulsador
-  - Resistencia 10k Ohmios
+- Pulsador
+- Resistencia 10k Ohmios
 
 ### Esquema de conexión
 #### Circuito del módulo **Transmisor**:

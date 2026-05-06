@@ -1,0 +1,66 @@
+%!
+% Ejercicio 3. Página en la que se muestre el dibujo de un corazón y una poesía.
+
+% ----------------------- 
+% Apaisar la página
+% ----------------------- 
+<< /PageSize [842 595] >> setpagedevice 
+
+% ----------------------- 
+% Dibujo del corazón
+% ----------------------- 
+newpath % Parte izquierda
+    1 0 0 setrgbcolor  % Color rojo
+    3 setlinewidth
+    200 300 60 0 180 arc  
+    fill
+stroke
+newpath % Parte derecha
+    1 0 0 setrgbcolor  % Color rojo
+    320 300 60 0 180 arc   
+    fill
+stroke
+newpath % Pico (triángulo)
+    1 0 0 setrgbcolor  % Color rojo
+    140 300 moveto % Esquina superior izquierda
+    240 0 rlineto   % Línea hacia la derecha
+    -120 -120 rlineto   % Línea hacia abajo-izq
+    closepath 
+    fill
+stroke
+
+% ----------------------- 
+% Poesía
+% ----------------------- 
+/Times-Italic findfont 18 scalefont setfont % Fuente
+newpath
+    0 0.2 1 setrgbcolor  % Color azul oscuro
+    450 300 moveto 
+    (Dale limosna, mujer,) show
+stroke
+
+newpath
+    0 0.3 1 setrgbcolor  % Color azul
+    450 280 moveto 
+    (que no hay en la vida nada,) show
+stroke
+
+newpath
+    0 0.4 1 setrgbcolor  % Color azul
+    450 260 moveto 
+    (como la pena de ser) show
+stroke
+
+newpath
+    0 0.5 1 setrgbcolor  % Color azul
+    450 240 moveto 
+    (ciego en Granada.) show
+stroke
+
+newpath
+    0 0.6 1 setrgbcolor  % Color azul claro
+    470 220 moveto 
+    (Francisco de Icaza.) show
+stroke
+showpage
+%EOF

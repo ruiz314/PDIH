@@ -26,6 +26,9 @@ Cargar las librerias del script pulsando el botón `Run`:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/8_cargarLibrerias.png)
 
 Establezco la carpeta de trabajo:
+```
+setwd("/Users/inesr/OneDrive/Documentos/GitHub/PDIH/P5/ejemplo")
+```
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/8_establecerRuta.png)
 
 Cargar archivo de ladrido de perro:
@@ -33,4 +36,15 @@ Cargar archivo de ladrido de perro:
 
 Ejecutar `perro` para obtener los datos del sonido:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/10_datosPerroGato.png)
-También he cargado el _Gato_
+También he cargado el _Gato_. 
+
+Mostrar los campos de ambos archivos:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/11_camposArchivo.png)
+Se puede observar que tienen dos canales cada uno, y que sus canales tienen la misma longitud. Además en el campo `pcm` podemos comprobar que es un  verdadero fichero de onda estándar.
+
+Escuchar el audio en el reproductor por defecto de Windows con la función `listen`:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/12_listenGato.png)
+
+Para mostrar la onda del sonido uso la función `plot`:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/13_plot.png)

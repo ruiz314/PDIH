@@ -21,3 +21,13 @@ install.packages('seewave', dep=TRUE)
 
 Cargar el ejemplo dado por el profesor:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/7_ejemploscript.png)
+
+Cargar las librerias del script pulsando el botón `Run`:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/8_cargarLibrerias.png)
+
+Cargar archivo de ladrido de perro:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/9_cargarPerro.png)
+
+Ejecutar `perro` para obtener los datos del sonido:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/10_datosPerroGato.png)
+También he cargado el _Gato_

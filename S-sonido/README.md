@@ -19,6 +19,7 @@ install.packages('seewave', dep=TRUE)
 ## Instalación de RStudio
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/6_instalacionRStudio.png)
 
+## Ejemplo
 Cargar el ejemplo dado por el profesor:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/7_ejemploscript.png)
 
@@ -48,3 +49,11 @@ Escuchar el audio en el reproductor por defecto de Windows con la función `list
 
 Para mostrar la onda del sonido uso la función `plot`:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/13_plot.png)
+
+## Script para probar las funciones implementadas  
+Crear un script de R para realizar las siguientes acciones: 
+1. Leer dos ficheros de sonido (WAV o MP3) de unos pocos segundos de duración cada uno. 
+2. Dibujar la forma de onda de ambos sonidos. 
+3. Obtener la información de las cabeceras de ambos sonidos. 
+4. Unir ambos sonidos en uno nuevo. 
+5. Reproducir la señal obtenida y almacenarla como un nuevo fichero WAV, denominado “unidos.wav”. 

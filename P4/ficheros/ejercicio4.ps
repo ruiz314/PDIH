@@ -1,0 +1,75 @@
+%!
+% Ejercicio 4. Diana con dibujo.
+
+% ----------------------- 
+% Apaisar la página
+% ----------------------- 
+<< /PageSize [842 595] >> setpagedevice 
+
+% ----------------------- 
+% Diana: círculos concentricos con centro en (421, 297).
+% ----------------------- 
+% Círculo azul (grande)
+newpath 
+    0.1 0.1 1 setrgbcolor % Azul
+    3 setlinewidth
+    421 297 180 0 360 arc   
+    fill
+stroke
+
+% Círculo rojo
+newpath 
+    1 0 0 setrgbcolor % Rojo
+    3 setlinewidth
+    421 297 160 0 360 arc   
+    fill
+stroke
+
+% Círculo verde
+newpath 
+    0.33 0.67 0 setrgbcolor % Verde
+    3 setlinewidth
+    421 297 140 0 360 arc   
+    fill
+stroke
+
+% Círculo lila
+newpath 
+    1 0.25 0.7 setrgbcolor % Lila
+    3 setlinewidth
+    421 297 120 0 360 arc   
+    fill
+stroke
+
+% Círculo amarillo (pequeño)
+newpath 
+    1 1 0 setrgbcolor % Amarillo
+    3 setlinewidth
+    421 297 100 0 360 arc   
+    fill
+stroke
+
+% ----------------------- 
+% Cara sonriente
+% ----------------------- 
+
+370 250 translate
+100 100 scale
+14 12  8  [14 0 0 -12 0 12]
+{<
+eeeeeeeeeeeeeeeeeeeeeeee5577
+eeeeeeeeeeeeeeeeeeeeeeee5577
+eeffffffffffffffffffffee5577
+eeffff0000ffff0000ffffee5577
+eeffffffffffffffffffffee5577
+eeffffffffffffffffffffee5577
+eeffff00ffffffff00ffffee5577
+eeffffff00000000ffffffee5577
+eeeeeeeeeeeeeeeeeeeeeeee5577
+eeeeeeeeeeeeeeeeeeeeeeee5577
+5577557755775577557755775577
+5577557755775577557755775577
+>}
+image
+
+%EOF

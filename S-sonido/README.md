@@ -25,6 +25,9 @@ Cargar el ejemplo dado por el profesor:
 Cargar las librerias del script pulsando el botón `Run`:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/8_cargarLibrerias.png)
 
+Establezco la carpeta de trabajo:
+![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/8_establecerRuta.png)
+
 Cargar archivo de ladrido de perro:
 ![img](https://github.com/ruiz314/PDIH/blob/main/S-sonido/images/9_cargarPerro.png)
 

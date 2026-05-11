@@ -6,12 +6,14 @@ Asignatura Periféricos y Dispositivos de Interfaz Humana
 - [Seminario LKM. Módulos cargables del kernel (LKM)](https://github.com/ruiz314/PDIH/tree/main/S-LKM)
 - [Seminario Tesseract](https://github.com/ruiz314/PDIH/tree/main/S-ocr-tesseract)
 - [Seminario Arduino](https://github.com/ruiz314/PDIH/tree/main/S-arduino)
+- [Seminario Sonido](https://github.com/ruiz314/PDIH/tree/main/S-sonido)
 
 ## Prácticas
 - [P1](https://github.com/ruiz314/PDIH/tree/main/P1). Entrada/Salida utilizando interrupciones con lenguaje C
 - [P2](https://github.com/ruiz314/PDIH/tree/main/P2). Uso de bibliotecas de programación de interfaces de usuario en modo texto
 - [P3](https://github.com/ruiz314/PDIH/tree/main/P3). Experimentación con Arduino
-- [P4](https://github.com/ruiz314/PDIH/tree/main/P4). El lenguaje Postscript 
+- [P4](https://github.com/ruiz314/PDIH/tree/main/P4). El lenguaje Postscript
+- [P5](https://github.com/ruiz314/PDIH/tree/main/P5).Experimentación con el sistema de salida de sonido 
 
 ## Trabajo
 Trabajo de teoría sobre el [código Morse en Arduino](https://github.com/ruiz314/PDIH/tree/main/Trabajo).

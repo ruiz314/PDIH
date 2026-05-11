@@ -23,7 +23,10 @@ Como ampliación para los árboles se podrían dibujar las ramas que sujetan las
 
 [Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio2.ps)
 
-4. Página en la que se muestre el dibujo de un **corazón y una poesía**.
+3. Página en la que se muestre el dibujo de un **corazón y una poesía**.
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer3.jpg)
+
+[Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio3.ps)
 
 ## Requisitos ampliados
 

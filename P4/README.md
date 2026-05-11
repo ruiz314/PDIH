@@ -23,12 +23,29 @@ Como ampliación para los árboles se podrían dibujar las ramas que sujetan las
 
 [Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio2.ps)
 
+[Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio2.pdf)
+
 3. Página en la que se muestre el dibujo de un **corazón y una poesía**.
 ![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer3.jpg)
 
 [Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio3.ps)
 
+[Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio3.pdf)
+
 ## Requisitos ampliados
 
 4. Ejercicio en el que se muestre la imagen de la **sonrisa**, en **apaisado**, dentro de una serie de círculos concéntricos de diferentes colores.
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer4.jpg)
+
+[Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio4.ps)
+
+[Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio4.pdf)
+
 5. Ejercicio en el que se creen **dos páginas**, mostrando en la primera una **tabla de datos** inventados y en la segunda un texto y una **gráfica** inventada (los dos ejes y una representación gráfica sencilla en forma de cresta).
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P4/img/ejer5.jpg)
+
+[Fichero ps](https://github.com/ruiz314/PDIH/blob/main/P4/ficheros/ejercicio5.ps)
+
+[Documento PDF](https://github.com/ruiz314/PDIH/blob/main/P4/PDF/ejercicio5.pdf)

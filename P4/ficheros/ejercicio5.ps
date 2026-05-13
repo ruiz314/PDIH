@@ -1,0 +1,99 @@
+%!
+% Ejercicio 5. Dos páginas (Tabla y Gráfica)
+
+% ----------------------- 
+% PÁGINA 1: TABLA DE DATOS
+% ----------------------- 
+/Times-Bold findfont 24 scalefont setfont
+newpath
+    200 700 moveto
+    (Mi tabla de datos: Ventas) show
+
+% Dibujar las líneas de la cuadrícula de la tabla
+newpath
+    % Líneas horizontales
+    150 650 moveto 400 650 lineto
+    150 620 moveto 400 620 lineto
+    150 500 moveto 400 500 lineto
+    
+    % Líneas verticales
+    150 650 moveto 150 500 lineto
+    275 650 moveto 275 500 lineto
+    400 650 moveto 400 500 lineto
+    
+    2 setlinewidth 
+    0 0 0 setrgbcolor % Negro
+stroke
+
+% Rellenar los textos de la tabla
+/Times-Roman findfont 16 scalefont setfont
+
+% Cabeceras
+newpath 170 630 moveto (Mes) show
+newpath 300 630 moveto (Ventas) show
+
+% Datos inventados
+newpath 170 590 moveto (Enero) show
+newpath 300 590 moveto (10) show
+
+newpath 170 550 moveto (Febrero) show
+newpath 300 550 moveto (50) show
+
+newpath 170 510 moveto (Marzo) show
+newpath 300 510 moveto (20) show
+
+% Terminar la primera página
+showpage 
+
+
+% ----------------------- 
+% PÁGINA 2: GRÁFICA
+% ----------------------- 
+% Al haber hecho showpage, empezamos un lienzo en blanco nuevo.
+
+/Times-Bold findfont 24 scalefont setfont
+newpath
+    200 700 moveto
+    (Grafica de Ventas) show
+
+% Dibujar los Ejes de coordenadas (X e Y)
+newpath
+    % Eje Y (Vertical)
+    150 400 moveto
+    150 600 lineto 
+    
+    % Eje X (Horizontal)
+    150 400 moveto
+    450 400 lineto 
+    
+    3 setlinewidth 
+    0 0 0 setrgbcolor % Negro
+stroke
+
+% Dibujar la gráfica
+newpath
+    150 400 moveto     % Origen
+    200 450 lineto     % Sube a 10 (Enero)
+    300 580 lineto     % Pico máximo de 50 (Febrero)
+    400 480 lineto     % Baja a 20 (Marzo)
+    
+    2 setlinewidth
+    1 0 0 setrgbcolor  % Color rojo
+stroke
+
+% Textos y etiquetas de los ejes
+/Times-Roman findfont 12 scalefont setfont
+0 0 0 setrgbcolor      % Volver a negro para el texto
+
+% Etiquetas Eje X
+newpath 190 380 moveto (Ene) show
+newpath 290 380 moveto (Feb) show
+newpath 390 380 moveto (Mar) show
+
+% Etiquetas Eje Y
+newpath 120 450 moveto (10) show
+newpath 120 580 moveto (50) show
+
+% Terminar la segunda página
+showpage 
+%EOF

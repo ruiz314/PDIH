@@ -1,0 +1,272 @@
+\documentclass[a4paper]{article}
+
+%%%%%%%% CREATE DOCUMENT STRUCTURE %%%%%%%%
+%% Language and font encodings
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{listings} % Para incluir código
+
+\usepackage{xcolor}   % Colores para el código
+% Definición de colores
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+
+% Configuración del estilo para PostScript
+\lstdefinelanguage{PostScript}{
+  morekeywords={
+    moveto, lineto, rlineto, arc, closepath, stroke, fill, 
+    newpath, showpage, setlinewidth, setgray, setrgbcolor,
+    findfont, scalefont, setfont, show, def, setpagedevice
+  },
+  sensitive=true,
+  morecomment=[l]{\%},
+  %morestring=[b](,
+  %morestring=[b][\color{codepurple}]{)}
+  stringstyle=\color{codepurple}
+}
+
+\lstset{        
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\small, % Fuente monoespaciada
+    %breakatwhitespace=false,         
+    breaklines=true,    % Saltar líneas largas      
+    captionpos=b,   
+    commentstyle=\color{codegreen},
+    extendedchars=true, % Para las tildes
+    frame=single,               % Marco alrededor del código
+    keepspaces=true,                 
+    keywordstyle=\color{bluekeywords}\bfseries,
+    language=PostScript,
+    literate= {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1, % Para las tildes y caracteres del español
+    numbers=left,   % Números de línea a la izquierda                 
+    numbersep=5pt,   
+    numberstyle=\tiny\color{codegray},           
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,     
+    stringstyle=\color{codepurple},                  
+    tabsize=2
+}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{sectsty}
+
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{movie15} %Para añadir video
+
+%% Referencias/Bibliografía
+%\usepackage[backend=biber, style=apa]{biblatex}
+%\addbibresource{ref.bib} % Nombre del archivo con las referencias
+
+
+\usepackage[colorinlistoftodos]{todonotes}
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+
+
+%Links de referencias
+\usepackage[hidelinks]{hyperref} % Hace que las referencias sean clicables
+\newcommand{\myref}[1]{\textsuperscript{\textbf{\ref{#1}}}} % Define un estilo propio
+
+\usepackage{pdfpages} % Para añadir PDFs (vista esquemática)
+
+
+\usepackage{pdflscape} % Para páginas en orientación horizontal
+
+%%%%%%%% DOCUMENT %%%%%%%%
+\begin{document}
+
+%%%% Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 							% horizontal line and its thickness
+\center 
+ 
+% University
+\textsc{\LARGE Universidad de Granada}\\[1cm]
+
+% Document info
+\textsc{\Large Periféricos y Dispositivos de Interfaz Humana}\\[0.2cm]
+\textsc{\large Curso 2025/2026}\\[1cm] 										% Course Code
+\HRule \\[0.8cm]
+{ \huge \bfseries Práctica 4. El lenguaje Postscript}\\[0.7cm]								% Assignment
+\HRule \\[2cm]
+\large
+\emph{Autora:}\\
+Inés Ruiz Sánchez\\[1.5cm]													% Author info
+{\large \today}\\[5cm]
+\includegraphics[width=0.3\textwidth]{images/UGRlogo.png}\\[1cm] 	% University logo
+\vfill 
+\end{titlepage}
+
+%%\begin{abstract}
+%%Your abstract.
+%%\end{abstract}
+
+% Generar índice de contenidos y figuras
+\tableofcontents
+%\newpage
+\listoffigures
+\newpage
+
+%%%% SECTIONS
+\section{Introducción}
+El objetivo principal es conocer cómo utilizar el lenguaje Postscript a nivel básico. \\
+
+Los objetivos concretos de esta práctica son: 
+\begin{itemize}
+    \item Conocer la sintaxis básica del lenguaje Postscript.
+    \item Crear varios archivos y probar el funcionamiento con un visor Postscript. 
+    \item Transformar los ejemplos creados a otros formatos de archivo, como PDF. 
+\end{itemize}
+
+%\textit{Nota}: Las tildes en los trozos de código no se reconocen en \textit{LATEX} por lo que el carácter no se escribe. Es por eso por lo que o bien no aparece un caracter o bien el caracter no tiene tilde, pareciendo una falta ortográfica.\\
+
+En el anexo\myref{anexo:an} se incluyen los ficheros de códigos al completo. Para obtener los documentos PDFs de esta práctica he usado la página \url{https://online2pdf.com/en/ps2pdf} recomendada por el profesor.\\
+
+Repositorio en GitHub: \url{https://github.com/ruiz314/PDIH/tree/main/P4}
+
+\section{Requisitos mínimos}
+Para superar esta práctica los dos proyectos que deberán realizarse serán los siguientes: 
+
+\begin{itemize}
+    \item Página en la que se muestre el dibujo de unos árboles, similar al siguiente\myref{fig:1ejemplo1}:
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{images/ejemplos_guion/ejemplo1.png}
+        \caption{Ejercicio 1. Árboles}
+        \label{fig:1ejemplo1}
+    \end{figure}
+    
+    \item Página en la que se muestre el diseño de una tarjeta de visita, similar a la siguiente\myref{fig:2ejemplo2}:
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{images/ejemplos_guion/ejemplo2.png}
+        \caption{Ejercicio 2. Tarjeta de visita}
+        \label{fig:2ejemplo2}
+    \end{figure}
+    
+    \item Página en la que se muestre el dibujo de un corazón y una poesía\myref{fig:3ejemplo3}:
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{images/ejemplos_guion/ejemplo3.png}
+        \caption{Ejercicio 3. Dibujo con poesía}
+        \label{fig:3ejemplo3}
+    \end{figure}
+\end{itemize}
+
+\subsection{Ejercicio 1}\label{subsec:ej1}
+\input{ejercicios/01_ejer1}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 2}\label{subsec:ej2}
+\input{ejercicios/02_ejer2}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 3}\label{subsec:ej3}
+\input{ejercicios/03_ejer3}
+
+%----------------------------------------------------------------
+
+%% Section 2
+\section{Requisitos ampliados}
+Como requisitos ampliados (opcionales para subir nota) se propone:
+\begin{itemize}
+    \item Ejercicio en el que se muestre la imagen de la sonrisa, en apaisado, dentro de una serie de círculos concéntricos de diferentes colores.
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{images/ejemplos_guion/ejemplo4.png}
+        \caption{Ejercicio 4. Diana}
+        \label{fig:4ejemplo4}
+    \end{figure}
+    
+    \item Ejercicio en el que se creen dos páginas, mostrando en la primera una tabla de datos inventados y en la segunda un texto y una gráfica inventada (los dos ejes y una representación gráfica sencilla en forma de cresta).
+    \begin{figure}[H]
+        \includegraphics[width=0.7\textwidth]{images/ejemplos_guion/ejemplo5.png}
+        \caption{Ejercicio 5. Tabla con gráfica}
+        \label{fig:5ejemplo5}
+    \end{figure}
+\end{itemize}
+
+%----------------------------------------------------------------
+\subsection{Ejercicio 4}\label{subsec:ej4}
+\input{ejercicios/04_ejer4}
+
+%----------------------------------------------------------------
+\subsection{Ejercicio 5}\label{subsec:ej5}
+\input{ejercicios/05_ejer5}
+
+
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+
+\newpage
+\section{Anexo}\label{anexo:an}
+% --- Ejer 1
+\subsection{Código del Ejercicio 1.} \label{anexo:ej1} 
+\lstinputlisting[language=PostScript]{src/ejer1.ps}
+
+\subsection{Documento PDF del Ejercicio 1.} \label{anexo:pdf1}
+Documento PDF generado en el ejercicio 1:
+\includepdf[pages=-]{pdf/ejercicio1.pdf}
+
+% --- Ejer 2
+\subsection{Código del Ejercicio 2} \label{anexo:ej2} 
+\lstinputlisting[language=PostScript]{src/ejer2.ps}
+
+\subsection{Documento PDF del Ejercicio 2.} \label{anexo:pdf2}
+Al insertar el documento \textit{.pdf} en \textit{LATEX} se gira automáticamente. Documento PDF generado en el ejercicio 2:
+\includepdf[pages=-]{pdf/ejercicio2.pdf}
+
+% --- Ejer 3
+\subsection{Código del Ejercicio 3} \label{anexo:ej3} 
+\lstinputlisting[language=PostScript]{src/ejer3.ps}
+
+\subsection{Documento PDF del Ejercicio 3.} \label{anexo:pdf3}
+Documento PDF generado en el ejercicio 3:
+\includepdf[pages=-]{pdf/ejercicio3.pdf}
+
+% --- Ejer 4
+\subsection{Código del Ejercicio 4} \label{anexo:ej4} 
+\lstinputlisting[language=PostScript]{src/ejer4.ps}
+
+\subsection{Documento PDF del Ejercicio 4.} \label{anexo:pdf4}
+Documento PDF generado en el ejercicio 4:
+\includepdf[pages=-]{pdf/ejercicio4.pdf}
+
+\subsection{Código del profesor para \textit{imagen2}} \label{anexo:imagen2} 
+\lstinputlisting[language=PostScript]{src/imagen2.ps}
+
+\subsection{Documento PDF de \textit{imagen2}.} \label{anexo:pdfi2}
+Documento PDF generado con el código proporcionado por el profesor:
+\includepdf[pages=-]{pdf/imagen2.pdf}
+
+% --- Ejer 5
+\subsection{Código del Ejercicio 5} \label{anexo:ej5} 
+% Ejer5
+\lstinputlisting[language=PostScript]{src/ejer5.ps}
+
+\subsection{Documento PDF del Ejercicio 5.} \label{anexo:pdf5}
+Documento PDF de dos páginas generado en el ejercicio 5:
+\includepdf[pages=-]{pdf/ejercicio5.pdf}
+
+%\section{Bibliografía y referencias}
+%\printbibliography
+%\begin{itemize}
+%    \item Material proporcionado por el profesor.
+%    \item Para ultrasonido:\\ \url{https://www.geekfactory.mx/tutoriales-arduino/tutorial-sensor-ultrasonico-hc-sr04-con-arduino/} ; \url{https://www.luisllamas.es/medir-distancia-con-arduino-y-sensor-de-ultrasonidos-hc-sr04/}
+%\end{itemize}
+
+\end{document}

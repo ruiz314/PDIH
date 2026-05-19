@@ -1,0 +1,37 @@
+% Requisitos ampliados
+
+\subsection{Ejercicio 7}\label{subsec:ej7}
+La función \texttt{bwfilter()} aplica un filtro de frecuencia, eliminando las 
+muestras entre las frecuencias (en Hz) indicadas.
+\begin{lstlisting}[caption={Filtro de frecuencia}, label={lst:filtro}]
+filtro <- bwfilter(basico, f=basico@samp.rate, from=10000, to=20000, bandpass= FALSE, output = "Wave")
+
+writeWave(filtro, file.path("filtrado.wav"))
+\end{lstlisting}
+
+Al poner \texttt{f = basico@samp.rate} la función lee automáticamente la cabecera del archivo y aplica el filtro de frecuencias de manera exacta y sin errores.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/7_filtro.png}
+    \caption{Filtro de frecuencia}
+    \label{fig:filtro}
+\end{figure}
+
+En la Figura \ref{fig:filtro} da un aviso al ejecutar la función \texttt{writeWave}. Este aviso no afecta al ejercicio ya que el redondeo no es perceptible para el oído humano.\\
+
+Para ver información sobre el sonido uso la función \texttt{str} y la propia llamada al sonido. Se puede observar en \textit{Listing} \ref{lst:filtroinfo} y \textit{Figura} \ref{fig:filtroinfo}.
+\begin{lstlisting}[caption={Información del filtro de frecuencia}, label={lst:filtroinfo}]
+str(filtro)
+filtro
+\end{lstlisting}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/7_2infoFiltro.png}
+    \caption{Información del \textit{filtro}}
+    \label{fig:filtroinfo}
+\end{figure}
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 8}\label{subsec:ej8}

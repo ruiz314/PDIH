@@ -1,0 +1,17 @@
+% Ejercicio 5. Dibujar la forma de onda de la señal y reproducir el sonido resultante (una vez unidos). 
+Llamando a la función \textit{plot()} se genera una imagen con la onda resultante (Observar la Figura \ref{fig:img5}).
+\begin{lstlisting}[caption={Generación de gráfica de unión}, label={lst:graf_union}]
+# Generar y mostrar dibujo de la onda
+plot(extractWave(union, from=1, to=81886))
+
+# Reproducir sonido
+listen(union)
+\end{lstlisting}
+
+Además, para reproducir el sonido nuevo generado se usa la función \textit{listen(union)} y abre el reproductor en el ordenador. Se puede observar cómo se abre en la Figura \ref{fig:img4_1}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/5_ondaUnion.png}
+    \caption{Gráfica de la onda unida}
+    \label{fig:img5}
+\end{figure}

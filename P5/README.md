@@ -13,18 +13,18 @@ Fichero de sonido con [apellidos](https://github.com/ruiz314/PDIH/blob/main/P5/a
 
 Onda de nombre:
 
-![img](https://github.com/ruiz314/PDIH/blob/main/P5/onda_nombre.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_nombre.png)
 
 Onda de apellidos:
 
-![img](https://github.com/ruiz314/PDIH/blob/main/P5/onda_apellidos.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_apellidos.png)
 
 3. Obtener la información de las cabeceras de ambos sonidos. 
 4. Unir ambos sonidos en uno nuevo para escuchar el nombre y apellido correctamente. 
 
 5. Dibujar la forma de onda de la señal y reproducir el sonido resultante (una vez unidos). 
 
-![img](https://github.com/ruiz314/PDIH/blob/main/P5/onda_union.png)
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_union.png)
 
 6. Almacenar el sonido resultante en un archivo nuevo llamado “basico.wav”
 

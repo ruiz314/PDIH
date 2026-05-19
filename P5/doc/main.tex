@@ -1,0 +1,178 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{booktabs} % Tablas
+
+%% Referencias/Bibliografía
+%\usepackage[backend=biber, style=apa]{biblatex}
+%\addbibresource{ref.bib} % Nombre del archivo con las referencias
+
+%Links de referencias
+\usepackage[hidelinks]{hyperref} % Hace que las referencias sean clicables
+\newcommand{\myref}[1]{\textsuperscript{\textbf{\ref{#1}}}} % Define un estilo propio
+
+% Código
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Definición de colores estilo RStudio
+\definecolor{commentcolor}{RGB}{34,139,34}   % Verde
+\definecolor{keywordcolor}{RGB}{0,0,255}    % Azul
+\definecolor{stringcolor}{RGB}{163,21,21}     % Rojo oscuro
+\definecolor{backcolor}{RGB}{245,245,245}    % Gris muy claro
+
+\lstset{
+    language=R,                     % Lenguaje de programación
+    basicstyle=\ttfamily\small,      % Fuente monoespaciada pequeña
+    backgroundcolor=\color{backcolor}, % Color de fondo
+    commentstyle=\color{commentcolor}, % Color de comentarios
+    keywordstyle=\color{keywordcolor}\bfseries, % Color de palabras clave
+    stringstyle=\color{stringcolor},   % Color de cadenas de texto
+    numbers=left,                    % Números de línea a la izquierda
+    numberstyle=\tiny\color{gray},   % Estilo de los números
+    stepnumber=1,                    % Número en cada línea
+    breaklines=true,                 % Ajuste automático de línea
+    frame=single,                    % Recuadro simple alrededor del código
+    rulecolor=\color{black!10},      % Color del borde del recuadro
+    showstringspaces=false,          % No mostrar espacios en las cadenas
+    captionpos=b,                     % Título debajo del código
+    literate= {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1 % Para las tildes y caracteres del español
+}
+
+%%%%%%%% DOCUMENT %%%%%%%%
+\begin{document}
+
+%%%% Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 							% horizontal line and its thickness
+\center 
+ 
+% University
+\textsc{\LARGE Universidad de Granada}\\[1cm]
+
+% Document info
+\textsc{\Large Periféricos y Dispositivos de Interfaz Humana}\\[0.2cm]
+\textsc{\large Curso 2025/2026}\\[1cm] 										% Course Code
+\HRule \\[0.8cm]
+{ \huge \bfseries Práctica 5. Experimentación con el sistema de 
+salida de sonido}\\[0.7cm]								% Assignment
+\HRule \\[2cm]
+\large
+\emph{Autora:}\\
+Inés Ruiz Sánchez\\[1.5cm]													% Author info
+{\large \today}\\[5cm]
+\includegraphics[width=0.3\textwidth]{images/UGRlogo.png}\\[1cm] 	% University logo
+\vfill 
+\end{titlepage}
+
+%%\begin{abstract}
+%%Your abstract.
+%%\end{abstract}
+
+% Generar índice de contenidos y figuras
+\tableofcontents
+%\newpage
+\listoffigures
+\newpage
+
+%%%% SECTIONS
+\section{Introducción y objetivos}
+Los objetivos concretos de esta práctica son: 
+\begin{itemize}
+    \item Identificar y representar gráficamente la forma de onda de señales de sonido.
+    \item Conocer la estructura de un fichero típico de sonido (ficheros WAV). 
+    \item Entender y operar con los parámetros principales de una señal de sonido.
+\end{itemize}
+
+
+En el anexo\myref{anexo:an} se incluyen los ficheros de códigos al completo. \\
+
+Para obtener los ficheros WAV he usado la página \url{https://speechgen.io/}.\\
+
+Repositorio en GitHub: \url{https://github.com/ruiz314/PDIH/tree/main/P5}.\\
+
+Para poder trabajar con R y RStudio en mi ordenador personal realicé los seminarios y tutoriales proporcionados por el profesor. Se encuentran en el siguiente repositorio: \url{https://github.com/ruiz314/PDIH/tree/main/S-sonido}.
+
+\section{Requisitos mínimos}
+ Para superar esta práctica se proponen los siguientes ejercicios, que se podrán realizar en un mismo programa:
+
+\begin{itemize}
+    \item Crear dos ficheros de sonido (WAV) para realizar los siguientes ejercicios. En el primero debe escucharse el nombre de la persona que realiza la práctica. En el segundo debe escucharse el apellido.
+    \item Leer los dos ficheros de sonido creados y dibujar la forma de onda de ambos sonidos (por separado).
+
+    \item Obtener la información de las cabeceras de ambos sonidos.
+
+    \item Unir ambos sonidos en uno nuevo para escuchar el nombre y apellido correctamente.
+
+    \item Dibujar la forma de onda de la señal y reproducir el sonido resultante (una vez unidos).
+
+    \item Almacenar el sonido resultante en un archivo nuevo llamado ``basico.wav''  
+\end{itemize}
+
+\subsection{Ejercicio 1}\label{subsec:ej1}
+\input{ejercicios/ejercicio1}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 2}\label{subsec:ej2}
+\input{ejercicios/ejercicio2}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 3}\label{subsec:ej3}
+\input{ejercicios/ejercicio3}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 4}\label{subsec:ej4}
+\input{ejercicios/ejercicio4}
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 5}\label{subsec:ej5}
+\input{ejercicios/ejercicio5}
+
+%----------------------------------------------------------------
+
+\subsection{Ejercicio 6}\label{subsec:ej6}
+\input{ejercicios/ejercicio6}
+
+%% Section 2
+\section{Requisitos ampliados}
+Como requisitos ampliados (opcionales para subir nota) se propone:
+\begin{itemize}
+    \item Pasarle un filtro de frecuencia para eliminar las frecuencias entre 10.000Hz y 20.000Hz. Almacenar la señal obtenida como un fichero WAV denominado ``filtrado.wav''  
+    \item Tomar el sonido que se creó antes (lo tendremos en el archivo llamado ``basico.wav'') para aplicarle el efecto de eco. Guardar ese sonido en un archivo nuevo llamado ``eco.wav''. A continuación, se le debe dar la vuelta al sonido y almacenarlo como un fichero llamado ``alreves.wav''
+\end{itemize}
+
+%----------------------------------------------------------------
+
+\newpage
+\section{Anexo}\label{anexo:an}
+% --- Requisitos mínimos (Ejer 1-6)
+\subsection{Fichero con requisitos mínimos} \label{anexo:ej_obli} 
+\lstinputlisting[language=R]{src/ejercicios.R}
+
+% --- Requisitos ampliados (Ejer 7-8)
+%\subsection{Fichero con requisitos ampliados} \label{anexo:ej_optat} 
+%\lstinputlisting[language=R]{src/ejer2.R}
+
+
+%\section{Bibliografía y referencias}
+%\printbibliography
+
+\end{document}

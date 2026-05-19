@@ -35,6 +35,7 @@ Fichero con ejercicios: [ejercicios.R](https://github.com/ruiz314/PDIH/blob/main
 
 ## Requisitos ampliados
 7. Pasarle un filtro de frecuencia para eliminar las frecuencias entre 10.000Hz y 20.000Hz. Almacenar la señal obtenida como un fichero WAV denominado “filtrado.wav”  
+
 Fichero de sonido [filtrado.wav](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/filtrado.wav)
 
 Onda de filtrado.wav:
@@ -42,5 +43,17 @@ Onda de filtrado.wav:
 ![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_filtro.png)
 
 8. Tomar el sonido que se creó antes (lo tendremos en el archivo llamado “basico.wav”) para aplicarle el efecto de eco. Guardar ese sonido en un archivo nuevo llamado “eco.wav”. A continuación, se le debe dar la vuelta al sonido y almacenarlo como un fichero llamado “alreves.wav” 
+
+Fichero de sonido [filtrado.wav](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/eco.wav)
+
+Onda de eco.wav:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_eco.png)
+
+Fichero de sonido [alreves.wav](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/alreves.wav)
+
+Onda de alreves.wav:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_alreves.png)
 
 Fichero con ejercicios: [extra.R](https://github.com/ruiz314/PDIH/blob/main/P5/doc/src/extra.R)

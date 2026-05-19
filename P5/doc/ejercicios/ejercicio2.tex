@@ -1,0 +1,72 @@
+% Ejercicio 2
+Para cargar los ficheros de audio se usa la función \texttt{readWave()}:
+\begin{lstlisting}[caption={Cargar los ficheros de sonido en R}, label={lst:cargar_ficheros}]
+# Audio con el nombre
+nombre <- readWave('nombre.wav')
+nombre
+
+# Audio con los apellidos
+apellidos  <- readWave('apellidos.wav')
+apellidos
+\end{lstlisting}
+
+Llamar al fichero de sonido (líneas 3 y 7) hace que se muestre información como el número de muestras, la duración y el número de canales. Observar Figura \ref{fig:img2_1}.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/2_cargar.png}
+    \caption{Cargar y leer los ficheros de sonido}
+    \label{fig:img2_1}
+\end{figure}
+
+Los datos obtenidos son los siguientes (ver Cuadro \ref{tab:tabla1}):
+\begin{table}[ht]
+    \centering
+    \caption{Información de los objetos Wave: \texttt{nombre} y \texttt{apellidos}}
+    \label{tab:tabla1}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Parámetro} & \textbf{Objeto: \texttt{nombre}} & \textbf{Objeto: \texttt{apellidos}} \\
+        \midrule
+        Número de muestras & 32879 & 49007 \\
+        Duración (segundos) & 0.68 & 1.02 \\
+        Tasa de muestreo (Hz) & 48000 & 48000 \\
+        Canales & Stereo & Stereo \\
+        Formato PCM & TRUE & TRUE \\
+        Bit & 16 & 16 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Para obtener el dibujo de la onda la función \texttt{plot} necesita saber el número de muestras que tiene el fichero. Observamos que el fichero \textit{nombre} tiene $32879$ muestras y el fichero \textit{apellidos} tiene $49007$. 
+
+\begin{lstlisting}[caption={Comandos para dibujar las ondas}, label={lst:fun_plot1}]
+# Mostrar la onda del sonido
+plot( extractWave(nombre, from = 1, to = 32879) )
+
+plot( extractWave(apellidos, from = 1, to = 49007) )
+\end{lstlisting}
+
+Al usar la función \texttt{plot} obtenemos la gráfica que se muestra en la Figura \ref{fig:img2_2}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/2_2onda.png}
+    \caption{Cargar y leer los ficheros de sonido}
+    \label{fig:img2_2}
+\end{figure}
+
+El dibujo de la onda del archivo de sonido ``nombre.wav'' es el que se muestra en la Figura \ref{fig:img2_3}. El dibujo obtenido para el sonido de ``apellidos.wav'' se observa en la Figura \ref{fig:img2_4}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/2_3plot_nombre.png}
+    \caption{Dibujo de fichero ``nombre.wav''}
+    \label{fig:img2_3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/2_4plot_apellidos.png}
+    \caption{Dibujo de fichero ``apellidos.wav''}
+    \label{fig:img2_4}
+\end{figure}

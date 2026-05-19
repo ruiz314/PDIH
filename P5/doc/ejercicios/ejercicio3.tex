@@ -1,0 +1,16 @@
+% Ejercicio 3. Obtener la información de las cabeceras de ambos sonidos. 
+Usando la función \texttt{str()} se puede inspeccionar las cabeceras de archivos de sonido.
+\begin{lstlisting}[caption={Funciones para las cabeceras de los ficheros de sonido}, label={lst:cabeceras_ficheros}]
+str(nombre)
+str(apellidos)    
+\end{lstlisting}
+
+En la siguiente imagen se ve la información obtenida (Figura \ref{fig:cabeceras_fich}).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/3_cabeceras.png}
+    \caption{Cabeceras de los ficheros}
+    \label{fig:cabeceras_fich}
+\end{figure}
+
+Como ambos sonidos tienen dos canales, el atributo \textit{left} y el atributo \textit{right} valen lo mismo para cada sonido. Además, confirmamos que tienen dos canales porque la variable \textit{stereo} es verdadera.

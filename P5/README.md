@@ -5,9 +5,9 @@
 ## Requisitos mínimos
 1. Crear dos ficheros de sonido (WAV) para realizar los siguientes ejercicios. En el primero debe escucharse el nombre de la persona que realiza la práctica. En el segundo debe escucharse el apellido. 
 
-Fichero de sonido con [nombre](https://github.com/ruiz314/PDIH/blob/main/P5/nombre.wav)
+Fichero de sonido con [nombre](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/nombre.wav)
 
-Fichero de sonido con [apellidos](https://github.com/ruiz314/PDIH/blob/main/P5/apellidos.wav)
+Fichero de sonido con [apellidos](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/apellidos.wav)
 
 2. Leer los dos ficheros de sonido creados y dibujar la forma de onda de ambos sonidos (por separado). 
 
@@ -28,13 +28,19 @@ Onda de apellidos:
 
 6. Almacenar el sonido resultante en un archivo nuevo llamado “basico.wav”
 
-Fichero de sonido con [basico](https://github.com/ruiz314/PDIH/blob/main/P5/basico.wav)
+Fichero de sonido con [basico](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/basico.wav)
 
 
 Fichero con ejercicios: [ejercicios.R](https://github.com/ruiz314/PDIH/blob/main/P5/doc/src/ejercicios.R)
 
 ## Requisitos ampliados
 7. Pasarle un filtro de frecuencia para eliminar las frecuencias entre 10.000Hz y 20.000Hz. Almacenar la señal obtenida como un fichero WAV denominado “filtrado.wav”  
+Fichero de sonido [filtrado.wav](https://github.com/ruiz314/PDIH/blob/main/P5/archivo_WAV/filtrado.wav)
+
+Onda de filtrado.wav:
+
+![img](https://github.com/ruiz314/PDIH/blob/main/P5/img_onda/onda_filtro.png)
+
 8. Tomar el sonido que se creó antes (lo tendremos en el archivo llamado “basico.wav”) para aplicarle el efecto de eco. Guardar ese sonido en un archivo nuevo llamado “eco.wav”. A continuación, se le debe dar la vuelta al sonido y almacenarlo como un fichero llamado “alreves.wav” 
 
 Fichero con ejercicios: [extra.R](https://github.com/ruiz314/PDIH/blob/main/P5/doc/src/extra.R)

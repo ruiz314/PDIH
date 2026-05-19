@@ -1,0 +1,15 @@
+% Ejercicio 6
+Para guardar en disco el nuevo sonido generado se llama a la función \textit{writeWave()} indicándole el sonido, y el nombre del fichero:
+\begin{lstlisting}[caption={Almacenar sonido union en fichero ``basico.wav''}, label={lst:almacen_union}]
+writeWave(union, file.path("basico.wav"))
+basico <- readWave('basico.wav')
+basico
+\end{lstlisting}
+
+A continuación, en la Figura \ref{fig:img6} se puede observar que la llamada a la función no genera ningún error y que el sonido ha sido almacenado con éxito. Además, se muestran los datos de la onda y coinciden con los datos de la onda \textit{union}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/6_basico.png}
+    \caption{Creación de ``basico.wav''}
+    \label{fig:img6}
+\end{figure}

@@ -48,7 +48,7 @@ plot(extractWave(filtro, from = 1, to = 81886))
 
 
 # Generación de eco
-filtroECO <- echo(filtro, f=basico@samp.rate, amp=c(0.8,0.4,0.2), delay=c(1,2,3), output="Wave")
+filtroECO <- echo(basico, f=basico@samp.rate, amp=c(0.8,0.4,0.2), delay=c(1,2,3), output="Wave")
 
 # Escuchar audio
 listen(filtroECO) 

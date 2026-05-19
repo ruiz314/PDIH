@@ -31,10 +31,10 @@ Onda de apellidos:
 Fichero de sonido con [basico](https://github.com/ruiz314/PDIH/blob/main/P5/basico.wav)
 
 
-Fichero con ejercicios: [ejercicios.R](https://github.com/ruiz314/PDIH/blob/main/P5/ejercicios.R)
+Fichero con ejercicios: [ejercicios.R](https://github.com/ruiz314/PDIH/blob/main/P5/doc/src/ejercicios.R)
 
 ## Requisitos ampliados
 7. Pasarle un filtro de frecuencia para eliminar las frecuencias entre 10.000Hz y 20.000Hz. Almacenar la señal obtenida como un fichero WAV denominado “filtrado.wav”  
 8. Tomar el sonido que se creó antes (lo tendremos en el archivo llamado “basico.wav”) para aplicarle el efecto de eco. Guardar ese sonido en un archivo nuevo llamado “eco.wav”. A continuación, se le debe dar la vuelta al sonido y almacenarlo como un fichero llamado “alreves.wav” 
 
-Fichero con ejercicios: [extra.R](https://github.com/ruiz314/PDIH/blob/main/P5/extra.R)
+Fichero con ejercicios: [extra.R](https://github.com/ruiz314/PDIH/blob/main/P5/doc/src/extra.R)

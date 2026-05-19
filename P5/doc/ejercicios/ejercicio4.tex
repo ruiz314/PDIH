@@ -1,0 +1,32 @@
+% Ejercicio 4. Unir ambos sonidos en uno nuevo para escuchar el nombre y apellido correctamente.
+Con la función \texttt{pastew()} se unen dos sonidos. Hay que prestar atención al orden, pues el primer argumento será el segundo sonido que se escuche y el segundo argumento será el primer sonido que se escuche.
+\begin{lstlisting}[caption={Función para unir dos sonidos}, label={lst:union_sonidos}]
+union <- pastew(apellidos, nombre, output="Wave")
+\end{lstlisting}
+
+En la Figura \ref{fig:img4_1} se puede observar la información del sonido.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/4_1union.png}
+    \caption{Unión de dos sonidos}
+    \label{fig:img4_1}
+\end{figure}
+
+En el Cuadro \ref{tab:tabla2} se pueden observar los datos de los tres ficheros. La duración del fichero \textit{union} es la suma de las duraciones del fichero \textit{nombre} y el fichero \textit{apellidos}, aproximadamente. Sucede lo mismo con el número de muestras: $32,879 + 49,007 = 81,886$.
+\begin{table}[ht]
+    \centering
+    \caption{Comparativa de los objetos Wave: \texttt{nombre}, \texttt{apellidos} y \texttt{union}}
+    \label{tab:tabla2}
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Parámetro} & \textbf{Objeto: \texttt{nombre}} & \textbf{Objeto: \texttt{apellidos}} & \textbf{Objeto: \texttt{union}}\\
+        \midrule
+        Número de muestras & 32879 & 49007 & 81886\\
+        Duración (segundos) & 0.68 & 1.02 & 1.71 \\
+        Tasa de muestreo (Hz) & 48000 & 48000 & 48000\\
+        Canales & Stereo & Stereo & Mono\\
+        Formato PCM & TRUE & TRUE & TRUE\\
+        Bit & 16 & 16 & 16\\
+        \bottomrule
+    \end{tabular}
+\end{table}

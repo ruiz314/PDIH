@@ -13,7 +13,8 @@ Asignatura Periféricos y Dispositivos de Interfaz Humana
 - [P2](https://github.com/ruiz314/PDIH/tree/main/P2). Uso de bibliotecas de programación de interfaces de usuario en modo texto
 - [P3](https://github.com/ruiz314/PDIH/tree/main/P3). Experimentación con Arduino
 - [P4](https://github.com/ruiz314/PDIH/tree/main/P4). El lenguaje Postscript
-- [P5](https://github.com/ruiz314/PDIH/tree/main/P5).Experimentación con el sistema de salida de sonido 
+- [P5](https://github.com/ruiz314/PDIH/tree/main/P5). Experimentación con el sistema de salida de sonido
+- [P6](https://github.com/ruiz314/PDIH/tree/main/P6). Reconocimiento de imágenes
 
 ## Trabajo
 Trabajo de teoría sobre el [código Morse en Arduino](https://github.com/ruiz314/PDIH/tree/main/Trabajo).

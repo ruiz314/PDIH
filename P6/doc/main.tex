@@ -1,0 +1,171 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{titling} 
+\usepackage{booktabs} % Tablas
+\usepackage{pbox} % Dos líneas en tabla
+%\usepackage{subfigure} % Imágenes
+%\usepackage{subcaption} % Pie de imagen
+
+%% Referencias/Bibliografía
+%\usepackage[backend=biber, style=apa]{biblatex}
+%\addbibresource{ref.bib} % Nombre del archivo con las referencias
+
+%Links de referencias
+\usepackage[hidelinks]{hyperref} % Hace que las referencias sean clicables
+\newcommand{\myref}[1]{\textsuperscript{\textbf{\ref{#1}}}} % Define un estilo propio
+
+% Código
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Definición de colores atractivos
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{terminalback}{rgb}{0.1,0.1,0.1}
+\definecolor{terminaltext}{rgb}{0.9,0.9,0.9}
+
+% Configuración general para Python
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    language=Python,
+    literate= {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1 % Para las tildes y caracteres del español
+}
+
+% Configuración para comandos de Terminal
+\lstdefinestyle{terminalstyle}{
+    backgroundcolor=\color{terminalback},   
+    basicstyle=\ttfamily\small\color{terminaltext},
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=none, % Sin números de línea en la terminal
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    literate= {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1 {Ñ}{{\~N}}1 % Para las tildes y caracteres del español
+}
+
+%%%%%%%% DOCUMENT %%%%%%%%
+\begin{document}
+
+%%%% Title Page
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 							% horizontal line and its thickness
+\center 
+ 
+% University
+\textsc{\LARGE Universidad de Granada}\\[1cm]
+
+% Document info
+\textsc{\Large Periféricos y Dispositivos de Interfaz Humana}\\[0.2cm]
+\textsc{\large Curso 2025/2026}\\[1cm] 										% Course Code
+\HRule \\[0.8cm]
+{ \huge \bfseries Práctica 6. Reconocimiento de imágenes}\\[0.7cm]								% Assignment
+\HRule \\[2cm]
+\large
+\emph{Autora:}\\
+Inés Ruiz Sánchez\\[1.5cm]													% Author info
+{\large \today}\\[5cm]
+\includegraphics[width=0.3\textwidth]{images/UGRlogo.png}\\[1cm] 	% University logo
+\vfill 
+\end{titlepage}
+
+% Generar índice de contenidos y figuras
+\tableofcontents
+\listoffigures
+\lstlistoflistings
+
+%%%% SECCIONES
+
+\newpage
+%% Sección I
+\section{Introducción y objetivos}
+Los \textbf{objetivos} concretos de esta práctica son: 
+\begin{itemize}
+    \item Conocer cómo funcionan las técnicas de reconocimiento de imágenes. 
+    \item Hacer un programa sencillo para realizar detección facial. 
+\end{itemize}
+
+\textbf{Repositorio} en GitHub: \url{https://github.com/ruiz314/PDIH/tree/main/P6}.\\ 
+
+%----------------------------------------------------------------
+%\newpage
+%% Sección II
+\section{Cuestiones a resolver}
+Para superar esta práctica se proponen los siguientes ejercicios: 
+\begin{enumerate}
+    \item Hacer reconocimiento de caras de personas en imágenes (ejemplo básico).
+    \item Hacer reconocimiento de caras de personas en vídeos.
+    \item Hacer reconocimiento de caras de gatos en vídeos.
+    \item Hacer simultáneamente el reconocimiento de cuerpos y caras de personas en vídeos. Es requisito que ambas cosas se detenten al mismo tiempo. Como sugerencia, se puede hacer una primera aproximación para hacer la detección en imágenes y posteriormente en vídeos. Para este ejercicio se facilita un vídeo de ejemplo, aunque se pueden usar otros diferentes. 
+\end{enumerate}
+
+
+%----------------------------------------------------------------
+\newpage
+%% Sección III
+\section{Configuración del entorno de trabajo}\label{sec:Configuracion}
+\input{secciones/01_configuracion}
+
+%----------------------------------------------------------------
+%% Sección IV
+\newpage
+\section{Ejercicios propuestos}\label{sec:Ejercicios}
+\input{secciones/02_ejercicios}
+
+%----------------------------------------------------------------
+
+\newpage
+\section{Anexo}\label{anexo:an}
+
+\subsection{Fichero \textit{ejemplo-fotos-1.py}} \label{anexo:ejemplo} 
+Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} está en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/caras/ejemplo-fotos-1.py}.
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejemplo1}, label={lst:ejemplo1}]{src/ejemplo-fotos-1.py}
+
+% --- Ejercicio 1 
+\subsection{Fichero \textit{ejercicio1.py}} \label{anexo:ejer1} 
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejercicio1}, label={lst:ejerc1}]{src/ejercicio1.py}
+
+\subsection{Fichero \textit{ejemplo2.py}} \label{anexo:ejemplo2} 
+Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} está en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/en-videos/ejemplo2.py}.
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejemplo2}, label={lst:ejemplo2}]{src/ejemplo2.py}
+
+\subsection{Fichero \textit{ejemplo3.py}} \label{anexo:ejemplo3} 
+Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} está en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/en-videos/ejemplo3.py}.
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejemplo3}, label={lst:ejemplo3}]{src/ejemplo3.py}
+
+\end{document}

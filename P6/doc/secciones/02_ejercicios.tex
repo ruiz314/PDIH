@@ -1,4 +1,5 @@
 % Ejercicios
+%---------------------------------------------
 \subsection{Ejercicio 1}\label{subsec:ejer1}
 Para tener más imágenes con las que trabajar y probar el programa he buscado imágenes libres en la página \textit{Pixabay}: \url{https://pixabay.com/es/photos/search/fotos%20de%20personas/}. A continuación presento las imágenes con las que voy a trabajar:
 \begin{itemize}
@@ -63,7 +64,10 @@ cv2.imwrite(nombre_salida, img)
 print(f"[INFO] Imagen resultante guardada con éxito como: {nombre_salida}")
 \end{lstlisting}
 
-El resultado usando \texttt{scaleFactor=1.35, minNeighbors=6} en la Figura \ref{fig:imagen1} es la Figura \ref{fig:1res_img1}. El motivo de usar \texttt{scaleFactor=1.35} es porque con el valor $1.5$ no se reconoce ningún rostro. El rostro del hombre no lo llega a reconocer aunque se disminuya el valor de \texttt{scaleFactor}.\\
+%------
+\subsubsection{Prueba con \textit{Imagen 1}}
+El resultado usando \texttt{scaleFactor=1.35, minNeighbors=6} en la Figura \ref{fig:imagen1} es la Figura \ref{fig:1res_img1}. El motivo de usar \texttt{scaleFactor=1.35} es porque con el valor $1.5$ no se reconoce ningún rostro. El rostro del hombre no lo llega a reconocer aunque se disminuya el valor de \texttt{scaleFactor}.
+
 
 \begin{figure}[ht]
     \centering
@@ -72,7 +76,32 @@ El resultado usando \texttt{scaleFactor=1.35, minNeighbors=6} en la Figura \ref{
     \label{fig:1res_img1}
 \end{figure}
 
-El resultado usando \texttt{scaleFactor=1.5, minNeighbors=6} en la Figura \ref{fig:imagen2} es la Figura \ref{fig:1res_img2}. Se reconocen 5 rostros, de 8 que hay en la imagen.\\
+
+Cuando disminuimos el \texttt{scaleFactor} a $1.0$ sale un error porque el factor no puede tomar valores $\leq 1$. Ver Figura \ref{factor}.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/ejer1/1_6factor.png}
+    \caption{Error de \textit{imagen1} con \texttt{scaleFactor=1.0}}
+    \label{factor}
+\end{figure}
+
+
+Si tomamos \texttt{scaleFactor=1.01} para la Figura \ref{fig:imagen1} no solo no se detecta la cara del señor de la izquierda, sino que hay falsos positivos. Ver Figura \ref{img1_2}.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/ejer1/resultado_imagen1_2.jpg}
+    \caption{Falsos positivos en \textit{imagen1} con \texttt{scaleFactor=1.01}}
+    \label{img1_2}
+\end{figure}
+
+%------
+\subsubsection{Prueba con \textit{Imagen 2}}
+El resultado usando \texttt{scaleFactor=1.5, minNeighbors=6} en la Figura \ref{fig:imagen2} es la Figura \ref{fig:1res_img2}. Se reconocen 5 rostros, de 8 que hay en la imagen.
+
 
 \begin{figure}[ht]
     \centering
@@ -87,4 +116,18 @@ El resultado usando \texttt{scaleFactor=1.5, minNeighbors=6} en la Figura \ref{f
     \caption{Resultado de \textit{imagen2} con \texttt{scaleFactor=1.35, minNeighbors=6}}
     \label{fig:1res_img2_2}
 \end{figure}
-Si disminuimos el valor de \texttt{scaleFactor} a $1.35$ el programa reconocerá todas las caras, como se muestra en la Figura \ref{fig:1res_img2_2}.\\
+Si disminuimos el valor de \texttt{scaleFactor} a $1.35$ el programa reconocerá todas las caras, como se muestra en la Figura \ref{fig:1res_img2_2}.
+
+%---------------------------------------------
+\newpage
+\subsection{Ejercicio 2}\label{subsec:ejer2}
+Para resolver este ejercicio se necesitan las mismas librerías que  en el primer ejercicio (Ver Listing \ref{lst:lib1}).
+
+%------
+%\subsubsection{Prueba con \textit{Video 1}}
+
+%---------------------------------------------
+%\subsection{Ejercicio 3}\label{subsec:ejer3}
+
+%---------------------------------------------
+%\subsection{Ejercicio 4}\label{subsec:ejer4}

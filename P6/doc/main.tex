@@ -13,7 +13,7 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{float}
+\usepackage{float} % Para imágenes
 \usepackage{titling} 
 \usepackage{booktabs} % Tablas
 \usepackage{pbox} % Dos líneas en tabla
@@ -104,9 +104,15 @@ Inés Ruiz Sánchez\\[1.5cm]													% Author info
 \vfill 
 \end{titlepage}
 
+%%\begin{abstract}
+%%Your abstract.
+%%\end{abstract}
+
 % Generar índice de contenidos y figuras
 \tableofcontents
+%\newpage
 \listoffigures
+%\newpage
 \lstlistoflistings
 
 %%%% SECCIONES
@@ -120,7 +126,27 @@ Los \textbf{objetivos} concretos de esta práctica son:
     \item Hacer un programa sencillo para realizar detección facial. 
 \end{itemize}
 
-\textbf{Repositorio} en GitHub: \url{https://github.com/ruiz314/PDIH/tree/main/P6}.\\ 
+\textbf{Repositorio} en GitHub: \url{https://github.com/ruiz314/PDIH/tree/main/P6}.
+
+
+% Puedo poner imágen del repositorio.
+
+%La estructura de dicho repositorio es la siguiente:
+%\begin{itemize}
+%    \item \texttt{archivo\_WAV} contiene los archivos \texttt{.wav} obtenidos en los ejercicios.
+%    \item \texttt{doc} para almacenar los ficheros para compilar la memoria en LATEX.
+%    \begin{itemize}
+%        \item \texttt{secciones} contiene un fichero .tex por cada ejercicio resuelto.
+%        \item \texttt{src} contiene el código usado para resolver los ejercicios.
+%        \item \textit{main.tex} fichero principal de la memoria escrita en LATEX.
+%    \end{itemize}
+%    \item \texttt{ejemplo} es un material que compartió el profesor.
+%    \item \texttt{img} es una carpeta con las imágenes en formato \textit{png}.
+%    \item \textit{README.md} no es la memoria de la práctica. Es un archivo para ilustrar de qué va la práctica, con enlaces a los resultados obtenidos.
+%    \item \textit{memoria\_P6.pdf} es la \textbf{memoria de la práctica}.
+%\end{itemize}
+
+%En el anexo\myref{anexo:an} se incluyen los ficheros de códigos al completo. \\
 
 %----------------------------------------------------------------
 %\newpage
@@ -140,12 +166,16 @@ Para superar esta práctica se proponen los siguientes ejercicios:
 %% Sección III
 \section{Configuración del entorno de trabajo}\label{sec:Configuracion}
 \input{secciones/01_configuracion}
-
+\newpage
 %----------------------------------------------------------------
 %% Sección IV
 \newpage
 \section{Ejercicios propuestos}\label{sec:Ejercicios}
 \input{secciones/02_ejercicios}
+
+%----------------------------------------------------------------
+
+%----------------------------------------------------------------
 
 %----------------------------------------------------------------
 
@@ -167,5 +197,21 @@ Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} est�
 \subsection{Fichero \textit{ejemplo3.py}} \label{anexo:ejemplo3} 
 Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} está en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/en-videos/ejemplo3.py}.
 \lstinputlisting[style=pythonstyle, caption={Código completo del ejemplo3}, label={lst:ejemplo3}]{src/ejemplo3.py}
+
+% --- Ejercicio 2 
+\subsection{Fichero \textit{ejercicio2.py}} \label{anexo:ejer2} 
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejercicio2}, label={lst:ejerc2}]{src/ejercicio2.py}
+
+
+\subsection{Fichero \textit{ejemplo-gatos.py}} \label{anexo:ejemploGatos} 
+Ejemplo proporcionado por el profesor. En el repositorio de \textit{GitHub} está en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/gatos/ejemplo-gatos.py}.
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejemplo-gatos}, label={lst:ejemploGatos}]{src/ejemplo-gatos.py}
+
+% --- Ejercicio 3 
+\subsection{Fichero \textit{ejercicio3.py}} \label{anexo:ejer3} 
+\lstinputlisting[style=pythonstyle, caption={Código completo del ejercicio3}, label={lst:ejerc3}]{src/ejercicio3.py}
+
+%\section{Bibliografía y referencias}
+%\printbibliography
 
 \end{document}

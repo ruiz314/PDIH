@@ -1,5 +1,6 @@
 % Configuración del entorno de trabajo
-El sistema operativo usado es Microsoft Windows. A continuación, se detallan los pasos seguidos para la instalación del software, la gestión de entornos virtuales y la adquisición de los modelos de detección necesarios.\\
+El sistema operativo usado es Microsoft Windows. A continuación, se detallan los pasos seguidos para la instalación del software, la gestión de entornos virtuales y la adquisición de los modelos de detección necesarios.
+
 
 Tenía instalada la \textbf{versión 3.13.2 de Python}, como se puede ver en la Figura \ref{fig:python}.
 \begin{figure}[h!]
@@ -24,7 +25,11 @@ pip3 install opencv-python-headless
     \label{fig:opencv}
 \end{figure}
 
-He accedido al repositorio oficial de código de OpenCV en GitHub (\textit{opencv/data/haarcascades}) para descargar de forma local los clasificadores necesarios. En la Figura \ref{fig:img1} se puede observar el contenido del repositorio. Para el ejercicio con reconocimiento de caras basta con descargar el fichero subrayado en naranja sobre rostros en posición frontal: \texttt{haarcascade\_frontalface\_alt.xml}. Para reconocer caras en videos hacen falta dos: \texttt{haarcascade\_eye\_tree\_eyeglasses.xml} y \texttt{haarcascade\_frontalface\_default.xml}.\\
+Al estar trabajando con Windows, y ya tenía instalada la librería OpenCV de asignaturas previas, tenía algunos errores por lo que volví a la configuraciónn en la que no se usa ``headless''.
+
+
+He accedido al repositorio oficial de código de OpenCV en GitHub (\textit{opencv/data/haarcascades}) para descargar de forma local los clasificadores necesarios. En la Figura \ref{fig:img1} se puede observar el contenido del repositorio. Para el ejercicio con reconocimiento de caras basta con descargar el fichero subrayado en naranja sobre rostros en posición frontal: \texttt{haarcascade\_frontalface\_alt.xml}. Para reconocer caras en videos hacen falta dos: \texttt{haarcascade\_eye\_tree\_eyeglasses.xml} y \texttt{haarcascade\_frontalface\_default.xml}.
+
 
 \begin{figure}[ht]
     \centering
@@ -34,7 +39,8 @@ He accedido al repositorio oficial de código de OpenCV en GitHub (\textit{openc
 \end{figure}
 
 \subsection{Ejemplo de caras}
-El código fuente proporcionado por el profesor se encuentra en el Anexo \ref{anexo:ejemplo}. El material necesario (imagen y fichero \textit{.xml}) están en la siguiente dirección del repositorio: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/caras/ejemplo-fotos-1.py}.\\
+El código fuente proporcionado por el profesor se encuentra en el Anexo \ref{anexo:ejemplo}. El material necesario (imagen y fichero \textit{.xml}) están en la siguiente dirección del repositorio: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/caras/ejemplo-fotos-1.py}.
+
 
 La imagen inicial es la que se muestra en la Figura \ref{fig:img_ini}. Muestra dos rostros de dos hombres en un primer plano. Al fondo de la imagen hay un cuadro con un rostro de otro hombre. La imagen está en blanco y negro.
 
@@ -51,9 +57,10 @@ Para ejecutar este ejemplo en el que detecta las caras de una imagen basta con e
 python ejemplo-fotos-1.py
 \end{lstlisting}
 
-En la Figura \ref{fig:img4} se puede observar el resultado de haber ejecutado el ejemplo proporcionado por el profesor. Solo se detecta una cara, la de la derecha. En un recuadro amarillo se puede ver el contenido de la carpeta, y subrayado por una línea amarilla viene el comando para ejecutar dicho programa.\\
+En la Figura \ref{fig:img4} se puede observar el resultado de haber ejecutado el ejemplo proporcionado por el profesor. Solo se detecta una cara, la de la derecha (Max Planck). En un recuadro amarillo que he dibujado en mi terminal se puede ver el contenido de la carpeta, y subrayado por una línea amarilla viene el comando para ejecutar dicho programa.
 
-\begin{figure}[ht]
+
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.8\linewidth]{images/1_4ejecucion.png}
     \caption{Ejecución de ejemplo}
@@ -62,7 +69,7 @@ En la Figura \ref{fig:img4} se puede observar el resultado de haber ejecutado el
 
 En la Figura \ref{fig:img5} se pueden ver dos recuadros rojos, es decir, el programa ha detectado dos caras en la imagen. La cara del cuadro no ha sido reconocida por el programa. Si reducimos el parámetro \texttt{scaleFactor} y le damos valor más cercano a $1.0$ (p.ej. $1.05$ en mi caso) veremos que sí identifica esa otra cara del cuadro. Subrayado en amarillo se encuentra el parámetro \texttt{scaleFactor}, para ver su valor en esa ejecución.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{images/1_5ejec2.png}
     \caption{Ejecución de ejemplo con \texttt{scaleFactor = 1.05}}

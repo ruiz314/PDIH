@@ -51,9 +51,9 @@ if not grabador.isOpened():
     print("[ERROR] No se pudo inicializar el grabador de vídeo. Revisa los permisos de la carpeta.")
     sys.exit(1)
 
-print(f"\n[INFO] Procesando vídeo: '{nombre_video}' ({ancho}x{alto} a {fps} FPS)")
-print(f"[INFO] El resultado con las detecciones se guardará en: '{video_salida}'")
-print("[INFO] Presiona la tecla 'ESC' en la ventana gráfica para interrumpir el proceso.\n")
+print(f"\n Procesando vídeo: '{nombre_video}' ({ancho}x{alto} a {fps} FPS)")
+print(f"El resultado con las detecciones se guardará en: '{video_salida}'")
+print("Presiona la tecla 'ESC' en la ventana gráfica para interrumpir el proceso.\n")
 
 #Procesamiento frame a frame del vídeo
 while camara.isOpened():
@@ -62,7 +62,7 @@ while camara.isOpened():
 
     # Si 'hay_frame' es False, significa que el vídeo ha llegado a su fin
     if not hay_frame:
-        print("[INFO] Fin del archivo de vídeo alcanzado.")
+        print("Fin del archivo de vídeo alcanzado.")
         break
 
     # Convertimos el frame a escala de grises para el algoritmo de Viola-Jones

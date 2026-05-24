@@ -9,14 +9,14 @@ Para tener más imágenes con las que trabajar y probar el programa he buscado i
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/ejer1/imagen1.jpg}
+    \includegraphics[width=0.7\linewidth]{images/ejer1/imagen1.jpg}
     \caption{Imagen 1}
     \label{fig:imagen1}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/ejer1/imagen2.jpg}
+    \includegraphics[width=0.7\linewidth]{images/ejer1/imagen2.jpg}
     \caption{Imagen 2}
     \label{fig:imagen2}
 \end{figure}
@@ -66,21 +66,41 @@ print(f"[INFO] Imagen resultante guardada con éxito como: {nombre_salida}")
 
 %------
 \subsubsection{Prueba con \textit{Imagen 1}}
-El resultado usando \texttt{scaleFactor=1.35, minNeighbors=6} en la Figura \ref{fig:imagen1} es la Figura \ref{fig:1res_img1}. El motivo de usar \texttt{scaleFactor=1.35} es porque con el valor $1.5$ no se reconoce ningún rostro. El rostro del hombre no lo llega a reconocer aunque se disminuya el valor de \texttt{scaleFactor}.
+Orden necesaria para la terminal:
+\begin{lstlisting}[style=terminalstyle, caption={Orden de ejecución - Imagen 1}, label={lst:ejecimg1}]
+(venv) PS C:\Users\inesr\PDIH\P6> python .\ejercicio1.py .\imagen1.jpg  
+\end{lstlisting}
+
+\textbf{Prueba 1.1}.
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 1 con Imagen 1}, label={lst:pruebaimg1}]
+...
+rostros = modelo.detectMultiScale(imagen, scaleFactor=1.35, minNeighbors=6 )
+...
+\end{lstlisting}
+
+El resultado usando \texttt{scaleFactor=1.35, minNeighbors=6} en la Figura \ref{fig:imagen1} es la Figura \ref{fig:1res_img1}. El motivo de usar \texttt{scaleFactor=1.35} es porque con el valor $1.5$ no se reconoce ningún rostro. El rostro del hombre no lo llega a reconocer aunque se disminuya el valor de \texttt{scaleFactor}. Se puede observar que no reconoce falsos positivos.
 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/ejer1/resultado_imagen1.jpg}
-    \caption{Resultado de \textit{imagen1} con \texttt{scaleFactor=1.35, minNeighbors=6}}
+    \includegraphics[width=0.7\linewidth]{images/ejer1/resultado_imagen1.jpg}
+    \caption{Resultado de \textit{imagen1} con \texttt{scaleFactor=1.35}}
     \label{fig:1res_img1}
 \end{figure}
 
 
+\textbf{Prueba 1.2}.
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 2 con Imagen 1}, label={lst:prueba2img1}]
+...
+rostros = modelo.detectMultiScale(imagen, scaleFactor=1.01, minNeighbors=6 )
+...
+\end{lstlisting}
+
 Cuando disminuimos el \texttt{scaleFactor} a $1.0$ sale un error porque el factor no puede tomar valores $\leq 1$. Ver Figura \ref{factor}.
 
 
-\begin{figure}[ht]
+
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.8\linewidth]{images/ejer1/1_6factor.png}
     \caption{Error de \textit{imagen1} con \texttt{scaleFactor=1.0}}
@@ -88,46 +108,263 @@ Cuando disminuimos el \texttt{scaleFactor} a $1.0$ sale un error porque el facto
 \end{figure}
 
 
-Si tomamos \texttt{scaleFactor=1.01} para la Figura \ref{fig:imagen1} no solo no se detecta la cara del señor de la izquierda, sino que hay falsos positivos. Ver Figura \ref{img1_2}.
+\textbf{Prueba 1.3}.
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 3 con Imagen 1}, label={lst:prueba3img1}]
+...
+rostros = modelo.detectMultiScale(imagen, scaleFactor=1.01, minNeighbors=6 )
+...
+\end{lstlisting}
+Si tomamos \texttt{scaleFactor=1.01} para la Figura \ref{fig:imagen1} no solo no se detecta la cara del señor de la izquierda, sino que hay falsos positivos, en los árboles y en el cuerpo de las dos personas de la imagen. Ver Figura \ref{img1_2}.
 
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/ejer1/resultado_imagen1_2.jpg}
+    \includegraphics[width=0.7\linewidth]{images/ejer1/resultado_imagen1_2.jpg}
     \caption{Falsos positivos en \textit{imagen1} con \texttt{scaleFactor=1.01}}
     \label{img1_2}
 \end{figure}
 
 %------
+\newpage
 \subsubsection{Prueba con \textit{Imagen 2}}
-El resultado usando \texttt{scaleFactor=1.5, minNeighbors=6} en la Figura \ref{fig:imagen2} es la Figura \ref{fig:1res_img2}. Se reconocen 5 rostros, de 8 que hay en la imagen.
+Orden necesaria para la terminal:
+\begin{lstlisting}[style=terminalstyle, caption={Orden de ejecución - Imagen 2}, label={lst:ejecimg2}]
+(venv) PS C:\Users\inesr\PDIH\P6> python .\ejercicio1.py .\imagen2.jpg  
+\end{lstlisting}
+
+\textbf{Prueba 2.1}.
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 1 con Imagen 2}, label={lst:prueba1img2}]
+...
+rostros = modelo.detectMultiScale(imagen, scaleFactor=1.5, minNeighbors=6 )
+...
+\end{lstlisting}
+
+El resultado usando \texttt{scaleFactor=1.5, minNeighbors=6} en la Figura \ref{fig:imagen2} es la Figura \ref{fig:1res_img2}. Se reconocen 5 rostros, de 8 que hay en la imagen. No hay falsos positivos.
 
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.8\linewidth]{images/ejer1/resultado_imagen2.jpg}
-    \caption{Resultado de \textit{imagen2} con \texttt{scaleFactor=1.5, minNeighbors=6}}
+    \includegraphics[width=0.7\linewidth]{images/ejer1/resultado_imagen2.jpg}
+    \caption{Resultado de \textit{imagen2} con \texttt{scaleFactor=1.5}}
     \label{fig:1res_img2}
 \end{figure}
+
+
+\textbf{Prueba 2.2}.
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 2 con Imagen 2}, label={lst:prueba2img2}]
+...
+rostros = modelo.detectMultiScale(imagen, scaleFactor=1.35, minNeighbors=6 )
+...
+\end{lstlisting}
+
+Si disminuimos el valor de \texttt{scaleFactor} a $1.35$ el programa reconocerá todas las caras, como se muestra en la Figura \ref{fig:1res_img2_2}. No hay falsos positivos.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\linewidth]{images/ejer1/resultado_imagen2_2.jpg}
-    \caption{Resultado de \textit{imagen2} con \texttt{scaleFactor=1.35, minNeighbors=6}}
+    \caption{Resultado de \textit{imagen2} con \texttt{scaleFactor=1.35}}
     \label{fig:1res_img2_2}
 \end{figure}
-Si disminuimos el valor de \texttt{scaleFactor} a $1.35$ el programa reconocerá todas las caras, como se muestra en la Figura \ref{fig:1res_img2_2}.
+
 
 %---------------------------------------------
 \newpage
 \subsection{Ejercicio 2}\label{subsec:ejer2}
-Para resolver este ejercicio se necesitan las mismas librerías que  en el primer ejercicio (Ver Listing \ref{lst:lib1}).
+Para resolver este ejercicio se necesitan las mismas librerías que en el primer ejercicio (Ver Listing \ref{lst:lib1}). Al igual que en el primer ejercicio, el script empieza comprobando los argumentos de la terminal al ejecutar el programa. Al exigir la sintaxis \texttt{python ejercicio2.py <video>}, se hace más dinámica la prueba del programa con distintos videos sin tener que modificar código.
+
+
+Antes de procesar la señal de vídeo se estructura el archivo de salida. Mediante el método \texttt{camara.get()}, el sistema consulta los descriptores de la cabecera del archivo multimedia para extraer tres variables clave: la tasa de refresco (\texttt{CAP\_PROP\_FPS}) y las dimensiones de los cuadros (\texttt{WIDTH} y \texttt{HEIGHT}). Se añade además una estructura condicional que actúa como salvaguarda fijando un muestreo estándar de $30$ FPS en caso de que el archivo de origen posea un \textit{framerate} variable no detectable.
+
+\begin{lstlisting}[style=pythonstyle, caption={Extracción de propiedades del video}, label={lst:propiedadesvid}]
+# Extrae las propiedades nativas del vídeo original
+fps_leido = int(camara.get(cv2.CAP_PROP_FPS))      # Cuadros por segundo
+ancho = int(camara.get(cv2.CAP_PROP_FRAME_WIDTH))  # Resolución: Ancho en píxeles
+alto = int(camara.get(cv2.CAP_PROP_FRAME_HEIGHT))  # Resolución: Alto en píxeles
+
+# Control de seguridad.
+fps = int(fps_leido) if fps_leido > 0 else 30
+\end{lstlisting}
+
+A diferencia de trabajar con imágenes, donde no es necesario conocer las propiedades del archivo para usar la función \texttt{cv2.imshow()}, para trabajar con \texttt{cv2.VideoWriter} se necesitan saber los metadatos (\texttt{CAP\_PROP\_FPS}, \texttt{FRAME\_WIDTH} y \texttt{FRAME\_HEIGHT}) para que el archivo final se reproduzca a la misma velocidad que el original.
+
+
+Para evitar fallos a la hora de almacenar el video resultante en disco no se usan rutas relativas. Con el módulo \texttt{os} se determina la ubicación física exacta del script en el disco duro y se aísla el nombre puro del fichero multimedia.
+
+\begin{lstlisting}[style=pythonstyle, caption={Ruta de guardado}, label={lst:ruta}]
+# Obtiene la ruta absoluta de la carpeta donde se está ejecutando el script
+directorio_actual = os.path.dirname(os.path.abspath(__file__))
+
+# Extrae solo el nombre del archivo de vídeo (eliminando rutas previas si las hay)
+nombre_archivo_puro = os.path.basename(nombre_video)
+nombre_base, _ = os.path.splitext(nombre_archivo_puro)
+
+# Combinamos todo en una ruta absoluta limpia para Windows
+video_salida = os.path.join(directorio_actual, f"resultado_{nombre_base}.avi") # Guarda en formato AVI para máxima compatibilidad con códecs en Windows
+\end{lstlisting}
+
+Se usa el códec \texttt{XVID} empaquetado bajo un contenedor binario de extensión \texttt{.avi}, asegurando compatibilidad con mi ordenador.
+
+\begin{lstlisting}[style=pythonstyle, caption={Códec y extensión}, label={lst:extension}]
+# Definir el códec de compresión de vídeo.
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
+# Instanciar el objeto grabador con la ruta, el códec, los FPS y el tamaño de los fotogramas
+grabador = cv2.VideoWriter(video_salida, fourcc, fps, (ancho, alto), isColor=True)
+
+# Validar que el grabador se haya inicializado correctamente en el sistema operativo
+if not grabador.isOpened():
+    print("[ERROR] No se pudo inicializar el grabador de vídeo. Revisa los permisos de la carpeta.")
+    sys.exit(1)
+\end{lstlisting}
+
+Dentro del bucle principal de ejecución, el proceso se divide en tres fases por cada \textit{frame} capturado:
+\begin{itemize}
+        \item Se transforma el plano de color empleando \texttt{cv2.COLOR\_BGR2GRAY} como se hacía en el tratamiento de imágenes.
+        \item Se establecen los valores de \texttt{scaleFactor} y \texttt{minNeighbors}  para la función \texttt{detectMultiScale}.
+        \item Se pintan los rectángulos sobre la matriz original a color (\texttt{img}) para no degradar la calidad estética del vídeo final. Acto seguido, se efectúa un volcado físico directo al disco mediante \texttt{grabador.write()} y, de forma paralela, se proyecta la imagen en la interfaz gráfica del usuario (\texttt{cv2.imshow()}).
+\end{itemize}
+
+\begin{lstlisting}[style=pythonstyle, caption={Frame a frame en ejercicio2}, label={lst:logica2}]
+#Procesamiento frame a frame del vídeo
+while camara.isOpened():
+    hay_frame, img = camara.read()
+
+    # Si 'hay_frame' es False, significa que el vídeo ha llegado a su fin
+    if not hay_frame:
+        print("Fin del archivo de vídeo alcanzado.")
+        break
+
+    # Convertir el frame a escala de grises para el algoritmo de Viola-Jones
+    gris = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Detectar rostros en el fotograma actual
+    faces = modeloCara.detectMultiScale(gris, scaleFactor=1.3, minNeighbors=4)
+
+    # Iterar sobre cada rostro detectado en el fotograma actual
+    for (x, y, w, h) in faces:
+        # Dibujamos el rectángulo delimitador sobre el frame original a color (img)
+        # Color: Azul (255, 0, 0) en formato BGR. 
+        # Grosor de línea: 3 píxeles
+        cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 3)
+
+    # Escribir el fotograma modificado (con rectángulos ya pintados) en el archivo de salida
+    grabador.write(img)
+
+    # Desplegar el frame en tiempo real en una ventana interactiva de Windows
+    cv2.imshow('Ejercicio 2 - Detección Facial en Vídeo', img)
+\end{lstlisting}
+
+Con la función \texttt{waitKey} se captura si hay una pulsación de tecla. Si la tecla pulsada es la que corresponde con el número $27$ en ASCII, es decir, la tecla \texttt{Escape} (\texttt{Esc}), se fuerza la salida del bucle.
+\begin{lstlisting}[style=pythonstyle, caption={Cerrar ventana}, label={lst:cierre2}]
+while camara.isOpened():
+    ...
+    # Escuchar los eventos del teclado durante 1 milisegundo
+    key = cv2.waitKey(1)
+    # 27 es el código ASCII para la tecla 'Esc' (Escape)
+    if key == 27:
+        print("Proceso interrumpido manualmente por el usuario.")
+        break
+\end{lstlisting}
+
+Una vez que se ha salido del bucle \texttt{while} se realiza el vaciado de búfer. 
+\begin{lstlisting}[style=pythonstyle, caption={Limpmieza del búfer}, label={lst:bufer2}]
+# Liberar los descriptores para que Windows cierre correctamente los archivos de video
+camara.release()
+grabador.release()  # Al liberar el grabador se finaliza la escritura física del archivo nuevo
+cv2.destroyAllWindows()
+print(f"[ÉXITO] Archivo de vídeo exportado correctamente en la raíz del proyecto.\n")
+\end{lstlisting}
 
 %------
-%\subsubsection{Prueba con \textit{Video 1}}
+
+\subsubsection{Prueba con \textit{Video 2}}
+Orden necesaria para la terminal:
+\begin{lstlisting}[style=terminalstyle, caption={Orden de ejecución - Video 2}, label={lst:ejecvid2}]
+(venv) PS C:\Users\inesr\PDIH\P6> python .\ejercicio2.py .\v2.mp4  
+\end{lstlisting}
+
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 1 con Video 2}, label={lst:prueba1vid2}]
+...
+    faces = modeloCara.detectMultiScale(gris, scaleFactor=1.3, minNeighbors=4)
+...
+\end{lstlisting}
+Con la siguiente llamada a la función \texttt{detectMultiScale(gris, scaleFactor=1.3, minNeighbors=4)} se capturan las caras de las dos personas aunque puede detectar falsos positivos. En la Figura \ref{fig:imgvid2} se puede ver como se recuadran los dos rostros detectados.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/ejer2/2_imgvid2.png}
+    \caption{Captura del video 2}
+    \label{fig:imgvid2}
+\end{figure}
+
+En la siguiente dirección se puede ver el vídeo completo con los rostros recuadrados:  \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejer2/resultado_v2.avi}.
+
+
+\subsubsection{Prueba con \textit{Video 3}}
+Orden necesaria para la terminal:
+\begin{lstlisting}[style=terminalstyle, caption={Orden de ejecución - Video 3}, label={lst:ejecvid3}]
+(venv) PS C:\Users\inesr\PDIH\P6> python .\ejercicio2.py .\v3.mp4  
+\end{lstlisting}
+
+\begin{lstlisting}[style=pythonstyle, caption={Prueba 1 con Video 3}, label={lst:prueba1vid3}]
+...
+    faces = modeloCara.detectMultiScale(gris, scaleFactor=1.3, minNeighbors=4)
+...
+\end{lstlisting}
+
+Con la siguiente llamada a la función \texttt{detectMultiScale(gris, scaleFactor=1.3, minNeighbors=4)} se captura perfectamente la cara de la persona que está hablando. En la Figura \ref{fig:imgvid3} se puede ver como se recuadra el rostro detectado.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/ejer2/2_imgvid3.png}
+    \caption{Captura del video 3}
+    \label{fig:imgvid3}
+\end{figure}
+
+En la siguiente dirección se puede ver el vídeo completo con el rostro recuadrado:  \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejer2/resultado_v3.avi}.
 
 %---------------------------------------------
-%\subsection{Ejercicio 3}\label{subsec:ejer3}
+\newpage
+\subsection{Ejercicio 3}\label{subsec:ejer3}
+\subsubsection{Ejemplo de gatos}\label{subsubsec:ejemGatos}
+
+El código fuente proporcionado por el profesor se encuentra en el Anexo \ref{anexo:ejemploGatos}. El material necesario (imagen y fichero \textit{.xml}) están en la siguiente dirección del repositorio: \url{https://github.com/ruiz314/PDIH/blob/main/P6/ejemplos/gatos/ejemplo-gatos.py}.
+
+En el ejemplo se usa el clasificador \texttt{haarcascade\_frontalcatface\_extended.xml} y se usa la función \texttt{detectMultiScale}:
+\begin{lstlisting}[style=pythonstyle, caption={Ejemplo de gatos}, label={lst:ejemplogato}]
+...
+gatos = modelo.detectMultiScale(imagen, scaleFactor=1.1, minNeighbors=6)
+...
+\end{lstlisting}
+
+La imagen inicial es la que se muestra en la Figura \ref{fig:img_iniGatos}. Muestra tres gatos de distinto tamaño y color.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/ejer3/imagen_input.jpg}
+    \caption{Imagen inicial de gatos}
+    \label{fig:img_iniGatos}
+\end{figure}
+
+
+Tras ejecutar el programa observamos que se reconocen los tres gatos en la Figura \ref{fig:img_Gatos}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/ejer3/3_ejemplo.png}
+    \caption{Imagen con gatos reconocidos}
+    \label{fig:img_Gatos}
+\end{figure}
+
+\newpage
+\subsubsection{Resolución de ejercicio 3}\label{subsubsec:ejerc}
+Los videos ha sido descargados en la página \textit{Pixabay}: 
+\begin{itemize}
+    \item \url{https://www.istockphoto.com/es/v%C3%ADdeo/problema-de-alimentaci%C3%B3n-en-animales-gm2158898087-579506401?utm_source=pixabay&utm_medium=affiliate&utm_campaign=sponsored_video&utm_content=srp_topbanner_media&utm_term=gatos}.
+    \item \url{https://pixabay.com/es/videos/gato-gato-naranja-gato-domestico-179212/}. 
+\end{itemize}
+
+En mi repositorio se encuentran en la siguiente ruta: \url{https://github.com/ruiz314/PDIH/tree/main/P6/ejer3}.
 
 %---------------------------------------------
 %\subsection{Ejercicio 4}\label{subsec:ejer4}

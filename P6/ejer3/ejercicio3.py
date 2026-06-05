@@ -16,23 +16,45 @@ modeloGato = cv2.CascadeClassifier('haarcascade_frontalcatface_extended.xml')
 # Inicializa la captura del archivo de vídeo pasado por parámetro
 camara = cv2.VideoCapture(nombre_video)
 
+# Valida que el archivo realmente exista
 if not camara.isOpened():
     print(f"\n[ERROR] No se pudo abrir el archivo de vídeo: '{nombre_video}'\n")
     sys.exit(1)
 
-# Guarda el vídeo resultante con los gatos detectados
-fps = int(camara.get(cv2.CAP_PROP_FPS))         
+# Extrae las propiedades nativas del vídeo original
+fps_leido = int(camara.get(cv2.CAP_PROP_FPS))         
 ancho = int(camara.get(cv2.CAP_PROP_FRAME_WIDTH))  
 alto = int(camara.get(cv2.CAP_PROP_FRAME_HEIGHT))  
 
-nombre_base, extension = os.path.splitext(nombre_video)
-video_salida = f"resultado_gatos_{nombre_base}{extension}"
-fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-grabador = cv2.VideoWriter(video_salida, fourcc, fps, (ancho, alto))
+# Control de seguridad: Si los FPS no se leen bien, asignamos 30 por defecto para evitar el fallo
+fps = int(fps_leido) if fps_leido > 0 else 30
 
-print(f"\n Buscando gatos en: '{nombre_video}'")
+# Guardar video de salida
+directorio_actual = os.path.dirname(os.path.abspath(__file__))
 
-# Procesa el vídeo mientras esté abierto
+# Extraer solo el nombre del archivo de vídeo
+nombre_archivo_puro = os.path.basename(nombre_video)
+nombre_base, _ = os.path.splitext(nombre_archivo_puro)
+
+# Combina todo en una ruta absoluta 
+video_salida = os.path.join(directorio_actual, f"resultado_gatos_{nombre_base}.avi") 
+
+# Definir el códec de compresión de vídeo.
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+
+# Instanciar el objeto grabador con la ruta, el códec, los FPS y el tamaño de los fotogramas
+grabador = cv2.VideoWriter(video_salida, fourcc, fps, (ancho, alto), isColor=True)
+
+# Validación de que el grabador se haya inicializado correctamente en el sistema operativo
+if not grabador.isOpened():
+    print("[ERROR] No se pudo inicializar el grabador de vídeo. Revisa los permisos de la carpeta.")
+    sys.exit(1)
+
+print(f"\n Procesando vídeo de GATOS: '{nombre_video}' ({ancho}x{alto} a {fps} FPS)")
+print(f"El resultado con las detecciones se guardará en: '{video_salida}'")
+print("Presiona la tecla 'ESC' en la ventana gráfica para interrumpir el proceso.\n")
+
+#Procesamiento frame a frame del vídeo
 while camara.isOpened(): 
     hay_frame, img = camara.read() 
 
